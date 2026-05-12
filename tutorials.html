@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>94 EZY RENT – Tutorials</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #D01D1D;
+  --red-dark: #A31515;
+  --black: #0D0D0D;
+  --white: #FFFFFF;
+  --gray: #181818;
+  --gray-mid: #242424;
+  --gray-border: #2A2A2A;
+  --text-muted: #777;
+  --text-dim: #444;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 62px;
+  background: rgba(8,8,8,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.6rem; font-weight: 900; letter-spacing: -0.01em;
+  color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 0;
+}
+.logo-94ezy { color: var(--white); }
+.logo-rent {
+  color: var(--red);
+  -webkit-text-stroke: 1.5px var(--white);
+  text-shadow: none;
+}
+.nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #888; text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--red) !important; color: var(--white) !important;
+  padding: 0.4rem 1.1rem; border-radius: 3px; font-weight: 700 !important;
+}
+.nav-cta:hover { background: var(--red-dark) !important; }
+
+.page-section { padding: 90px 2.5rem; max-width: 1120px; margin: 0 auto; }
+.divider { height: 1px; background: #1A1A1A; }
+.sec-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;
+}
+.sec-label::after { content: ''; flex: 0 0 28px; height: 1.5px; background: var(--red); }
+.sec-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 900; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 1; margin-bottom: 1.5rem;
+}
+
+.tutorial-hero {
+  padding: 120px 2.5rem 60px;
+  background: radial-gradient(circle at 20% 20%, rgba(208,29,29,0.18) 0%, transparent 55%),
+              radial-gradient(circle at 80% 40%, rgba(208,29,29,0.08) 0%, transparent 60%),
+              #0B0B0B;
+  border-bottom: 1px solid #1A1A1A;
+}
+.tut-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.tut-card {
+  background: var(--gray); border: 1px solid #222; border-radius: 6px; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.tut-card:hover { border-color: #444; transform: translateY(-2px); }
+.tut-thumb { position: relative; padding-top: 56.25%; background: #111; }
+.tut-thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+.tut-body { padding: 1.1rem 1.25rem; }
+.tut-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 0.3rem; }
+.tut-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: var(--white); }
+.tut-desc { font-size: 0.78rem; color: #777; margin-top: 0.25rem; line-height: 1.5; }
+
+footer {
+  border-top: 1px solid #161616; padding: 2.5rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--white); }
+.footer-logo .red { color: var(--red); -webkit-text-stroke: 0.8px var(--white); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #444; text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: #aaa; }
+.footer-copy { font-size: 0.72rem; color: #333; }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">
+    <span class="logo-94ezy">94 EZY </span><span class="logo-rent">RENT</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="catalogue.html">Equipment</a></li>
+    <li><a href="tutorials.html">Tutorials</a></li>
+    <li><a href="index.html#reviews">Reviews</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#booking" class="nav-cta">Rent Now</a></li>
+  </ul>
+</nav>
+
+<div class="tutorial-hero">
+  <div style="max-width:1120px;margin:0 auto;">
+    <div class="sec-label">Learn & Master</div>
+    <h2 class="sec-title">Tutorial Videos</h2>
+    <p style="color:#777;font-size:0.9rem;max-width:620px;line-height:1.7;">
+      Learn how to get the most out of your rental gear. Replace the video IDs with your own tutorial videos.
+    </p>
+  </div>
+</div>
+
+<section class="page-section">
+  <div class="sec-label" style="margin-bottom:2rem;">Equipment Guides</div>
+  <div class="tut-grid">
+    <div class="tut-card">
+      <div class="tut-thumb">
+        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_1" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="tut-body">
+        <div class="tut-tag">Drone · DJI</div>
+        <div class="tut-name">DJI Mini 4 Pro – Beginner Setup Guide</div>
+        <div class="tut-desc">Unboxing, pre-flight checklist, and your first flight with our most popular drone.</div>
+      </div>
+    </div>
+    <div class="tut-card">
+      <div class="tut-thumb">
+        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_2" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="tut-body">
+        <div class="tut-tag">Action Cam · DJI</div>
+        <div class="tut-name">DJI Osmo Action 5 – Best Settings</div>
+        <div class="tut-desc">Resolution, frame rate and colour profile tips for cinematic footage straight out of camera.</div>
+      </div>
+    </div>
+    <div class="tut-card">
+      <div class="tut-thumb">
+        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_3" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="tut-body">
+        <div class="tut-tag">360° · Insta360</div>
+        <div class="tut-name">Insta360 X4 – Full Tutorial</div>
+        <div class="tut-desc">How to shoot, reframe, and export stunning 360° content using our Insta360 rentals.</div>
+      </div>
+    </div>
+    <div class="tut-card">
+      <div class="tut-thumb">
+        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_4" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="tut-body">
+        <div class="tut-tag">Digital Camera · Fujifilm</div>
+        <div class="tut-name">Fujifilm X-T5 – Film Simulation Tips</div>
+        <div class="tut-desc">Master Fujifilm's iconic film simulations for that cinematic look on your rental X-T5.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin:3rem 0;"></div>
+
+  <div class="sec-label" style="margin-bottom:2rem;">General Tips & Techniques</div>
+  <div class="tut-grid">
+    <div class="tut-card">
+      <div class="tut-thumb">
+        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_5" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="tut-body">
+        <div class="tut-tag">Technique · General</div>
+        <div class="tut-name">Cinematic Drone Shots for Beginners</div>
+        <div class="tut-desc">5 essential drone movements that make your footage look instantly more professional.</div>
+      </div>
+    </div>
+    <div class="tut-card">
+      <div class="tut-thumb">
+        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_6" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="tut-body">
+        <div class="tut-tag">Technique · Vlog</div>
+        <div class="tut-name">Travel Vlog Setup on a Budget</div>
+        <div class="tut-desc">How to plan, shoot, and edit a compelling travel vlog using rented action cameras.</div>
+      </div>
+    </div>
+    <div class="tut-card">
+      <div class="tut-thumb">
+        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_7" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="tut-body">
+        <div class="tut-tag">Technique · Wedding</div>
+        <div class="tut-name">Aerial Wedding Videography Guide</div>
+        <div class="tut-desc">Tips for capturing stunning aerial wedding shots safely and legally in Malaysia.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">94 EZY <span class="red">RENT</span></div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="index.html#booking">Booking</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 94 EZY RENT · Professional Camera &amp; Drone Rentals · Malaysia</div>
+</footer>
+</body>
+</html>

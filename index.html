@@ -131,6 +131,62 @@ h1.hero-title {
   letter-spacing: -0.01em; line-height: 1; margin-bottom: 3rem;
 }
 
+.lead {
+  font-size: 0.92rem;
+  color: #888;
+  line-height: 1.7;
+  max-width: 720px;
+  margin-top: -2rem;
+  margin-bottom: 2.2rem;
+}
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: #1E1E1E;
+  border: 1px solid #1E1E1E;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.value-card {
+  background: var(--gray);
+  padding: 1.2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.value-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.value-desc {
+  font-size: 0.84rem;
+  color: #888;
+  line-height: 1.65;
+}
+.area-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1.2rem;
+}
+.area-pill {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid #2E2E2E;
+  border-radius: 999px;
+  color: #aaa;
+  background: #0D0D0D;
+}
+
 /* ─── CATALOGUE ─── */
 .cat-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2.5rem; }
 .cat-filter {
@@ -178,6 +234,9 @@ h1.hero-title {
   font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border-radius: 2px;
   transition: all 0.15s;
+  text-decoration: none;
+  display: block;
+  text-align: center;
 }
 .prod-enquire:hover { background: var(--red); color: var(--white); }
 
@@ -485,16 +544,16 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#" onclick="showMain(); return false;">
+  <a class="nav-logo" href="index.html">
     <span class="logo-94ezy">94 EZY </span><span class="logo-rent">RENT</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#catalogue" onclick="showMain()">Equipment</a></li>
-    <li><a href="#achievements" onclick="showMain()">Featured</a></li>
-    <li><a href="#reviews" onclick="showMain()">Reviews</a></li>
-    <li><a href="#contact" onclick="showMain()">Contact</a></li>
-    <li><a href="#" onclick="showTutorials(); return false;">Tutorials</a></li>
-    <li><a href="#booking" class="nav-cta" onclick="showMain()">Rent Now</a></li>
+    <li><a href="catalogue.html">Equipment</a></li>
+    <li><a href="#achievements">Featured</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tutorials.html">Tutorials</a></li>
+    <li><a href="#booking" class="nav-cta">Rent Now</a></li>
   </ul>
 </nav>
 
@@ -514,7 +573,7 @@ footer {
   <p class="hero-sub">DJI Drones · Action Cameras · Insta360 · Digital Cameras</p>
   <div class="hero-ctas">
     <a href="#booking" class="btn-primary">Rent Now — Book Your Gear</a>
-    <a href="#" class="btn-outline" onclick="showTutorials(); return false;">Watch Tutorials</a>
+    <a href="tutorials.html" class="btn-outline">Watch Tutorials</a>
   </div>
   <div class="hero-brands">
     <span class="brands-label">Brands We Carry</span>
@@ -529,28 +588,59 @@ footer {
 
 <div class="divider"></div>
 
-<!-- CATALOGUE -->
-<section class="page-section" id="catalogue">
-  <div class="sec-label">Full Equipment Catalogue</div>
-  <h2 class="sec-title">Our Gear</h2>
-
-  <div class="cat-filters">
-    <button class="cat-filter active" onclick="filterCat('all', this)">All Equipment</button>
-    <button class="cat-filter" onclick="filterCat('drone', this)">Drones</button>
-    <button class="cat-filter" onclick="filterCat('action', this)">Action Cameras</button>
-    <button class="cat-filter" onclick="filterCat('360', this)">Insta360</button>
-    <button class="cat-filter" onclick="filterCat('digital', this)">Digital Cameras</button>
-    <button class="cat-filter" onclick="filterCat('acc', this)">Accessories</button>
+<section class="page-section" id="about">
+  <div class="sec-label">Why 94 EZY RENT</div>
+  <h2 class="sec-title">How Good We Are</h2>
+  <p class="lead">Professional camera &amp; drone rentals with fast response, clean gear, and real support — so you can focus on creating.</p>
+  <div class="value-grid">
+    <div class="value-card">
+      <div class="value-title">Fast WhatsApp Response</div>
+      <div class="value-desc">Booking enquiry to confirmation quickly, with clear pricing and availability checks.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-title">Well-Maintained Gear</div>
+      <div class="value-desc">Clean, tested equipment with the essentials you need to shoot confidently.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-title">Beginner Friendly</div>
+      <div class="value-desc">Not sure what to rent? Choose “recommendation” and we’ll guide you based on your shoot.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-title">Flexible For Projects</div>
+      <div class="value-desc">From travel vlogs to events and commercial shoots — pick the right gear for the job.</div>
+    </div>
   </div>
 
-  <div class="cat-grid" id="cat-grid">
-    <!-- Products injected by JS -->
+  <div style="margin-top:2.6rem;">
+    <div class="sec-label">Service Areas</div>
+    <h2 class="sec-title" style="margin-bottom:1.6rem;">Where We Provide Service</h2>
+    <div class="area-pills">
+      <span class="area-pill">Penang</span>
+      <span class="area-pill">Kuala Lumpur</span>
+      <span class="area-pill">Melaka</span>
+      <span class="area-pill">Johor Bahru</span>
+      <span class="area-pill">Singapore</span>
+      <span class="area-pill">Taiwan</span>
+      <span class="area-pill">Kota Kinabalu</span>
+    </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
- <div class="reel-grid">
+<section class="page-section" id="catalogue-preview">
+  <div class="sec-label">Equipment</div>
+  <h2 class="sec-title">Explore Our Gear</h2>
+  <p class="lead">Browse all drones, action cameras, Insta360, digital cameras and accessories in our full catalogue.</p>
+  <a class="btn-primary" href="catalogue.html">View Full Catalogue →</a>
+</section>
+
+<div class="divider"></div>
+
+<section class="page-section" id="achievements">
+  <div class="sec-label">Featured</div>
+  <h2 class="sec-title">Influencer &amp; Media</h2>
+  <div class="reel-grid">
 
     <!-- ═══ VIDEO CARD 1 — INFLUENCER FEATURE ═══════════════════════
          HOW TO ADD YOUR VIDEO:
@@ -615,7 +705,6 @@ footer {
          ══════════════════════════════════════════════════════════════ -->
 
   </div>
-  
 </section>
 
 <div class="divider"></div>
@@ -664,6 +753,8 @@ footer {
       View Google Reviews
     </a>
   </div>
+
+  <div class="reviews-grid" id="reviews-grid"></div>
 
 <div class="divider"></div>
 
@@ -810,123 +901,16 @@ footer {
 <footer>
   <div class="footer-logo">94 EZY <span class="red">RENT</span></div>
   <div class="footer-links">
-    <a href="#catalogue">Equipment</a>
+    <a href="catalogue.html">Equipment</a>
     <a href="#achievements">Featured</a>
     <a href="#reviews">Reviews</a>
-    <a href="#" onclick="showTutorials(); return false;">Tutorials</a>
+    <a href="tutorials.html">Tutorials</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="footer-copy">© 2025 94 EZY RENT · Professional Camera &amp; Drone Rentals · Malaysia</div>
 </footer>
 
 </div><!-- end #main-content -->
-
-<!-- ═══════════════════════ TUTORIAL PAGE ═══════════════════════ -->
-<div id="tutorials">
-
-<div class="tutorial-hero">
-  <div style="max-width:1120px;margin:0 auto;">
-    <button class="back-btn" onclick="showMain()">Back to Main Page</button>
-    <div class="sec-label">Learn & Master</div>
-    <h2 class="sec-title">Tutorial Videos</h2>
-    <p style="color:#777;font-size:0.9rem;max-width:550px;line-height:1.7;">
-      Learn how to get the most out of your rental gear. From beginner setup guides to pro filming techniques — all in one place.
-    </p>
-  </div>
-</div>
-
-<div style="max-width:1120px;margin:0 auto;padding:3rem 2.5rem;">
-  <div class="sec-label" style="margin-bottom:2rem;">Equipment Guides</div>
-  <div class="tut-grid">
-    <div class="tut-card">
-      <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_1" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="tut-body">
-        <div class="tut-tag">Drone · DJI</div>
-        <div class="tut-name">DJI Mini 4 Pro – Beginner Setup Guide</div>
-        <div class="tut-desc">Unboxing, pre-flight checklist, and your first flight with our most popular drone.</div>
-      </div>
-    </div>
-    <div class="tut-card">
-      <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_2" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="tut-body">
-        <div class="tut-tag">Action Cam · DJI</div>
-        <div class="tut-name">DJI Osmo Action 5 – Best Settings</div>
-        <div class="tut-desc">Resolution, frame rate and colour profile tips for cinematic footage straight out of camera.</div>
-      </div>
-    </div>
-    <div class="tut-card">
-      <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_3" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="tut-body">
-        <div class="tut-tag">360° · Insta360</div>
-        <div class="tut-name">Insta360 X4 – Full Tutorial</div>
-        <div class="tut-desc">How to shoot, reframe, and export stunning 360° content using our Insta360 rentals.</div>
-      </div>
-    </div>
-    <div class="tut-card">
-      <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_4" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="tut-body">
-        <div class="tut-tag">Digital Camera · Fujifilm</div>
-        <div class="tut-name">Fujifilm X-T5 – Film Simulation Tips</div>
-        <div class="tut-desc">Master Fujifilm's iconic film simulations for that cinematic look on your rental X-T5.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider" style="margin:3rem 0;"></div>
-  <div class="sec-label" style="margin-bottom:2rem;">General Tips & Techniques</div>
-  <div class="tut-grid">
-    <div class="tut-card">
-      <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_5" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="tut-body">
-        <div class="tut-tag">Technique · General</div>
-        <div class="tut-name">Cinematic Drone Shots for Beginners</div>
-        <div class="tut-desc">5 essential drone movements that make your footage look instantly more professional.</div>
-      </div>
-    </div>
-    <div class="tut-card">
-      <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_6" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="tut-body">
-        <div class="tut-tag">Technique · Vlog</div>
-        <div class="tut-name">Travel Vlog Setup on a Budget</div>
-        <div class="tut-desc">How to plan, shoot, and edit a compelling travel vlog using rented action cameras.</div>
-      </div>
-    </div>
-    <div class="tut-card">
-      <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_7" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="tut-body">
-        <div class="tut-tag">Technique · Wedding</div>
-        <div class="tut-name">Aerial Wedding Videography Guide</div>
-        <div class="tut-desc">Tips for capturing stunning aerial wedding shots safely and legally in Malaysia.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-logo">94 EZY <span class="red">RENT</span></div>
-  <div class="footer-links">
-    <a href="#" onclick="showMain(); return false;">Home</a>
-    <a href="#" onclick="showMain(); setTimeout(()=>document.getElementById('catalogue').scrollIntoView(),100); return false;">Equipment</a>
-    <a href="#contact" onclick="showMain()">Contact</a>
-  </div>
-  <div class="footer-copy">© 2025 94 EZY RENT · Professional Camera &amp; Drone Rentals · Malaysia</div>
-</footer>
-
-</div><!-- end #tutorials -->
 
 <!-- ENQUIRY MODAL -->
 <div class="modal-overlay" id="modal">
@@ -1078,6 +1062,7 @@ const products = [
 
 function renderProducts(filter) {
   const grid = document.getElementById('cat-grid');
+  if (!grid) return;
   const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
   grid.innerHTML = filtered.map(p => `
     <div class="prod-card" data-cat="${p.cat}">
@@ -1101,12 +1086,15 @@ function catLabel(c) {
 }
 
 function filterCat(cat, btn) {
+  if (!document.getElementById('cat-grid')) return;
   document.querySelectorAll('.cat-filter').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderProducts(cat);
 }
 
-renderProducts('all');
+if (document.getElementById('cat-grid')) {
+  renderProducts('all');
+}
 
 // ── REVIEWS DATA ──
 const reviews = [
@@ -1358,17 +1346,30 @@ window.addEventListener('DOMContentLoaded', () => {
   const be = document.getElementById('b-end');
   if (bs) { bs.min = today; bs.value = today; }
   if (be) { be.min = today; }
+
+  const equipSel = document.getElementById('b-equip');
+  const device = new URLSearchParams(window.location.search).get('device');
+  if (equipSel && device) {
+    let decoded = device;
+    try { decoded = decodeURIComponent(device); } catch (e) {}
+    decoded = decoded.trim();
+    const options = Array.from(equipSel.options || []);
+    const exists = options.some(o => (o.value || '').trim() === decoded || (o.textContent || '').trim() === decoded);
+    if (!exists) {
+      const opt = document.createElement('option');
+      opt.textContent = decoded;
+      opt.value = decoded;
+      const insertAfter = equipSel.querySelector('option[value=""]');
+      if (insertAfter && insertAfter.parentNode) {
+        insertAfter.parentNode.insertBefore(opt, insertAfter.nextSibling);
+      } else {
+        equipSel.appendChild(opt);
+      }
+    }
+    equipSel.value = decoded;
+    if (typeof handleBEquipChange === 'function') handleBEquipChange(equipSel);
+  }
 });
-function showMain() {
-  document.getElementById('main-content').style.display = '';
-  document.getElementById('tutorials').style.display = 'none';
-  window.scrollTo(0, 0);
-}
-function showTutorials() {
-  document.getElementById('main-content').style.display = 'none';
-  document.getElementById('tutorials').style.display = 'block';
-  window.scrollTo(0, 0);
-}
 </script>
 </body>
 </html>

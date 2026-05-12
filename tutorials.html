@@ -77,11 +77,33 @@ nav {
 }
 .tut-card:hover { border-color: #444; transform: translateY(-2px); }
 .tut-thumb { position: relative; padding-top: 56.25%; background: #111; }
-.tut-thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+.tut-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.6rem; text-align: center; padding: 1.25rem;
+  background:
+    radial-gradient(circle at top, rgba(208,29,29,0.18), transparent 55%),
+    linear-gradient(135deg, #101010 0%, #181818 100%);
+}
+.tut-placeholder-icon {
+  width: 58px; height: 58px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--red); color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 800;
+}
+.tut-placeholder-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #bbb;
+}
 .tut-body { padding: 1.1rem 1.25rem; }
 .tut-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 0.3rem; }
 .tut-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: var(--white); }
 .tut-desc { font-size: 0.78rem; color: #777; margin-top: 0.25rem; line-height: 1.5; }
+.tut-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 0.9rem; text-decoration: none;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white);
+}
+.tut-cta::after { content: '→'; color: var(--red); }
 
 footer {
   border-top: 1px solid #161616; padding: 2.5rem 2.5rem;
@@ -114,7 +136,7 @@ footer {
     <div class="sec-label">Learn & Master</div>
     <h2 class="sec-title">Tutorial Videos</h2>
     <p style="color:#777;font-size:0.9rem;max-width:620px;line-height:1.7;">
-      Learn how to get the most out of your rental gear. Replace the video IDs with your own tutorial videos.
+      Learn the basics before pickup. Full walkthrough videos are being organized, and you can message us directly for the fastest setup help.
     </p>
   </div>
 </div>
@@ -124,42 +146,58 @@ footer {
   <div class="tut-grid">
     <div class="tut-card">
       <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_1" allowfullscreen loading="lazy"></iframe>
+        <div class="tut-placeholder">
+          <div class="tut-placeholder-icon">DJI</div>
+          <div class="tut-placeholder-label">Step-by-step guide coming soon</div>
+        </div>
       </div>
       <div class="tut-body">
         <div class="tut-tag">Drone · DJI</div>
         <div class="tut-name">DJI Mini 4 Pro – Beginner Setup Guide</div>
         <div class="tut-desc">Unboxing, pre-flight checklist, and your first flight with our most popular drone.</div>
+        <a class="tut-cta" href="https://wa.me/60174753794" target="_blank">Ask for setup help on WhatsApp</a>
       </div>
     </div>
     <div class="tut-card">
       <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_2" allowfullscreen loading="lazy"></iframe>
+        <div class="tut-placeholder">
+          <div class="tut-placeholder-icon">4K</div>
+          <div class="tut-placeholder-label">Settings walkthrough coming soon</div>
+        </div>
       </div>
       <div class="tut-body">
         <div class="tut-tag">Action Cam · DJI</div>
         <div class="tut-name">DJI Osmo Action 5 – Best Settings</div>
         <div class="tut-desc">Resolution, frame rate and colour profile tips for cinematic footage straight out of camera.</div>
+        <a class="tut-cta" href="https://wa.me/60174753794" target="_blank">Request the quick-start guide</a>
       </div>
     </div>
     <div class="tut-card">
       <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_3" allowfullscreen loading="lazy"></iframe>
+        <div class="tut-placeholder">
+          <div class="tut-placeholder-icon">360</div>
+          <div class="tut-placeholder-label">Workflow guide coming soon</div>
+        </div>
       </div>
       <div class="tut-body">
         <div class="tut-tag">360° · Insta360</div>
         <div class="tut-name">Insta360 X4 – Full Tutorial</div>
         <div class="tut-desc">How to shoot, reframe, and export stunning 360° content using our Insta360 rentals.</div>
+        <a class="tut-cta" href="https://wa.me/60174753794" target="_blank">Ask for the Insta360 guide</a>
       </div>
     </div>
     <div class="tut-card">
       <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_4" allowfullscreen loading="lazy"></iframe>
+        <div class="tut-placeholder">
+          <div class="tut-placeholder-icon">XT</div>
+          <div class="tut-placeholder-label">Camera tips coming soon</div>
+        </div>
       </div>
       <div class="tut-body">
         <div class="tut-tag">Digital Camera · Fujifilm</div>
         <div class="tut-name">Fujifilm X-T5 – Film Simulation Tips</div>
         <div class="tut-desc">Master Fujifilm's iconic film simulations for that cinematic look on your rental X-T5.</div>
+        <a class="tut-cta" href="https://wa.me/60174753794" target="_blank">Request Fujifilm setup tips</a>
       </div>
     </div>
   </div>
@@ -170,32 +208,44 @@ footer {
   <div class="tut-grid">
     <div class="tut-card">
       <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_5" allowfullscreen loading="lazy"></iframe>
+        <div class="tut-placeholder">
+          <div class="tut-placeholder-icon">PRO</div>
+          <div class="tut-placeholder-label">Technique guide coming soon</div>
+        </div>
       </div>
       <div class="tut-body">
         <div class="tut-tag">Technique · General</div>
         <div class="tut-name">Cinematic Drone Shots for Beginners</div>
         <div class="tut-desc">5 essential drone movements that make your footage look instantly more professional.</div>
+        <a class="tut-cta" href="https://wa.me/60174753794" target="_blank">Ask for beginner shooting tips</a>
       </div>
     </div>
     <div class="tut-card">
       <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_6" allowfullscreen loading="lazy"></iframe>
+        <div class="tut-placeholder">
+          <div class="tut-placeholder-icon">VLOG</div>
+          <div class="tut-placeholder-label">Travel setup guide coming soon</div>
+        </div>
       </div>
       <div class="tut-body">
         <div class="tut-tag">Technique · Vlog</div>
         <div class="tut-name">Travel Vlog Setup on a Budget</div>
         <div class="tut-desc">How to plan, shoot, and edit a compelling travel vlog using rented action cameras.</div>
+        <a class="tut-cta" href="https://wa.me/60174753794" target="_blank">Request vlogging recommendations</a>
       </div>
     </div>
     <div class="tut-card">
       <div class="tut-thumb">
-        <iframe src="https://www.youtube.com/embed/YOUR_TUT_ID_7" allowfullscreen loading="lazy"></iframe>
+        <div class="tut-placeholder">
+          <div class="tut-placeholder-icon">WED</div>
+          <div class="tut-placeholder-label">Aerial wedding guide coming soon</div>
+        </div>
       </div>
       <div class="tut-body">
         <div class="tut-tag">Technique · Wedding</div>
         <div class="tut-name">Aerial Wedding Videography Guide</div>
         <div class="tut-desc">Tips for capturing stunning aerial wedding shots safely and legally in Malaysia.</div>
+        <a class="tut-cta" href="https://wa.me/60174753794" target="_blank">Ask for wedding shoot advice</a>
       </div>
     </div>
   </div>

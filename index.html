@@ -318,6 +318,14 @@ h1.hero-title {
   align-items: center; justify-content: center; gap: 0.5rem;
   background: #0D0D0D; cursor: pointer;
 }
+.reel-thumb-placeholder.static {
+  cursor: default;
+  background:
+    radial-gradient(circle at top, rgba(208,29,29,0.18), transparent 55%),
+    linear-gradient(135deg, #101010 0%, #171717 100%);
+  padding: 1.2rem;
+  text-align: center;
+}
 .play-btn {
   width: 56px; height: 56px; border-radius: 50%;
   background: var(--red); display: flex; align-items: center; justify-content: center;
@@ -480,11 +488,20 @@ h1.hero-title {
   display: flex; flex-direction: column; gap: 0.5rem;
 }
 .contact-card:hover { border-color: var(--red); transform: translateY(-2px); }
+.contact-card.is-disabled {
+  cursor: default;
+  border-color: #2A2A2A;
+}
+.contact-card.is-disabled:hover {
+  border-color: #2A2A2A;
+  transform: none;
+}
 .contact-platform { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); }
 .contact-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--white); }
 .contact-handle { font-size: 0.82rem; color: #555; }
 .contact-action { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #444; margin-top: auto; display: flex; align-items: center; gap: 6px; }
 .contact-action::after { content: '→'; }
+.contact-card.is-disabled .contact-action::after { content: ''; }
 
 /* ─── TUTORIAL PAGE ─── */
 #tutorials { display: none; }
@@ -642,67 +659,47 @@ footer {
   <h2 class="sec-title">Influencer &amp; Media</h2>
   <div class="reel-grid">
 
-    <!-- ═══ VIDEO CARD 1 — INFLUENCER FEATURE ═══════════════════════
-         HOW TO ADD YOUR VIDEO:
-         1. Go to your YouTube video → click Share → Copy Link
-         2. The video ID is the part after "watch?v=" e.g. https://youtu.be/dQw4w9WgXcQ → ID is dQw4w9WgXcQ
-         3. Replace YOUR_VIDEO_ID_1 below with your actual ID
-         ══════════════════════════════════════════════════════════════ -->
     <div class="reel-card">
       <div class="reel-thumb">
-        <div class="reel-thumb-placeholder" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/YOUR_VIDEO_ID_1?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
+        <div class="reel-thumb-placeholder static">
           <div class="play-btn"></div>
-          <span style="font-size:0.7rem;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Click to Play</span>
+          <span style="font-size:0.7rem;color:#aaa;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Featured clip coming soon</span>
         </div>
       </div>
       <div class="reel-caption">
         <div class="reel-type">Influencer Feature</div>
-        <!-- CHANGE THE TITLE AND DESCRIPTION BELOW TO MATCH YOUR VIDEO -->
         <div class="reel-title">Mega Influencer Collaboration</div>
-        <div class="reel-desc">Top Malaysian content creator featuring our DJI drone rental for their travel series — 2M+ views.</div>
+        <div class="reel-desc">Campaign highlights and creator case studies are being prepared for upload. Ask us on WhatsApp if you want recent examples.</div>
       </div>
     </div>
 
-    <!-- ═══ VIDEO CARD 2 — FM INTERVIEW ═══════════════════════════════
-         Replace YOUR_VIDEO_ID_2 with your actual YouTube video ID
-         ══════════════════════════════════════════════════════════════ -->
     <div class="reel-card">
       <div class="reel-thumb">
-        <div class="reel-thumb-placeholder" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/YOUR_VIDEO_ID_2?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
+        <div class="reel-thumb-placeholder static">
           <div class="play-btn"></div>
-          <span style="font-size:0.7rem;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Click to Play</span>
+          <span style="font-size:0.7rem;color:#aaa;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Interview clip coming soon</span>
         </div>
       </div>
       <div class="reel-caption">
         <div class="reel-type">Radio / FM Interview</div>
-        <!-- CHANGE THE TITLE AND DESCRIPTION BELOW TO MATCH YOUR VIDEO -->
         <div class="reel-title">94 EZY RENT on Air</div>
-        <div class="reel-desc">Our founder interviewed on national FM radio — sharing the story behind Malaysia's easiest camera rental.</div>
+        <div class="reel-desc">Behind-the-scenes interview coverage is being organized. Contact us directly if you want our latest media kit or feature highlights.</div>
       </div>
     </div>
 
-    <!-- ═══ VIDEO CARD 3 — INSTAGRAM / ACHIEVEMENT ════════════════════
-         Replace YOUR_VIDEO_ID_3 with your actual YouTube video ID
-         (To use an Instagram Reel, upload it to YouTube first, then paste the ID)
-         ══════════════════════════════════════════════════════════════ -->
     <div class="reel-card">
       <div class="reel-thumb">
-        <div class="reel-thumb-placeholder" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/YOUR_VIDEO_ID_3?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
+        <div class="reel-thumb-placeholder static">
           <div class="play-btn"></div>
-          <span style="font-size:0.7rem;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Click to Play</span>
+          <span style="font-size:0.7rem;color:#aaa;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Reel showcase coming soon</span>
         </div>
       </div>
       <div class="reel-caption">
         <div class="reel-type">Instagram Reel</div>
-        <!-- CHANGE THE TITLE AND DESCRIPTION BELOW TO MATCH YOUR VIDEO -->
         <div class="reel-title">Viral Reel Highlight</div>
-        <div class="reel-desc">Our Instagram reel showcasing client work shot with 94 EZY RENT gear — hundreds of shares.</div>
+        <div class="reel-desc">Recent social highlights are being updated. Follow our Instagram for the latest rental shoots and gear demos.</div>
       </div>
     </div>
-
-    <!-- ═══ ADD MORE VIDEO CARDS HERE ════════════════════════════════
-         Copy one of the blocks above, paste it here, and change the video ID + title + description
-         ══════════════════════════════════════════════════════════════ -->
 
   </div>
 </section>
@@ -741,13 +738,10 @@ footer {
 
   <!-- PLATFORM LINKS — UPDATE HREF WITH YOUR REAL PAGE URLS -->
   <div class="review-platforms">
-    <!-- ↓ CHANGE href TO YOUR REAL FACEBOOK PAGE URL ↓ -->
     <a class="review-plat-btn fb" href="https://www.facebook.com/share/1Cr326tD3X/?mibextid=wwXIfr" target="_blank">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
       View Facebook Reviews
     </a>
-    <!-- ↓ CHANGE href TO YOUR REAL GOOGLE MAPS / REVIEW LINK ↓ 
-         To get your link: Search your business on Google Maps → click Share → Copy link -->
     <a class="review-plat-btn google" href="https://maps.app.goo.gl/99dgw1LYfWkcUyrc7?g_st=iwb" target="_blank">
       <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3A11.945 11.945 0 0 0 12 0C7.27 0 3.198 2.698 1.24 6.65l4.026 3.115z"/><path fill="#34A853" d="M16.04 18.013c-1.09.703-2.474 1.078-4.04 1.078a7.077 7.077 0 0 1-6.723-4.823l-4.04 3.067A11.965 11.965 0 0 0 12 24c2.933 0 5.735-1.043 7.834-3l-3.793-2.987z"/><path fill="#4A90E2" d="M19.834 21c2.195-2.048 3.62-5.096 3.62-9 0-.71-.109-1.473-.272-2.182H12v4.637h6.436c-.317 1.559-1.17 2.766-2.395 3.558L19.834 21z"/><path fill="#FBBC05" d="M5.277 14.268A7.12 7.12 0 0 1 4.909 12c0-.782.125-1.533.357-2.235L1.24 6.65A11.934 11.934 0 0 0 0 12c0 1.92.445 3.73 1.237 5.335l4.04-3.067z"/></svg>
       View Google Reviews
@@ -883,12 +877,12 @@ footer {
       <div class="contact-handle">@94ezyrent</div>
       <div class="contact-action">See our work</div>
     </a>
-    <a class="contact-card" href="https://www.xiaohongshu.com/user/profile/YOUR_ID" target="_blank">
+    <div class="contact-card is-disabled" aria-disabled="true">
       <span class="contact-platform">小红书 · RedNote</span>
       <div class="contact-name">RedNote</div>
-      <div class="contact-handle">Follow us on 小红书</div>
-      <div class="contact-action">View our content</div>
-    </a>
+      <div class="contact-handle">Official profile link coming soon</div>
+      <div class="contact-action">Available soon</div>
+    </div>
     <a class="contact-card" href="https://facebook.com/94ezyrent" target="_blank">
       <span class="contact-platform">Facebook</span>
       <div class="contact-name">Facebook</div>

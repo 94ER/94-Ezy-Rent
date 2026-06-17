@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>94 EZY RENT – Equipment Catalogue</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #D01D1D;
+  --red-dark: #A31515;
+  --black: #0D0D0D;
+  --white: #FFFFFF;
+  --gray: #181818;
+  --gray-mid: #242424;
+  --gray-border: #2A2A2A;
+  --text-muted: #777;
+  --text-dim: #444;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 62px;
+  background: rgba(8,8,8,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.6rem; font-weight: 900; letter-spacing: -0.01em;
+  color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 0;
+}
+.logo-94ezy { color: var(--white); }
+.logo-rent {
+  color: var(--red);
+  -webkit-text-stroke: 1.5px var(--white);
+  text-shadow: none;
+}
+.nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #888; text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--red) !important; color: var(--white) !important;
+  padding: 0.4rem 1.1rem; border-radius: 3px; font-weight: 700 !important;
+}
+.nav-cta:hover { background: var(--red-dark) !important; }
+
+#hero {
+  min-height: 55vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 2.5rem 70px; position: relative; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.035;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 79px, #fff 80px),
+    repeating-linear-gradient(90deg, transparent, transparent 79px, #fff 80px);
+}
+.hero-glow {
+  position: absolute; top: 5%; right: -15%; width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(208,29,29,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1.2rem;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--red); }
+h1.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-weight: 900; line-height: 0.92; letter-spacing: -0.02em; text-transform: uppercase;
+  max-width: 960px;
+}
+.hero-title .outline { -webkit-text-stroke: 2px var(--white); color: transparent; }
+.hero-sub { margin-top: 1.4rem; font-size: 0.95rem; color: #888; line-height: 1.7; max-width: 720px; }
+.hero-ctas { display: flex; gap: 1rem; margin-top: 2.2rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--red); color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 2.2rem; border: none; cursor: pointer; border-radius: 3px;
+  text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block;
+}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent; color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 2.2rem; border: 1.5px solid rgba(255,255,255,0.2); cursor: pointer;
+  border-radius: 3px; text-decoration: none; transition: border-color 0.2s, transform 0.15s; display: inline-block;
+}
+.btn-outline:hover { border-color: var(--white); transform: translateY(-1px); }
+
+.page-section { padding: 90px 2.5rem; max-width: 1120px; margin: 0 auto; }
+.divider { height: 1px; background: #1A1A1A; }
+.sec-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;
+}
+.sec-label::after { content: ''; flex: 0 0 28px; height: 1.5px; background: var(--red); }
+.sec-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 900; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 1; margin-bottom: 2.2rem;
+}
+
+.cat-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.cat-filter {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.4rem 1rem; border: 1px solid #2E2E2E; border-radius: 2px; cursor: pointer;
+  background: transparent; color: #666; transition: all 0.15s;
+}
+.cat-filter:hover, .cat-filter.active { border-color: var(--red); color: var(--white); background: rgba(208,29,29,0.1); }
+.cat-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px;
+  background: #1E1E1E; border: 1px solid #1E1E1E; border-radius: 6px; overflow: hidden;
+}
+.prod-card {
+  background: var(--gray); padding: 0; transition: background 0.2s;
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+.prod-card:hover { background: #1E1E1E; }
+.prod-img-area {
+  height: 160px; background: #111; display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; border-bottom: 1px solid #1E1E1E; position: relative; overflow: hidden;
+}
+.prod-badge {
+  position: absolute; top: 10px; left: 10px;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.2rem 0.5rem; border-radius: 2px; background: var(--red); color: var(--white);
+}
+.prod-badge.new { background: #1A6B3A; }
+.prod-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+.prod-category {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red);
+}
+.prod-name {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 800;
+  color: var(--white); line-height: 1.2;
+}
+.prod-desc { font-size: 0.8rem; color: #888; line-height: 1.5; margin-top: 2px; }
+.prod-price {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white);
+  margin-top: auto; padding-top: 0.8rem;
+}
+.prod-price span { color: var(--red); font-size: 1.3rem; }
+.prod-enquire {
+  width: 100%; margin-top: 0.75rem; padding: 0.65rem;
+  background: transparent; border: 1px solid var(--red); color: var(--red);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border-radius: 2px;
+  transition: all 0.15s;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+.prod-enquire:hover { background: var(--red); color: var(--white); }
+
+footer {
+  border-top: 1px solid #161616; padding: 2.5rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--white); }
+.footer-logo .red { color: var(--red); -webkit-text-stroke: 0.8px var(--white); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #444; text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: #aaa; }
+.footer-copy { font-size: 0.72rem; color: #333; }
+</style>
+<link rel="stylesheet" href="assets/site.css" />
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner container">
+    <a class="nav-logo" href="index.html">
+      <span class="cn">94好租</span>
+      <span class="sep">|</span>
+      <span>94Ezy</span>
+      <span class="rent">Rent</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="catalogue.html">Gear Collection</a></li>
+      <li><a href="tutorials.html">Tutorials</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#booking" class="nav-cta">Rent Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <p class="hero-eyebrow">Gear Collection</p>
+    <h1 class="hero-title">
+      Our <span class="outline">Gear</span>
+    </h1>
+    <p class="hero-sub">Tap “More Enquiry” to jump to the booking form with the gear pre-selected.</p>
+    <div class="hero-ctas">
+      <a href="index.html#booking" class="btn-primary">Booking Enquiry</a>
+      <a href="tutorials.html" class="btn-outline">Watch Tutorials</a>
+    </div>
+    <div class="chip-row">
+      <span class="chip"><strong>Fast</strong> confirmation</span>
+      <span class="chip"><strong>Clean</strong> gear</span>
+      <span class="chip"><strong>Creator</strong> friendly</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="page-section" id="catalogue">
+  <div class="container">
+    <div class="sec-label">Catalogue</div>
+    <h2 class="sec-title">All Equipment</h2>
+    <div class="cat-filters reveal">
+      <button class="cat-filter active" onclick="filterCat('all', this)">All</button>
+      <button class="cat-filter" onclick="filterCat('drone', this)">Drones</button>
+      <button class="cat-filter" onclick="filterCat('action', this)">Action Cameras</button>
+      <button class="cat-filter" onclick="filterCat('360', this)">Insta360</button>
+      <button class="cat-filter" onclick="filterCat('digital', this)">Digital Cameras</button>
+      <button class="cat-filter" onclick="filterCat('acc', this)">Accessories</button>
+    </div>
+    <div class="cat-grid reveal" id="cat-grid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">94好租 <span style="opacity:0.35;">|</span> 94Ezy <span class="red">Rent</span></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="catalogue.html">Gear Collection</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="index.html#booking">Booking</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 94好租 | 94Ezy Rent · Camera &amp; Photography Equipment Rental</div>
+  </div>
+</footer>
+
+<script>
+const products = [
+  { id:1,  cat:'drone',  icon:'🚁', badge:'Popular', name:'DJI Mini 4 Pro',       desc:'Lightweight 4K/60fps drone with obstacle avoidance. Perfect for travel and events.',          price:'from RM150/day' },
+  { id:2,  cat:'drone',  icon:'🚁', badge:'',        name:'DJI Air 3',             desc:'Dual-camera system with 4K/60fps and 10km transmission range for pro results.',              price:'from RM200/day' },
+  { id:3,  cat:'drone',  icon:'🚁', badge:'',        name:'DJI Mavic 3 Classic',   desc:'Hasselblad sensor, 5.1K video. The filmmaker\'s choice for cinematic aerials.',             price:'from RM250/day' },
+  { id:4,  cat:'drone',  icon:'🚁', badge:'FPV',     name:'DJI Avata 2',           desc:'Immersive FPV drone for fast, cinematic shots and creative perspectives.',                   price:'from RM180/day' },
+  { id:5,  cat:'action', icon:'🎬', badge:'New',     name:'DJI Osmo Action 5 Pro', desc:'4K/120fps, 10-bit D-Log M, RockSteady stabilization. Best action cam we stock.',           price:'from RM80/day'  },
+  { id:6,  cat:'action', icon:'🎥', badge:'',        name:'DJI Pocket 3',          desc:'3-axis gimbal camera with 1\" CMOS sensor. Vlog-ready out of the box.',                      price:'from RM90/day'  },
+  { id:7,  cat:'360',    icon:'🔵', badge:'Popular', name:'Insta360 X4',           desc:'8K 360° video, invisible selfie stick compatible. For truly unique content.',                price:'from RM100/day' },
+  { id:8,  cat:'360',    icon:'🔵', badge:'',        name:'Insta360 ONE RS 1-Inch',desc:'360° and wide-angle modes. Leica lens. Beautiful stills and video.',                        price:'from RM90/day'  },
+  { id:9,  cat:'digital',icon:'📷', badge:'',        name:'Fujifilm X-T5',         desc:'40MP APS-C sensor with iconic film simulations. For photographers who love the look.',      price:'from RM120/day' },
+  { id:10, cat:'digital',icon:'📷', badge:'',        name:'Canon EOS R6 Mark II',  desc:'Full-frame mirrorless, 40fps burst, dual-pixel AF. For stills and video.',                 price:'from RM150/day' },
+  { id:11, cat:'digital',icon:'📷', badge:'',        name:'Olympus OM-D E-M5 III', desc:'Compact weather-sealed mirrorless with 5-axis IBIS. Great for outdoor shoots.',            price:'from RM80/day'  },
+  { id:12, cat:'digital',icon:'📷', badge:'',        name:'RICOH GR IIIx',         desc:'28mm equiv. pocket street camera. Cult favourite for travel and street photography.',      price:'from RM70/day'  },
+  { id:13, cat:'acc',    icon:'🔋', badge:'',        name:'Extra Batteries Pack',  desc:'Spare batteries for DJI drones and cameras. Never miss a shot.',                           price:'from RM20/day'  },
+  { id:14, cat:'acc',    icon:'💾', badge:'',        name:'Memory Card Bundle',    desc:'High-speed SD cards (128GB–256GB). Compatible with all our rental gear.',                  price:'from RM15/day'  },
+  { id:15, cat:'acc',    icon:'🎙️', badge:'',       name:'DJI Mic 2',             desc:'Wireless lavalier mic system. Perfect for interviews and vlogs.',                          price:'from RM50/day'  }
+];
+
+function catLabel(c) {
+  return { drone:'Drone', action:'Action Camera', '360':'Insta360 · 360°', digital:'Digital Camera', acc:'Accessory' }[c] || c;
+}
+
+function bookingHref(name) {
+  return `index.html?device=${encodeURIComponent(name)}#booking`;
+}
+
+function renderProducts(filter) {
+  const grid = document.getElementById('cat-grid');
+  const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
+  grid.innerHTML = filtered.map(p => `
+    <div class="prod-card" data-cat="${p.cat}">
+      <div class="prod-img-area">
+        <span style="font-size:3.5rem">${p.icon}</span>
+        ${p.badge ? `<span class="prod-badge${p.badge==='New'?' new':''}">${p.badge}</span>` : ''}
+      </div>
+      <div class="prod-body">
+        <div class="prod-category">${catLabel(p.cat)}</div>
+        <div class="prod-name">${p.name}</div>
+        <p class="prod-desc">${p.desc}</p>
+        <div class="prod-price"><span>${p.price}</span></div>
+        <a class="prod-enquire" href="${bookingHref(p.name)}">More Enquiry →</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cat-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts(cat);
+}
+
+renderProducts('all');
+</script>
+</body>
+</html>

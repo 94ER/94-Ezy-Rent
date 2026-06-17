@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="800" viewBox="0 0 1600 800" role="img" aria-label="94好租 94 EZY RENT">
+  <defs>
+    <style>
+      .cn-outline { fill: none; stroke: #000000; stroke-width: 26; stroke-linejoin: round; paint-order: stroke fill; }
+      .cn-fill-black { fill: #000000; }
+      .cn-fill-red { fill: #d9001b; }
+      .en-black { fill: none; stroke: #111111; stroke-width: 7; stroke-linejoin: round; paint-order: stroke fill; }
+      .en-red { fill: none; stroke: #c60f24; stroke-width: 7; stroke-linejoin: round; paint-order: stroke fill; }
+    </style>
+  </defs>
+
+  <g font-family="Arial Black, Barlow Condensed, Arial, sans-serif" font-weight="900" text-anchor="middle">
+    <g transform="translate(800 300)">
+      <text class="cn-outline" x="0" y="0" font-size="290" letter-spacing="22">94好租</text>
+      <text class="cn-fill-black" x="-110" y="0" font-size="290" letter-spacing="22">94好</text>
+      <text class="cn-fill-red" x="345" y="0" font-size="290" letter-spacing="22">租</text>
+    </g>
+
+    <g transform="translate(800 560)" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic">
+      <text class="en-black" x="-165" y="0" font-size="165" letter-spacing="5">94 EZY</text>
+      <text class="en-red" x="265" y="0" font-size="165" letter-spacing="5">RENT</text>
+    </g>
+  </g>
+</svg>

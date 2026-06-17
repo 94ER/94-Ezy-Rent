@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>94 EZY RENT – Professional Camera & Drone Rentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #D01D1D;
+  --red-dark: #A31515;
+  --black: #0D0D0D;
+  --white: #FFFFFF;
+  --gray: #181818;
+  --gray-mid: #242424;
+  --gray-border: #2A2A2A;
+  --text-muted: #777;
+  --text-dim: #444;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 62px;
+  background: rgba(8,8,8,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.6rem; font-weight: 900; letter-spacing: -0.01em;
+  color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 0;
+}
+.logo-94ezy { color: var(--white); }
+.logo-rent {
+  color: var(--red);
+  -webkit-text-stroke: 1.5px var(--white);
+  text-shadow: none;
+}
+.nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #888; text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--red) !important; color: var(--white) !important;
+  padding: 0.4rem 1.1rem; border-radius: 3px; font-weight: 700 !important;
+}
+.nav-cta:hover { background: var(--red-dark) !important; }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 2.5rem 80px; position: relative; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.035;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 79px, #fff 80px),
+    repeating-linear-gradient(90deg, transparent, transparent 79px, #fff 80px);
+}
+.hero-glow {
+  position: absolute; top: 5%; right: -15%; width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(208,29,29,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute; bottom: -10%; left: -10%; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(208,29,29,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--red); }
+h1.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(4.5rem, 13vw, 10rem);
+  font-weight: 900; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase;
+  max-width: 960px;
+}
+.hero-title .outline { -webkit-text-stroke: 2px var(--white); color: transparent; }
+.hero-title .red { color: var(--red); }
+.hero-sub {
+  margin-top: 1.6rem; font-size: 0.95rem; color: #888;
+  letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+}
+.hero-ctas { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--red); color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 2.2rem; border: none; cursor: pointer; border-radius: 3px;
+  text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block;
+}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent; color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 2.2rem; border: 1.5px solid rgba(255,255,255,0.2); cursor: pointer;
+  border-radius: 3px; text-decoration: none; transition: border-color 0.2s, transform 0.15s; display: inline-block;
+}
+.btn-outline:hover { border-color: var(--white); transform: translateY(-1px); }
+.hero-brands { display: flex; align-items: center; gap: 1.5rem; margin-top: 4rem; flex-wrap: wrap; }
+.brands-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #444; }
+.brand-pill {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #555; padding: 0.25rem 0.7rem; border: 1px solid #2E2E2E; border-radius: 2px;
+}
+
+/* ─── SECTIONS ─── */
+.page-section { padding: 90px 2.5rem; max-width: 1120px; margin: 0 auto; }
+.full-bleed-section { padding: 90px 2.5rem; }
+.divider { height: 1px; background: #1A1A1A; }
+.sec-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;
+}
+.sec-label::after { content: ''; flex: 0 0 28px; height: 1.5px; background: var(--red); }
+.sec-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 900; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 1; margin-bottom: 3rem;
+}
+
+.lead {
+  font-size: 0.92rem;
+  color: #888;
+  line-height: 1.7;
+  max-width: 720px;
+  margin-top: -2rem;
+  margin-bottom: 2.2rem;
+}
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: #1E1E1E;
+  border: 1px solid #1E1E1E;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.value-card {
+  background: var(--gray);
+  padding: 1.2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.value-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.value-desc {
+  font-size: 0.84rem;
+  color: #888;
+  line-height: 1.65;
+}
+.area-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1.2rem;
+}
+.area-pill {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid #2E2E2E;
+  border-radius: 999px;
+  color: #aaa;
+  background: #0D0D0D;
+}
+
+/* ─── CATALOGUE ─── */
+.cat-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.cat-filter {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.4rem 1rem; border: 1px solid #2E2E2E; border-radius: 2px; cursor: pointer;
+  background: transparent; color: #666; transition: all 0.15s;
+}
+.cat-filter:hover, .cat-filter.active { border-color: var(--red); color: var(--white); background: rgba(208,29,29,0.1); }
+.cat-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px;
+  background: #1E1E1E; border: 1px solid #1E1E1E; border-radius: 6px; overflow: hidden;
+}
+.prod-card {
+  background: var(--gray); padding: 0; transition: background 0.2s;
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+.prod-card:hover { background: #1E1E1E; }
+.prod-img-area {
+  height: 160px; background: #111; display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; border-bottom: 1px solid #1E1E1E; position: relative; overflow: hidden;
+}
+.prod-badge {
+  position: absolute; top: 10px; left: 10px;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.2rem 0.5rem; border-radius: 2px; background: var(--red); color: var(--white);
+}
+.prod-badge.new { background: #1A6B3A; }
+.prod-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+.prod-category {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red);
+}
+.prod-name {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 800;
+  color: var(--white); line-height: 1.2;
+}
+.prod-desc { font-size: 0.8rem; color: #888; line-height: 1.5; margin-top: 2px; }
+.prod-price {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white);
+  margin-top: auto; padding-top: 0.8rem;
+}
+.prod-price span { color: var(--red); font-size: 1.3rem; }
+.prod-enquire {
+  width: 100%; margin-top: 0.75rem; padding: 0.65rem;
+  background: transparent; border: 1px solid var(--red); color: var(--red);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border-radius: 2px;
+  transition: all 0.15s;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+.prod-enquire:hover { background: var(--red); color: var(--white); }
+
+/* ─── ENQUIRY MODAL ─── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 1rem;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: #161616; border: 1px solid #2E2E2E; border-radius: 8px;
+  width: 100%; max-width: 520px; overflow: hidden;
+}
+.modal-head {
+  background: var(--red); padding: 1.2rem 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.modal-head-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.modal-close { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 1.3rem; cursor: pointer; line-height: 1; }
+.modal-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.modal-product-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); border-bottom: 1px solid #2E2E2E; padding-bottom: 0.8rem; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field-grp { display: flex; flex-direction: column; gap: 5px; }
+.field-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #777; }
+.field-inp, .field-sel {
+  background: #0D0D0D; border: 1px solid #2E2E2E; border-radius: 3px;
+  color: var(--white); padding: 0.6rem 0.8rem;
+  font-family: 'Barlow', sans-serif; font-size: 0.88rem;
+  outline: none; width: 100%; appearance: none; transition: border-color 0.2s;
+}
+.field-inp:focus, .field-sel:focus { border-color: var(--red); }
+.field-inp[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.4; }
+.usage-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.usage-chip {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; border: 1px solid #2E2E2E; border-radius: 30px;
+  cursor: pointer; color: #666; background: #0D0D0D; transition: all 0.15s;
+}
+.usage-chip:hover { border-color: #555; color: #aaa; }
+.usage-chip.on { border-color: var(--red); color: var(--red); background: rgba(208,29,29,0.08); }
+.modal-proceed {
+  background: var(--red); color: var(--white); border: none; cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem;
+  border-radius: 3px; transition: background 0.2s; width: 100%;
+}
+.modal-proceed:hover { background: var(--red-dark); }
+.modal-note { font-size: 0.75rem; color: #555; text-align: center; }
+.field-err { font-size: 0.72rem; color: #FF6B6B; margin-top: 4px; min-height: 16px; }
+.field-inp.error, .field-sel.error { border-color: #D01D1D !important; background: rgba(208,29,29,0.05); }
+.field-sel {
+  background: #0D0D0D; border: 1px solid #2E2E2E; border-radius: 3px;
+  color: var(--white); padding: 0.6rem 0.8rem;
+  font-family: 'Barlow', sans-serif; font-size: 0.88rem;
+  outline: none; width: 100%; appearance: none; transition: border-color 0.2s; cursor: pointer;
+}
+.field-sel:focus { border-color: #D01D1D; }
+.field-sel option, .field-sel optgroup { background: #1A1A1A; color: #fff; }
+
+/* ─── ACHIEVEMENTS / VIDEO REEL ─── */
+.reel-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+}
+.reel-card {
+  background: var(--gray); border: 1px solid #222; border-radius: 6px; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.reel-card:hover { border-color: #444; transform: translateY(-2px); }
+.reel-thumb {
+  position: relative; background: #111;
+  padding-top: 56.25%; overflow: hidden;
+}
+.reel-thumb iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+}
+.reel-thumb-placeholder {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0.5rem;
+  background: #0D0D0D; cursor: pointer;
+}
+.play-btn {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--red); display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+.play-btn:hover { transform: scale(1.1); background: var(--red-dark); }
+.play-btn::after { content: ''; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 3px; }
+.reel-caption { padding: 1rem 1.25rem; }
+.reel-type { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 0.3rem; }
+.reel-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--white); }
+.reel-desc { font-size: 0.8rem; color: #777; margin-top: 0.25rem; line-height: 1.5; }
+
+/* ─── REVIEWS ─── */
+#reviews { background: #0A0A0A; }
+.reviews-inner { max-width: 1120px; margin: 0 auto; padding: 90px 2.5rem; }
+.review-platforms { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+.review-plat-btn {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.5rem 1.2rem; border-radius: 3px; cursor: pointer; border: 1px solid #2E2E2E;
+  text-decoration: none; color: #aaa; transition: all 0.2s; background: #161616;
+}
+.review-plat-btn:hover { border-color: #555; color: var(--white); }
+.review-plat-btn.fb:hover { border-color: #1877F2; color: #1877F2; }
+.review-plat-btn.google:hover { border-color: #EA4335; color: #EA4335; }
+.stars { color: #F5A623; font-size: 0.85rem; letter-spacing: 1px; }
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;
+  margin-bottom: 2rem;
+}
+.review-card {
+  background: #161616; border: 1px solid #222; border-radius: 6px; padding: 1.25rem;
+  transition: border-color 0.2s;
+}
+.review-card:hover { border-color: #333; }
+.review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.8rem; }
+.reviewer-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800;
+  flex-shrink: 0;
+}
+.reviewer-info .reviewer-name { font-weight: 600; font-size: 0.9rem; color: var(--white); }
+.reviewer-info .reviewer-meta { font-size: 0.72rem; color: #555; }
+.review-text { font-size: 0.85rem; color: #aaa; line-height: 1.65; }
+.review-platform-tag {
+  margin-top: 0.8rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #444;
+}
+.reviews-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.review-link {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #666; text-decoration: none; display: flex; align-items: center; gap: 6px;
+  transition: color 0.2s;
+}
+.review-link:hover { color: var(--white); }
+.review-link::after { content: '→'; }
+
+/* ─── BOOKING SECTION ─── */
+#booking { background: var(--black); }
+.booking-wrapper {
+  background: var(--gray); border: 1px solid #333;
+  border-radius: 8px; overflow: hidden;
+  max-width: 780px; margin: 0 auto;
+}
+.booking-header {
+  background: var(--red); padding: 1.5rem 2rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.08em; display: flex; align-items: center; gap: 10px;
+}
+.booking-error-banner {
+  display: none;
+  background: rgba(208,29,29,0.12);
+  border: 1px solid rgba(208,29,29,0.5);
+  border-radius: 4px;
+  padding: 0.85rem 1rem;
+  font-size: 0.84rem;
+  color: #FF8080;
+  line-height: 1.7;
+}
+.usage-option {
+  border: 1.5px solid #333;
+  border-radius: 4px;
+  padding: 0.75rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  background: #111;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.usage-option:hover { border-color: #666; background: #1A1A1A; }
+.usage-option.selected { border-color: var(--red); background: rgba(208,29,29,0.1); }
+.usage-option .usage-icon { font-size: 1.3rem; display: block; margin-bottom: 0.3rem; pointer-events: none; }
+.usage-option .usage-name {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: #aaa; pointer-events: none;
+}
+.usage-option.selected .usage-name { color: var(--red); }
+.booking-body { padding: 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.booking-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+.field-group { display: flex; flex-direction: column; gap: 6px; }
+.field-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888;
+}
+.field-label .req { color: var(--red); }
+.field-input, .field-select {
+  background: #111; border: 1px solid #333; border-radius: 4px;
+  color: var(--white); padding: 0.65rem 0.9rem;
+  font-family: 'Barlow', sans-serif; font-size: 0.9rem;
+  outline: none; width: 100%; appearance: none; transition: border-color 0.2s;
+}
+.field-input:focus, .field-select:focus { border-color: var(--red); }
+.field-input.b-error, .field-select.b-error { border-color: var(--red) !important; background: rgba(208,29,29,0.06); }
+.field-input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.4; }
+.field-select option, .field-select optgroup { background: #1A1A1A; color: #fff; }
+.b-field-err { font-size: 0.7rem; color: #FF6B6B; min-height: 14px; }
+.usage-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+.usage-option {
+  border: 1.5px solid #333; border-radius: 4px; padding: 0.75rem;
+  cursor: pointer; text-align: center; transition: all 0.15s; background: #111;
+}
+.usage-option:hover { border-color: #555; }
+.usage-option.selected { border-color: var(--red); background: rgba(208,29,29,0.08); }
+.usage-option .usage-icon { font-size: 1.3rem; display: block; margin-bottom: 0.3rem; }
+.usage-option .usage-name {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: #aaa;
+}
+.usage-option.selected .usage-name { color: var(--red); }
+.booking-error-banner {
+  display: none; background: rgba(208,29,29,0.1);
+  border: 1px solid rgba(208,29,29,0.4); border-radius: 4px;
+  padding: 0.85rem 1rem; font-size: 0.82rem; color: #FF8080; line-height: 1.6;
+}
+.booking-note { font-size: 0.8rem; color: #555; line-height: 1.6; }
+.proceed-btn {
+  background: var(--red); color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.9rem 2.5rem; border: none; cursor: pointer;
+  border-radius: 4px; width: 100%; transition: background 0.2s;
+}
+.proceed-btn:hover { background: var(--red-dark); }
+
+/* ─── CONTACT ─── */
+.contact-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem;
+}
+.contact-card {
+  background: var(--gray); border: 1px solid #222; border-radius: 6px; padding: 1.5rem;
+  cursor: pointer; transition: border-color 0.2s, transform 0.15s; text-decoration: none;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.contact-card:hover { border-color: var(--red); transform: translateY(-2px); }
+.contact-platform { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); }
+.contact-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--white); }
+.contact-handle { font-size: 0.82rem; color: #555; }
+.contact-action { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #444; margin-top: auto; display: flex; align-items: center; gap: 6px; }
+.contact-action::after { content: '→'; }
+
+/* ─── TUTORIAL PAGE ─── */
+#tutorials { display: none; }
+#tutorials.active { display: block; }
+#main-content.hidden { display: none; }
+
+.tutorial-hero {
+  padding: 100px 2.5rem 60px; background: var(--black);
+  border-bottom: 1px solid #1A1A1A;
+}
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #666; cursor: pointer; border: none; background: none; padding: 0;
+  margin-bottom: 2rem; transition: color 0.2s;
+}
+.back-btn:hover { color: var(--white); }
+.back-btn::before { content: '←'; }
+.tut-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
+  margin-top: 2rem;
+}
+.tut-card {
+  background: var(--gray); border: 1px solid #222; border-radius: 6px; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.tut-card:hover { border-color: #444; transform: translateY(-2px); }
+.tut-thumb { position: relative; padding-top: 56.25%; background: #111; }
+.tut-thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+.tut-body { padding: 1.1rem 1.25rem; }
+.tut-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 0.3rem; }
+.tut-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: var(--white); }
+.tut-desc { font-size: 0.78rem; color: #777; margin-top: 0.25rem; line-height: 1.5; }
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid #161616; padding: 2.5rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--white); }
+.footer-logo .red { color: var(--red); -webkit-text-stroke: 0.8px var(--white); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #444; text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: #aaa; }
+.footer-copy { font-size: 0.72rem; color: #333; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+.hero-title { animation: fadeUp 0.6s ease 0.2s both; }
+.hero-sub { animation: fadeUp 0.6s ease 0.35s both; }
+.hero-ctas { animation: fadeUp 0.6s ease 0.45s both; }
+.hero-brands { animation: fadeUp 0.6s ease 0.6s both; }
+</style>
+<link rel="stylesheet" href="assets/site.css" />
+<script src="assets/site.js" defer></script>
+</head>
+<body data-home>
+
+<div class="splash" id="splash" data-duration="3800" aria-label="94Ezy Rent intro" role="status">
+  <div class="splash-inner">
+    <img class="splash-logo" src="assets/logo-transparent.svg" alt="94好租 | 94Ezy Rent" />
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner container">
+    <a class="nav-logo" href="index.html">
+      <span class="cn">94好租</span>
+      <span class="sep">|</span>
+      <span>94Ezy</span>
+      <span class="rent">Rent</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="catalogue.html">Gear Collection</a></li>
+      <li><a href="#models">Discover</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tutorials.html">Tutorials</a></li>
+      <li><a href="#booking" class="nav-cta">Rent Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ MAIN PAGE ═══════════════════════ -->
+<div id="main-content">
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-media" data-hero-videos="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4|https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4|https://storage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4">
+    <video class="hero-video" id="hero-video" autoplay muted playsinline></video>
+    <div class="hero-video-controls" aria-label="Hero video controls">
+      <button class="hero-video-btn" type="button" data-hero-prev aria-label="Previous video">←</button>
+      <button class="hero-video-btn" type="button" data-hero-next aria-label="Next video">→</button>
+    </div>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="container">
+    <p class="hero-eyebrow">Creator Equipment Experience</p>
+    <h1 class="hero-title">
+      Rent The <span class="outline">Shot.</span><br>
+      Own The <span class="red">Moment.</span>
+    </h1>
+    <p class="hero-sub">A cinematic, creator-first rental experience for drones, action cameras, Insta360 and pro digital gear. Discover the collection, explore each setup, and book in minutes.</p>
+    <div class="hero-ctas">
+      <a href="#models" class="btn-primary">Discover More</a>
+      <a href="catalogue.html" class="btn-outline">Go To Catalogue</a>
+    </div>
+    <div class="chip-row">
+      <span class="chip"><strong>Premium</strong> visual direction</span>
+      <span class="chip"><strong>Fast</strong> WhatsApp booking</span>
+      <span class="chip"><strong>Clean</strong> tested equipment</span>
+      <span class="chip"><strong>Placeholder</strong> videos ready to replace</span>
+    </div>
+    <div class="hero-brands">
+      <span class="brands-label">Creator Brands</span>
+      <span class="brand-pill">DJI</span>
+      <span class="brand-pill">Insta360</span>
+      <span class="brand-pill">RICOH</span>
+      <span class="brand-pill">FUJIFILM</span>
+      <span class="brand-pill">Canon</span>
+      <span class="brand-pill">Olympus</span>
+    </div>
+    <div class="hero-scroll">Scroll to explore the collection</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="page-section models-section" id="models">
+  <div class="container">
+    <div class="sec-label">Featured Collection</div>
+    <h2 class="sec-title">Explore Signature Gear</h2>
+    <p class="lead">Inspired by Porsche's model storytelling, each featured setup gets a premium spotlight. Hover a media panel to preview motion. Placeholder clips are used for now and can be replaced with your real product videos later.</p>
+
+    <div class="model-stack">
+      <article class="model-card reveal">
+        <div class="model-copy">
+          <div class="model-kicker">Aerial</div>
+          <h3 class="model-title">DJI Mini 4 Pro</h3>
+          <p class="model-desc">Compact cinematic drone for travel, property, tourism, and social reels. Lightweight, sharp, and creator-friendly for fast shooting days.</p>
+          <div class="model-meta">
+            <span class="model-meta-item">4K capture</span>
+            <span class="model-meta-item">Travel ready</span>
+            <span class="model-meta-item">Beginner friendly</span>
+          </div>
+          <div class="model-actions">
+            <a class="btn-primary" href="catalogue.html?device=DJI%20Mini%204%20Pro">View Details</a>
+            <a class="btn-outline" href="?device=DJI%20Mini%204%20Pro#booking">Book Enquiry</a>
+          </div>
+        </div>
+        <div class="model-media" data-preview-card>
+          <video class="model-video" muted loop playsinline preload="metadata" poster="">
+            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4" />
+          </video>
+          <div class="model-overlay">
+            <div class="model-overlay-label">Hover To Preview</div>
+            <div class="model-overlay-title">DJI Mini 4 Pro</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="model-card reveal">
+        <div class="model-copy">
+          <div class="model-kicker">Action</div>
+          <h3 class="model-title">DJI Osmo Action 5 Pro</h3>
+          <p class="model-desc">Built for travel runs, road content, helmets, sports, and vertical-first creator workflows with dependable stabilization and easy handling.</p>
+          <div class="model-meta">
+            <span class="model-meta-item">Action-ready</span>
+            <span class="model-meta-item">Water resistant</span>
+            <span class="model-meta-item">Fast setup</span>
+          </div>
+          <div class="model-actions">
+            <a class="btn-primary" href="catalogue.html?device=DJI%20Osmo%20Action%205%20Pro">View Details</a>
+            <a class="btn-outline" href="?device=DJI%20Osmo%20Action%205%20Pro#booking">Book Enquiry</a>
+          </div>
+        </div>
+        <div class="model-media" data-preview-card>
+          <video class="model-video" muted loop playsinline preload="metadata" poster="">
+            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4" type="video/mp4" />
+          </video>
+          <div class="model-overlay">
+            <div class="model-overlay-label">Hover To Preview</div>
+            <div class="model-overlay-title">Action 5 Pro</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="model-card reveal">
+        <div class="model-copy">
+          <div class="model-kicker">360 Capture</div>
+          <h3 class="model-title">Insta360 X4</h3>
+          <p class="model-desc">Immersive 360 capture for tourism, events, timelapse, and standout social edits. Perfect when you need a more dynamic storytelling angle.</p>
+          <div class="model-meta">
+            <span class="model-meta-item">360 workflow</span>
+            <span class="model-meta-item">Travel content</span>
+            <span class="model-meta-item">Unique POV</span>
+          </div>
+          <div class="model-actions">
+            <a class="btn-primary" href="catalogue.html?device=Insta360%20X4">View Details</a>
+            <a class="btn-outline" href="?device=Insta360%20X4#booking">Book Enquiry</a>
+          </div>
+        </div>
+        <div class="model-media" data-preview-card>
+          <video class="model-video" muted loop playsinline preload="metadata" poster="">
+            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" type="video/mp4" />
+          </video>
+          <div class="model-overlay">
+            <div class="model-overlay-label">Hover To Preview</div>
+            <div class="model-overlay-title">Insta360 X4</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="model-card reveal">
+        <div class="model-copy">
+          <div class="model-kicker">Digital Camera</div>
+          <h3 class="model-title">Fujifilm X-T5</h3>
+          <p class="model-desc">For premium stills, portrait work, lifestyle campaigns, and creator shoots that need a stronger photographic look with reliable color output.</p>
+          <div class="model-meta">
+            <span class="model-meta-item">Photo-led</span>
+            <span class="model-meta-item">Campaign ready</span>
+            <span class="model-meta-item">Creator favorite</span>
+          </div>
+          <div class="model-actions">
+            <a class="btn-primary" href="catalogue.html?device=Fujifilm%20X-T5">View Details</a>
+            <a class="btn-outline" href="?device=Fujifilm%20X-T5#booking">Book Enquiry</a>
+          </div>
+        </div>
+        <div class="model-media" data-preview-card>
+          <video class="model-video" muted loop playsinline preload="metadata" poster="">
+            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4" />
+          </video>
+          <div class="model-overlay">
+            <div class="model-overlay-label">Hover To Preview</div>
+            <div class="model-overlay-title">Fujifilm X-T5</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="page-section" id="about">
+  <div class="container">
+    <div class="sec-label">The Rental Experience</div>
+    <h2 class="sec-title">Why Creators Stay With Us</h2>
+    <p class="lead">A more premium, story-led rental experience built for creators who need quality gear, support that replies fast, and a workflow that feels smooth from enquiry to return.</p>
+    <div class="value-grid reveal">
+      <div class="value-card">
+        <div class="value-title">Well Maintained Equipment</div>
+        <div class="value-desc">Every unit is checked, cleaned, and ready-to-shoot so you can focus on the result.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Fast Customer Support</div>
+        <div class="value-desc">Quick WhatsApp replies for booking, setup questions, and last-minute changes.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Flexible Rental Duration</div>
+        <div class="value-desc">From short shoots to multi-day projects — rent the gear that matches your workflow.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Affordable Pricing</div>
+        <div class="value-desc">Get premium gear without the purchase cost — perfect for creators scaling up.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Easy Pickup &amp; Return</div>
+        <div class="value-desc">Simple handover process with clear checklist, so you stay on schedule.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Beginner Friendly Guidance</div>
+        <div class="value-desc">Not sure what to rent? Tell us your shoot and we’ll recommend the right kit.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:2.6rem;" class="reveal">
+      <div class="sec-label">Service Areas</div>
+      <h2 class="sec-title" style="margin-bottom:1.6rem;">Available Across Malaysia &amp; Beyond</h2>
+      <div class="area-pills">
+        <span class="area-pill">Penang</span>
+        <span class="area-pill">Kuala Lumpur</span>
+        <span class="area-pill">Melaka</span>
+        <span class="area-pill">Johor Bahru</span>
+        <span class="area-pill">Singapore</span>
+        <span class="area-pill">Taiwan</span>
+        <span class="area-pill">Kota Kinabalu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="page-section" id="achievements">
+  <div class="container">
+    <div class="sec-label">Creator Proof</div>
+    <h2 class="sec-title">Featured By Creators</h2>
+    <p class="lead">Keep the trust-building content, but now framed in a cleaner editorial section that feels closer to a premium automotive or brand storytelling site.</p>
+    <div class="reel-grid reveal">
+
+    <!-- ═══ VIDEO CARD 1 — INFLUENCER FEATURE ═══════════════════════
+         HOW TO ADD YOUR VIDEO:
+         1. Go to your YouTube video → click Share → Copy Link
+         2. The video ID is the part after "watch?v=" e.g. https://youtu.be/dQw4w9WgXcQ → ID is dQw4w9WgXcQ
+         3. Replace YOUR_VIDEO_ID_1 below with your actual ID
+         ══════════════════════════════════════════════════════════════ -->
+    <div class="reel-card">
+      <div class="reel-thumb">
+        <div class="reel-thumb-placeholder" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/YOUR_VIDEO_ID_1?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
+          <div class="play-btn"></div>
+          <span style="font-size:0.7rem;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Click to Play</span>
+        </div>
+      </div>
+      <div class="reel-caption">
+        <div class="reel-type">Influencer Feature</div>
+        <!-- CHANGE THE TITLE AND DESCRIPTION BELOW TO MATCH YOUR VIDEO -->
+        <div class="reel-title">Mega Influencer Collaboration</div>
+        <div class="reel-desc">Top Malaysian content creator featuring our DJI drone rental for their travel series — 2M+ views.</div>
+      </div>
+    </div>
+
+    <!-- ═══ VIDEO CARD 2 — FM INTERVIEW ═══════════════════════════════
+         Replace YOUR_VIDEO_ID_2 with your actual YouTube video ID
+         ══════════════════════════════════════════════════════════════ -->
+    <div class="reel-card">
+      <div class="reel-thumb">
+        <div class="reel-thumb-placeholder" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/YOUR_VIDEO_ID_2?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
+          <div class="play-btn"></div>
+          <span style="font-size:0.7rem;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Click to Play</span>
+        </div>
+      </div>
+      <div class="reel-caption">
+        <div class="reel-type">Radio / FM Interview</div>
+        <!-- CHANGE THE TITLE AND DESCRIPTION BELOW TO MATCH YOUR VIDEO -->
+        <div class="reel-title">94 EZY RENT on Air</div>
+        <div class="reel-desc">Our founder interviewed on national FM radio — sharing the story behind Malaysia's easiest camera rental.</div>
+      </div>
+    </div>
+
+    <!-- ═══ VIDEO CARD 3 — INSTAGRAM / ACHIEVEMENT ════════════════════
+         Replace YOUR_VIDEO_ID_3 with your actual YouTube video ID
+         (To use an Instagram Reel, upload it to YouTube first, then paste the ID)
+         ══════════════════════════════════════════════════════════════ -->
+    <div class="reel-card">
+      <div class="reel-thumb">
+        <div class="reel-thumb-placeholder" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/YOUR_VIDEO_ID_3?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
+          <div class="play-btn"></div>
+          <span style="font-size:0.7rem;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Click to Play</span>
+        </div>
+      </div>
+      <div class="reel-caption">
+        <div class="reel-type">Instagram Reel</div>
+        <!-- CHANGE THE TITLE AND DESCRIPTION BELOW TO MATCH YOUR VIDEO -->
+        <div class="reel-title">Viral Reel Highlight</div>
+        <div class="reel-desc">Our Instagram reel showcasing client work shot with 94 EZY RENT gear — hundreds of shares.</div>
+      </div>
+    </div>
+
+    <!-- ═══ ADD MORE VIDEO CARDS HERE ════════════════════════════════
+         Copy one of the blocks above, paste it here, and change the video ID + title + description
+         ══════════════════════════════════════════════════════════════ -->
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="page-section" id="catalogue-preview">
+  <div class="container reveal">
+    <div class="sec-label">Full Lineup</div>
+    <h2 class="sec-title">Browse The Entire Collection</h2>
+    <p class="lead">See the full range of drones, action cameras, 360 devices, digital cameras, and accessories with enquiry links ready to prefill your booking form.</p>
+    <a class="btn-primary" href="catalogue.html">Open Gear Collection →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="page-section" id="reviews">
+  <div class="container">
+    <div class="sec-label">Reviews</div>
+    <h2 class="sec-title">Trusted By Creators</h2>
+    <p class="lead">Real words from real creators — designed in a premium Google-review style while keeping your 94Ezy Rent theme.</p>
+
+    <div class="reviews-shell reveal" data-carousel="reviews">
+      <div class="reviews-overview">
+        <div class="reviews-score">
+          <span class="reviews-score-num">5.0</span>
+          <span class="reviews-score-label">on Google</span>
+        </div>
+        <div class="reviews-proof">
+          <span>100+ Creators Served</span>
+          <span class="reviews-dot">·</span>
+          <span>WhatsApp Verified</span>
+        </div>
+      </div>
+      <div class="reviews-meta">
+        <div class="reviews-badge google-badge" aria-label="Google Reviews">
+          <span class="g-word" aria-hidden="true">
+            <span class="g-l b">G</span><span class="g-l r">o</span><span class="g-l y">o</span><span class="g-l b">g</span><span class="g-l g">l</span><span class="g-l r">e</span>
+          </span>
+          <span class="google-badge-copy"><strong>Reviews</strong></span>
+        </div>
+        <div class="reviews-actions">
+          <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous review">←</button>
+          <button class="carousel-btn" type="button" data-carousel-next aria-label="Next review">→</button>
+        </div>
+      </div>
+
+      <div class="carousel-track" id="reviews-track" aria-label="Customer reviews"></div>
+      <div class="carousel-dots" data-carousel-dots aria-label="Review navigation dots"></div>
+
+      <div class="live-widgets" data-live-api="">
+        <div class="live-widget">
+          <div class="live-widget-head">
+            <strong>Google Reviews</strong>
+            <a class="live-widget-link" href="https://maps.app.goo.gl/J9SGgpZp87vZYeEm6?g_st=ic" target="_blank" rel="noreferrer">Open</a>
+          </div>
+          <div class="live-widget-body" id="google-live-widget">Loading…</div>
+        </div>
+        <div class="live-widget">
+          <div class="live-widget-head">
+            <strong>Facebook Recommendations</strong>
+            <a class="live-widget-link" href="https://www.facebook.com/share/1Cr326tD3X/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Open</a>
+          </div>
+          <div class="live-widget-body" id="facebook-live-widget">Facebook live API is optional. Google live reviews will work first.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BOOKING SECTION -->
+<section class="page-section" id="booking">
+  <div class="container reveal">
+    <div class="sec-label">Booking Enquiry</div>
+    <h2 class="sec-title">Book Your Gear</h2>
+    <p class="lead">Fill in your rental details and we’ll open WhatsApp with a pre-filled message, so you can confirm availability fast.</p>
+
+    <div class="booking-wrapper">
+      <div class="booking-header">Rental Enquiry — Confirmation via WhatsApp</div>
+      <div class="booking-body">
+
+      <!-- Error banner -->
+      <div class="booking-error-banner" id="b-error"></div>
+
+      <!-- Name + Equipment -->
+      <div class="booking-row">
+        <div class="field-group">
+          <label class="field-label">Your Name <span class="req">*</span></label>
+          <input class="field-input" id="b-name" type="text" placeholder="e.g. Ahmad Faizal" />
+        </div>
+        <div class="field-group">
+          <label class="field-label">Equipment <span class="req">*</span></label>
+          <select class="field-select" id="b-equip" onchange="handleBEquipChange(this)">
+            <option value="">— Select equipment —</option>
+            <option value="__recommend__">💡 I need a recommendation — help me choose!</option>
+            <optgroup label="🚁 Drones">
+              <option>DJI Mini 4 Pro</option>
+              <option>DJI Air 3</option>
+              <option>DJI Mavic 3 Classic</option>
+              <option>DJI Avata 2 (FPV)</option>
+            </optgroup>
+            <optgroup label="🎬 Action Cameras">
+              <option>DJI Osmo Action 5 Pro</option>
+              <option>DJI Pocket 3</option>
+            </optgroup>
+            <optgroup label="🔵 Insta360">
+              <option>Insta360 X4</option>
+              <option>Insta360 ONE RS 1-Inch</option>
+            </optgroup>
+            <optgroup label="📷 Digital Cameras">
+              <option>Fujifilm X-T5</option>
+              <option>Canon EOS R6 Mark II</option>
+              <option>Olympus OM-D E-M5 III</option>
+              <option>RICOH GR IIIx</option>
+            </optgroup>
+            <optgroup label="🔧 Accessories">
+              <option>Extra Batteries Pack</option>
+              <option>Memory Card Bundle</option>
+              <option>DJI Mic 2</option>
+            </optgroup>
+          </select>
+          <div id="b-recommend-note" style="display:none;margin-top:8px;padding:0.65rem 0.9rem;background:rgba(208,29,29,0.08);border:1px solid rgba(208,29,29,0.25);border-radius:4px;font-size:0.8rem;color:#aaa;line-height:1.6;">
+            💡 <strong style="color:#fff">No worries!</strong> Fill in your dates, location and shooting purpose — our team will recommend the best gear for you on WhatsApp.
+          </div>
+        </div>
+      </div>
+
+      <!-- Dates + Location -->
+      <div class="booking-row">
+        <div class="field-group">
+          <label class="field-label">Start Date <span class="req">*</span></label>
+          <input class="field-input" id="b-start" type="text" inputmode="numeric" placeholder="YYYY/MM/DD" onchange="bUpdateEndMin()" />
+          <div class="b-field-err" id="berr-start"></div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">End Date <span class="req">*</span></label>
+          <input class="field-input" id="b-end" type="text" inputmode="numeric" placeholder="YYYY/MM/DD" />
+          <div class="b-field-err" id="berr-end"></div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Location / Area <span class="req">*</span></label>
+          <select class="field-select" id="b-location" onchange="bToggleOtherLocation()">
+            <option value="">— Select state —</option>
+            <option>Johor</option>
+            <option>Kedah</option>
+            <option>Kelantan</option>
+            <option>Melaka</option>
+            <option>Negeri Sembilan</option>
+            <option>Pahang</option>
+            <option>Perak</option>
+            <option>Perlis</option>
+            <option>Pulau Pinang</option>
+            <option>Sabah</option>
+            <option>Sarawak</option>
+            <option>Selangor</option>
+            <option>Terengganu</option>
+            <option>Kuala Lumpur</option>
+            <option>Putrajaya</option>
+            <option>Labuan</option>
+            <option>Outside Malaysia (SG / TW)</option>
+            <option value="__other__">Other / Custom area</option>
+          </select>
+          <input class="field-input" id="b-location-other" type="text" placeholder="Type your area..." style="display:none;margin-top:10px;" />
+          <div class="b-field-err" id="berr-location"></div>
+        </div>
+      </div>
+
+      <!-- Shooting purpose -->
+      <div class="field-group">
+        <label class="field-label" style="margin-bottom:10px;">What are you shooting? <span style="color:#444;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <div class="usage-grid">
+          <div class="usage-option" onclick="bToggleUsage(this)">
+            <span class="usage-icon">💍</span><span class="usage-name">Wedding / Event</span>
+          </div>
+          <div class="usage-option" onclick="bToggleUsage(this)">
+            <span class="usage-icon">✈️</span><span class="usage-name">Travel / Vlog</span>
+          </div>
+          <div class="usage-option" onclick="bToggleUsage(this)">
+            <span class="usage-icon">🎯</span><span class="usage-name">Commercial / Ad</span>
+          </div>
+          <div class="usage-option" onclick="bToggleUsage(this)">
+            <span class="usage-icon">🏄</span><span class="usage-name">Sports / Action</span>
+          </div>
+          <div class="usage-option" onclick="bToggleUsage(this)">
+            <span class="usage-icon">🏠</span><span class="usage-name">Real Estate</span>
+          </div>
+          <div class="usage-option" onclick="bToggleUsage(this)">
+            <span class="usage-icon">🎥</span><span class="usage-name">Personal / Other</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="booking-note">⚡ Clicking the button below will open WhatsApp with all your details pre-filled. Our customer service team will confirm availability and pricing within 1 hour.</p>
+      <button class="proceed-btn" onclick="bSendToWhatsApp()">Proceed to WhatsApp →</button>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="page-section" id="contact">
+  <div class="container reveal">
+    <div class="sec-label">Get In Touch</div>
+    <h2 class="sec-title">Contact Us</h2>
+    <div class="contact-grid">
+    <a class="contact-card" href="https://wa.me/60174753794" target="_blank">
+      <span class="contact-platform">WhatsApp</span>
+      <div class="contact-name">WhatsApp</div>
+      <div class="contact-handle">Chat instantly with our team</div>
+      <div class="contact-action">Send a message</div>
+    </a>
+    <a class="contact-card" href="https://www.instagram.com/94ezyrent" target="_blank">
+      <span class="contact-platform">Instagram</span>
+      <div class="contact-name">Instagram</div>
+      <div class="contact-handle">@94ezyrent</div>
+      <div class="contact-action">See our work</div>
+    </a>
+    <a class="contact-card" href="https://www.xiaohongshu.com/user/profile/YOUR_ID" target="_blank">
+      <span class="contact-platform">小红书 · RedNote</span>
+      <div class="contact-name">RedNote</div>
+      <div class="contact-handle">Follow us on 小红书</div>
+      <div class="contact-action">View our content</div>
+    </a>
+    <a class="contact-card" href="https://facebook.com/94ezyrent" target="_blank">
+      <span class="contact-platform">Facebook</span>
+      <div class="contact-name">Facebook</div>
+      <div class="contact-handle">94 EZY RENT Official</div>
+      <div class="contact-action">Like our page</div>
+    </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="page-section" id="vision">
+  <div class="container reveal">
+    <div class="sec-label">Vision &amp; Mission</div>
+    <h2 class="sec-title">Built For Creators</h2>
+    <p class="lead">We keep professional gear accessible, reliable, and easy to use — so you can focus on your content.</p>
+    <div class="vm-grid">
+      <div class="vm-card">
+        <div class="vm-title">Vision</div>
+        <div class="vm-text">To be the most trusted creator-first camera and photography rental partner in Malaysia.</div>
+      </div>
+      <div class="vm-card">
+        <div class="vm-title">Mission</div>
+        <div class="vm-text">Deliver clean, well-maintained gear with fast support, fair pricing, and beginner-friendly guidance — making every rental smooth and stress-free.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">94好租 <span style="opacity:0.35;">|</span> 94Ezy <span class="red">Rent</span></div>
+    <div class="footer-links">
+      <a href="catalogue.html">Gear Collection</a>
+      <a href="#achievements">Featured</a>
+      <a href="#reviews">Reviews</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 94好租 | 94Ezy Rent · Camera &amp; Photography Equipment Rental</div>
+  </div>
+</footer>
+
+</div><!-- end #main-content -->
+
+<script>
+const reviewHighlights = [
+  { name:'Angeline Chew', meta:'Local Guide · 9 reviews', stars:5, when:'Recently', text:'Third time renting here — always smooth, fair pricing, and super friendly guidance on how the gear works. Can do meet-up too. Love renting from this shop.' },
+  { name:'Kimmy Lee', meta:'14 reviews', stars:5, when:'Recently', text:'My first camera rental experience was fantastic. Excellent service and they responded quickly. Looking forward to renting again next time.' },
+  { name:'Jaslyn__ccclx', meta:'Local Guide · 16 reviews', stars:5, when:'Recently', text:'Camera delivered on time. Flexible collection. Price affordable.' },
+  { name:'xueer henggg', meta:'1 review', stars:5, when:'Recently', text:'Second time renting from 94Ezy Rent. Even with minor issues, everything was handled quickly and professionally. Prompt responses, helpful and responsible — highly recommended.' },
+  { name:'Jocelyn Isobel Tan', meta:'Local Guide · 11 reviews', stars:5, when:'Recently', text:'Efficient and smooth process. Super friendly and approachable team, well-explained setup, quick service, and a very easy rental experience. Definitely recommended.' },
+  { name:'Xuan Kang', meta:'5 reviews', stars:5, when:'Recently', text:'Rented the DJI Pocket 3 — unit was in really good condition and super easy to use. Everything worked perfectly. Smooth and hassle-free process. Would rent again for sure.' },
+  { name:'小姐姐 JO', meta:'Local Guide · 23 reviews', stars:5, when:'Recently', text:'Second time renting and I came back again for a reason. Consistently good, friendly and professional service. Equipment was well maintained and gave me lots of confidence using it. Highly recommended.' }
+];
+
+function initials(name) {
+  const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+  return parts.slice(0, 2).map(p => p[0]?.toUpperCase()).join('') || 'R';
+}
+
+function renderReviewHighlights() {
+  const track = document.getElementById('reviews-track');
+  if (!track) return;
+  track.innerHTML = reviewHighlights.map(r => `
+    <article class="review-card" role="group" aria-label="Review by ${r.name}">
+      <div class="review-quote">“${r.text}”</div>
+      <div class="review-bottom">
+        <div class="reviewer">
+          <div class="reviewer-avatar">${initials(r.name)}</div>
+          <div class="reviewer-info">
+            <div class="reviewer-name">${r.name}</div>
+            <div class="reviewer-meta">${r.meta}</div>
+          </div>
+        </div>
+        <div class="review-side">
+          <div class="review-stars" aria-label="${r.stars} out of 5 stars">${'★'.repeat(r.stars)}</div>
+          <div class="review-stamp">
+            <span>Verified</span>
+            <span class="reviews-dot">·</span>
+            <span>${r.when || 'Recently'}</span>
+          </div>
+          <div class="review-google" aria-label="Google review">
+            <span class="g-word mini" aria-hidden="true">
+              <span class="g-l b">G</span><span class="g-l r">o</span><span class="g-l y">o</span><span class="g-l b">g</span><span class="g-l g">l</span><span class="g-l r">e</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </article>
+  `).join('');
+  window.dispatchEvent(new Event('resize'));
+}
+
+function handleBEquipChange(sel) {
+  const note = document.getElementById('b-recommend-note');
+  if (!note) return;
+  note.style.display = sel.value === '__recommend__' ? 'block' : 'none';
+}
+
+function formatLocalDateSlash(d) {
+  const yy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yy}/${mm}/${dd}`;
+}
+
+function parseSlashDate(s) {
+  const m = String(s || '').trim().match(/^(\d{4})\/(\d{2})\/(\d{2})$/);
+  if (!m) return null;
+  const y = Number(m[1]);
+  const mo = Number(m[2]);
+  const d = Number(m[3]);
+  if (!y || mo < 1 || mo > 12 || d < 1 || d > 31) return null;
+  const dt = new Date(y, mo - 1, d);
+  if (dt.getFullYear() !== y || dt.getMonth() !== mo - 1 || dt.getDate() !== d) return null;
+  return dt;
+}
+
+function bToggleOtherLocation() {
+  const sel = document.getElementById('b-location');
+  const other = document.getElementById('b-location-other');
+  if (!(sel instanceof HTMLSelectElement) || !(other instanceof HTMLInputElement)) return;
+  const on = sel.value === '__other__';
+  other.style.display = on ? 'block' : 'none';
+  if (!on) other.value = '';
+}
+
+function bUpdateEndMin() {
+  const startEl = document.getElementById('b-start');
+  const endEl = document.getElementById('b-end');
+  if (!(startEl instanceof HTMLInputElement) || !(endEl instanceof HTMLInputElement)) return;
+  const s = startEl.value.trim();
+  const sd = parseSlashDate(s);
+  if (!sd) return;
+  const ed = parseSlashDate(endEl.value.trim());
+  if (!ed) {
+    endEl.value = s;
+    return;
+  }
+  if (ed < sd) endEl.value = s;
+}
+
+function bToggleUsage(el) {
+  const wasOn = el.classList.contains('selected');
+  document.querySelectorAll('.usage-option').forEach(o => o.classList.remove('selected'));
+  if (!wasOn) el.classList.add('selected');
+}
+
+function bSendToWhatsApp() {
+  ['b-start','b-end','b-location','b-location-other'].forEach(id => document.getElementById(id)?.classList.remove('b-error'));
+  ['berr-start','berr-end','berr-location'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = ''; });
+  const banner = document.getElementById('b-error');
+  if (banner) banner.style.display = 'none';
+
+  const name = document.getElementById('b-name')?.value.trim() || '';
+  const equip = document.getElementById('b-equip')?.value || '';
+  const start = document.getElementById('b-start')?.value.trim() || '';
+  const end = document.getElementById('b-end')?.value.trim() || '';
+  const locSel = document.getElementById('b-location');
+  const locOther = document.getElementById('b-location-other');
+  const locValue = locSel ? String(locSel.value || '').trim() : '';
+  const otherValue = locOther ? String(locOther.value || '').trim() : '';
+  const location = locValue === '__other__' ? otherValue : locValue;
+  const usageEl = document.querySelector('#booking .usage-option.selected .usage-name');
+  const usage = usageEl ? usageEl.textContent.trim() : '';
+
+  const errors = [];
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const sd = parseSlashDate(start);
+  const ed = parseSlashDate(end);
+
+  if (!start || !sd) { errors.push('📅 Please enter Start Date (YYYY/MM/DD)'); document.getElementById('b-start')?.classList.add('b-error'); const e = document.getElementById('berr-start'); if (e) e.textContent = 'Use format YYYY/MM/DD.'; }
+  if (!end || !ed) { errors.push('📅 Please enter End Date (YYYY/MM/DD)'); document.getElementById('b-end')?.classList.add('b-error'); const e = document.getElementById('berr-end'); if (e) e.textContent = 'Use format YYYY/MM/DD.'; }
+  if (sd && sd < today) { errors.push('📅 Start Date must be today or later'); document.getElementById('b-start')?.classList.add('b-error'); const e = document.getElementById('berr-start'); if (e) e.textContent = 'Must be today or later.'; }
+  if (sd && ed && ed < sd) { errors.push('📅 End Date cannot be before Start Date'); document.getElementById('b-end')?.classList.add('b-error'); const e = document.getElementById('berr-end'); if (e) e.textContent = 'Must be on or after start date.'; }
+  if (!locValue) { errors.push('📍 Please select your State'); document.getElementById('b-location')?.classList.add('b-error'); const e = document.getElementById('berr-location'); if (e) e.textContent = 'State is required.'; }
+  if (locValue === '__other__' && !otherValue) { errors.push('📍 Please type your Area'); document.getElementById('b-location-other')?.classList.add('b-error'); const e = document.getElementById('berr-location'); if (e) e.textContent = 'Area is required for custom location.'; }
+
+  if (errors.length) {
+    if (banner) {
+      banner.innerHTML = '⚠️ Please fill in the required fields before proceeding:<br><br>• ' + errors.join('<br>• ');
+      banner.style.display = 'block';
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    return;
+  }
+
+  const isRecommend = equip === '__recommend__';
+  const equipLabel = isRecommend ? 'Need a recommendation (please advise based on my details)' : (equip || 'Not specified');
+
+  const msg =
+    `Hi 94好租 | 94Ezy Rent! 👋\n\n` +
+    `I would like to make a rental enquiry:\n\n` +
+    `👤 Name: ${name || 'Not provided'}\n` +
+    `📷 Equipment: ${equipLabel}\n` +
+    `📅 Rental From: ${start}\n` +
+    `📅 Rental To: ${end}\n` +
+    `📍 Location: ${location}\n` +
+    `🎬 Shooting for: ${usage || 'Not specified'}\n\n` +
+    (isRecommend ? `I'm unsure which gear suits my shoot — could you recommend something?\n\n` : '') +
+    `Please advise on availability and pricing. Thank you!`;
+
+  window.open(`https://wa.me/60174753794?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  renderReviewHighlights();
+  const bs = document.getElementById('b-start');
+  const be = document.getElementById('b-end');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayText = formatLocalDateSlash(today);
+  if (bs instanceof HTMLInputElement) {
+    const parsed = parseSlashDate(bs.value);
+    if (!parsed || parsed < today) bs.value = todayText;
+  }
+  if (be instanceof HTMLInputElement) {
+    const sd = bs instanceof HTMLInputElement ? parseSlashDate(bs.value) : null;
+    const ed = parseSlashDate(be.value);
+    if (!sd) {
+      be.value = todayText;
+    } else if (!ed || ed < sd) {
+      be.value = bs.value;
+    }
+  }
+  bToggleOtherLocation();
+  bUpdateEndMin();
+});
+</script>
+</body>
+</html>

@@ -1368,7 +1368,7 @@ nav:focus-within .nav-links {
   order: 2;
 }
 
-.model-card:nth-child(even) .model-media {
+.model-card:nth-child(even) .model-visual {
   order: 1;
 }
 
@@ -1396,34 +1396,18 @@ nav:focus-within .nav-links {
   text-transform: uppercase;
 }
 
-.model-desc {
-  max-width: 36ch;
-  color: rgba(255,255,255,0.68);
-  line-height: 1.85;
-  font-size: 0.98rem;
+.model-book {
+  min-width: 0;
+  width: fit-content;
+  background: transparent;
+  border-color: rgba(255,255,255,0.12);
 }
 
-.model-meta {
+.model-visual {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.model-meta-item {
-  padding: 0.42rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.02);
-  color: rgba(255,255,255,0.7);
-  font-size: 0.74rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.model-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
 }
 
 .model-media {
@@ -1469,7 +1453,8 @@ nav:focus-within .nav-links {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .model-overlay-label {
@@ -1485,6 +1470,20 @@ nav:focus-within .nav-links {
   font-size: 1.8rem;
   font-weight: 800;
   text-transform: uppercase;
+}
+
+.model-discover {
+  min-width: 0;
+  width: auto;
+  padding-inline: 1.3rem;
+  box-shadow: 0 12px 34px rgba(0,0,0,0.24);
+}
+
+.model-summary {
+  max-width: 46ch;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  font-size: 0.9rem;
 }
 
 #about,
@@ -1631,7 +1630,7 @@ footer {
   }
 
   .model-card:nth-child(even) .model-copy,
-  .model-card:nth-child(even) .model-media {
+  .model-card:nth-child(even) .model-visual {
     order: initial;
   }
 }
@@ -1724,8 +1723,33 @@ footer {
     padding: 24px;
   }
 
-  .model-actions {
-    flex-direction: column;
+  .model-book {
+    width: 100%;
+  }
+
+  .model-media {
+    min-height: 300px;
+  }
+
+  .model-overlay {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .model-overlay-title {
+    font-size: 1.28rem;
+  }
+
+  .model-discover {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .model-summary {
+    font-size: 0.84rem;
+    line-height: 1.75;
+    padding: 0 4px;
   }
 
   .reviews-shell,

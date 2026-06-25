@@ -1164,7 +1164,11 @@ nav:focus-within {
   top: 34px;
   left: calc((var(--sidebar-w) / 2) - 1px);
   transform: translateX(-50%);
-  width: 56px;
+  width: 68px;
+  padding: 10px 8px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
   font-size: 0.96rem;
   line-height: 1.05;
   text-align: center;
@@ -1175,6 +1179,16 @@ nav:focus-within {
 nav:hover .nav-logo,
 nav:focus-within .nav-logo {
   transform: translateX(-50%) scale(1.03);
+}
+
+.nav-logo .cn,
+.nav-logo span:not(.rent) {
+  color: #111111;
+}
+
+.nav-logo .rent {
+  color: var(--red);
+  -webkit-text-stroke: 1.2px rgba(0,0,0,0.55);
 }
 
 .nav-logo .sep,

@@ -1117,8 +1117,7 @@ body[data-anim="on"] .hero-brands { animation-delay: 0.32s; }
 
 /* Porsche-inspired redesign overrides */
 :root {
-  --sidebar-w: 78px;
-  --sidebar-open: 248px;
+  --drawer-w: min(320px, 86vw);
   --surface: #111111;
   --surface-2: #181818;
   --surface-3: #202020;
@@ -1127,58 +1126,87 @@ body[data-anim="on"] .hero-brands { animation-delay: 0.32s; }
 
 body {
   background: #050505;
-  padding-left: var(--sidebar-w);
+  padding-left: 0;
 }
 
 nav {
   top: 0;
   left: 0;
-  right: auto;
-  width: var(--sidebar-w);
-  height: 100vh;
+  right: 0;
+  width: auto;
+  height: var(--nav-h);
   display: block;
-  padding: 22px 14px;
-  background: rgba(6,6,6,0.94);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  border-bottom: none;
-  overflow: hidden;
-  transition: width 0.28s ease, background 0.22s ease, box-shadow 0.22s ease;
+  padding: 0;
+  background: rgba(6,6,6,0.92);
+  border-right: none;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  overflow: visible;
+  transition: background 0.22s ease, box-shadow 0.22s ease;
 }
 
-nav:hover,
-nav:focus-within {
-  width: var(--sidebar-open);
-  box-shadow: 18px 0 70px rgba(0,0,0,0.34);
+nav[data-open="true"] {
+  box-shadow: 0 14px 44px rgba(0,0,0,0.22);
+}
+
+nav::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.38);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+
+nav[data-open="true"]::after {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .nav-inner {
   position: relative;
   height: 100%;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   padding: 0;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  margin-left: 6px;
+  position: relative;
+  z-index: 3;
 }
 
 .nav-logo {
   display: block;
   position: absolute;
-  top: 34px;
-  left: calc((var(--sidebar-w) / 2) - 1px);
-  transform: translateX(-50%);
-  width: 68px;
-  padding: 10px 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  min-width: 132px;
+  padding: 8px 14px;
   border-radius: 18px;
   background: #ffffff;
   box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-  font-size: 0.96rem;
+  font-size: 1rem;
   line-height: 1.05;
   text-align: center;
-  z-index: 2;
-  transition: transform 0.22s ease, opacity 0.22s ease;
+  z-index: 3;
+  transition: transform 0.22s ease;
 }
 
-nav:hover .nav-logo,
-nav:focus-within .nav-logo {
-  transform: translateX(-50%) scale(1.03);
+nav[data-open="true"] .nav-logo {
+  transform: translate(-50%, -50%) scale(1.02);
 }
 
 .nav-logo .cn,
@@ -1192,34 +1220,35 @@ nav:focus-within .nav-logo {
 }
 
 .nav-logo .sep,
-.nav-logo span:not(.cn):not(.rent):not(.sep) {
-  display: block;
-  margin-top: 2px;
-}
-
+.nav-logo span:not(.cn):not(.rent):not(.sep),
 .nav-logo .rent {
-  display: block;
-  margin-top: 2px;
+  display: inline;
+  margin-top: 0;
 }
 
 .nav-links {
-  position: absolute;
-  inset: 116px 12px 20px calc(var(--sidebar-w) + 8px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--drawer-w);
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
   gap: 10px;
-  padding: 0;
-  opacity: 0;
+  padding: 92px 18px 20px;
+  background: rgba(10,10,10,0.98);
+  border-right: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 20px 0 70px rgba(0,0,0,0.28);
+  opacity: 1;
   pointer-events: none;
-  transform: translateX(-12px);
-  transition: opacity 0.2s ease, transform 0.24s ease;
+  transform: translateX(calc(-100% - 18px));
+  transition: transform 0.24s ease;
+  z-index: 2;
 }
 
-nav:hover .nav-links,
-nav:focus-within .nav-links {
-  opacity: 1;
+nav[data-open="true"] .nav-links {
   pointer-events: auto;
   transform: translateX(0);
 }
@@ -1230,29 +1259,25 @@ nav:focus-within .nav-links {
 
 .nav-links a {
   display: block;
-  padding: 12px 10px;
-  border-radius: 14px;
+  padding: 13px 14px;
+  border-radius: 16px;
   border: 1px solid transparent;
-  background: transparent;
-  color: rgba(255,255,255,0.64);
+  background: rgba(255,255,255,0.02);
+  color: rgba(255,255,255,0.78);
   text-align: left;
   line-height: 1.3;
 }
 
 .nav-links a:hover {
-  color: rgba(255,255,255,0.96);
+  color: rgba(255,255,255,0.98);
   border-color: rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.05);
 }
 
 .nav-cta {
-  margin-top: 8px;
+  margin-top: 10px;
   text-align: center !important;
   border-radius: 999px !important;
-}
-
-.nav-toggle {
-  display: none;
 }
 
 .container {
@@ -1271,14 +1296,14 @@ nav:focus-within .nav-links {
 
 #hero {
   min-height: 100svh;
-  padding-top: 0;
+  padding-top: var(--nav-h);
   padding-bottom: 0;
   display: flex;
   align-items: flex-end;
 }
 
 #hero > .container {
-  padding-top: 96px;
+  padding-top: 52px;
   padding-bottom: 64px;
 }
 
@@ -1587,15 +1612,6 @@ footer {
 }
 
 @media (max-width: 1100px) {
-  body {
-    padding-left: 96px;
-  }
-
-  :root {
-    --sidebar-w: 96px;
-    --sidebar-open: 96px;
-  }
-
   .model-tile-media {
     min-height: 420px;
   }
@@ -1607,66 +1623,32 @@ footer {
   }
 
   nav {
-    left: 0;
-    right: 0;
-    width: auto;
-    height: auto;
     padding: 12px var(--gutter);
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    overflow: visible;
-    transition: none;
   }
 
   .nav-inner {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   .nav-logo {
-    position: static;
-    top: auto;
-    left: auto;
-    width: auto;
-    transform: none;
-    display: inline-flex;
-    align-items: baseline;
-    gap: 8px;
-    font-size: 1.2rem;
-    text-align: left;
+    min-width: 116px;
+    padding: 7px 12px;
+    font-size: 0.92rem;
   }
 
-  .nav-logo .sep,
-  .nav-logo span:not(.cn):not(.rent):not(.sep),
-  .nav-logo .rent {
-    display: inline;
-    margin-top: 0;
+  .nav-toggle {
+    width: 44px;
+    height: 44px;
+    margin-left: 0;
   }
 
   .nav-toggle {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .nav-links {
-    position: fixed;
-    top: calc(var(--nav-h) + 4px);
-    left: 12px;
-    right: 12px;
-    inset: auto 12px auto 12px;
-    flex: none;
-    padding: 14px;
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 22px;
-    background: rgba(8,8,8,0.96);
-    box-shadow: 0 18px 60px rgba(0,0,0,0.35);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-10px);
+    width: min(300px, 86vw);
+    padding-top: 86px;
   }
 
   #hero > .container {

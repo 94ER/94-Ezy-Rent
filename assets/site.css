@@ -1172,6 +1172,21 @@ nav[data-open="true"]::after {
   padding: 0;
 }
 
+nav > .nav-inner.container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 var(--gutter);
+}
+
+.nav-inner::after {
+  content: '';
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  margin-left: auto;
+}
+
 .nav-toggle {
   display: inline-flex;
   align-items: center;
@@ -1628,6 +1643,12 @@ footer {
 
   .nav-inner {
     justify-content: flex-start;
+  }
+
+  .nav-inner::after {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
   }
 
   .nav-logo {

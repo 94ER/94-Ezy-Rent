@@ -50,7 +50,7 @@ body.splash-on { overflow: hidden; }
   width: min(560px, 76vw);
   height: auto;
   display: block;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.06));
+  filter: none;
 }
 
 a { color: inherit; }

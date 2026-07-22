@@ -1125,7 +1125,7 @@ body[data-anim="on"] .hero-brands { animation-delay: 0.32s; }
 }
 
 body {
-  background: #050505;
+  background: #ffffff;
   padding-left: 0;
 }
 
@@ -1137,9 +1137,9 @@ nav {
   height: var(--nav-h);
   display: block;
   padding: 0;
-  background: rgba(6,6,6,0.92);
+  background: rgba(255,255,255,0.94);
   border-right: none;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   overflow: visible;
   transition: background 0.22s ease, box-shadow 0.22s ease;
 }
@@ -1194,8 +1194,8 @@ nav > .nav-inner.container {
   width: 48px;
   height: 48px;
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.03);
   margin-left: 6px;
   position: relative;
   z-index: 3;
@@ -1240,8 +1240,8 @@ nav[data-open="true"] .nav-logo {
   justify-content: flex-start;
   gap: 10px;
   padding: 92px 18px 20px;
-  background: rgba(10,10,10,0.98);
-  border-right: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.98);
+  border-right: 1px solid rgba(0,0,0,0.08);
   box-shadow: 20px 0 70px rgba(0,0,0,0.28);
   opacity: 1;
   pointer-events: none;
@@ -1264,16 +1264,16 @@ nav[data-open="true"] .nav-links {
   padding: 13px 14px;
   border-radius: 16px;
   border: 1px solid transparent;
-  background: rgba(255,255,255,0.02);
-  color: rgba(255,255,255,0.78);
+  background: rgba(0,0,0,0.02);
+  color: rgba(0,0,0,0.78);
   text-align: left;
   line-height: 1.3;
 }
 
 .nav-links a:hover {
-  color: rgba(255,255,255,0.98);
-  border-color: rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.05);
+  color: rgba(0,0,0,0.98);
+  border-color: rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.05);
 }
 
 .nav-cta {
@@ -1497,11 +1497,11 @@ nav[data-open="true"] .nav-links {
 #booking,
 #contact,
 #vision {
-  background: #050505;
+  background: #ffffff;
 }
 
 .sec-label {
-  color: rgba(255,255,255,0.46);
+  color: rgba(0,0,0,0.46);
 }
 
 .sec-label::after {
@@ -1515,7 +1515,7 @@ nav[data-open="true"] .nav-links {
 .lead {
   margin-top: 0;
   margin-bottom: 2rem;
-  color: rgba(255,255,255,0.66);
+  color: rgba(0,0,0,0.66);
 }
 
 .value-grid,
@@ -1534,8 +1534,9 @@ nav[data-open="true"] .nav-links {
 .booking-wrapper,
 .reviews-shell {
   border-radius: 24px;
-  border-color: var(--line-soft);
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-color: rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(247,247,247,1));
+  box-shadow: 0 18px 48px rgba(0,0,0,0.06);
 }
 
 .reel-card,
@@ -1560,15 +1561,15 @@ nav[data-open="true"] .nav-links {
 
 .reviews-overview,
 .review-bottom {
-  border-color: rgba(255,255,255,0.10);
+  border-color: rgba(0,0,0,0.08);
 }
 
 .review-card {
   border-radius: 22px;
-  border-color: rgba(255,255,255,0.10);
+  border-color: rgba(0,0,0,0.08);
   background:
     radial-gradient(900px 240px at 20% 0%, rgba(208,29,29,0.12), transparent 60%),
-    rgba(255,255,255,0.02);
+    #ffffff;
 }
 
 .google-badge,
@@ -1578,7 +1579,7 @@ nav[data-open="true"] .nav-links {
 }
 
 .live-widget-body {
-  background: rgba(255,255,255,0.02);
+  background: rgba(0,0,0,0.015);
 }
 
 .booking-wrapper {
@@ -1587,17 +1588,17 @@ nav[data-open="true"] .nav-links {
 
 .booking-header {
   background: transparent;
-  border-bottom: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   font-size: 0.94rem;
-  color: rgba(255,255,255,0.86);
+  color: rgba(0,0,0,0.82);
 }
 
 .field-input,
 .field-select {
   height: 50px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.03);
-  border-color: rgba(255,255,255,0.12);
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.12);
 }
 
 .usage-option {
@@ -1611,6 +1612,70 @@ footer {
 
 .footer-inner {
   max-width: 1320px;
+}
+
+.value-title,
+.vm-title,
+.contact-title,
+.review-text,
+.review-name,
+.review-role,
+.review-count,
+.review-summary-text,
+.live-widget-head strong,
+.live-widget-link,
+.booking-body,
+.booking-note,
+.field-label,
+.field-help,
+.contact-card,
+.value-card,
+.vm-card,
+.reviews-shell,
+.reel-card,
+.live-widget,
+.live-review-name,
+.live-review-meta,
+.live-review-text {
+  color: #111111;
+}
+
+.value-text,
+.vm-text,
+.contact-sub,
+.review-body,
+.review-quote,
+.booking-copy,
+.lead-muted,
+.live-review-meta,
+.live-review-text {
+  color: rgba(0,0,0,0.66);
+}
+
+.google-badge {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.08);
+  color: #111111;
+}
+
+.carousel-btn,
+.hero-video-btn {
+  border-color: rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.88);
+  color: #111111;
+}
+
+footer {
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.footer-logo,
+.footer-title,
+.footer-copy,
+.footer-links a,
+.footer-bottom {
+  color: #111111;
 }
 
 @media (max-width: 1100px) {

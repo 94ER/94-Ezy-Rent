@@ -236,21 +236,12 @@ function setupHeroVideo() {
   const video = document.getElementById('hero-video');
   if (!(hero instanceof HTMLElement) || !(video instanceof HTMLVideoElement)) return;
 
-  const controls = hero.querySelector('.hero-video-controls');
-  const prev = hero.querySelector('[data-hero-prev]');
-  const next = hero.querySelector('[data-hero-next]');
-
   const list = String(hero.dataset.heroVideos || '')
     .split('|')
     .map((s) => s.trim())
     .filter(Boolean);
 
-  if (!list.length) {
-    if (controls instanceof HTMLElement) controls.style.display = 'none';
-    return;
-  }
-
-  let index = 0;
+  if (!list.length) return;
 
   const setSource = (src) => {
     while (video.firstChild) video.removeChild(video.firstChild);
@@ -265,27 +256,13 @@ function setupHeroVideo() {
     if (p && typeof p.catch === 'function') p.catch(() => {});
   };
 
-  const go = (i) => {
-    index = (i + list.length) % list.length;
-    setSource(list[index]);
-  };
-
   video.addEventListener('playing', () => {
     hero.dataset.ready = 'true';
   }, { passive: true });
-
-  video.addEventListener('ended', () => {
-    go(index + 1);
-  }, { passive: true });
-
-  if (prev instanceof HTMLButtonElement) prev.addEventListener('click', () => go(index - 1));
-  if (next instanceof HTMLButtonElement) next.addEventListener('click', () => go(index + 1));
-
-  if (controls instanceof HTMLElement) controls.style.display = list.length > 1 ? '' : 'none';
   video.muted = true;
-  video.loop = false;
+  video.loop = true;
   video.playsInline = true;
-  go(0);
+  setSource(list[0]);
 }
 
 function setupLiveReviews() {

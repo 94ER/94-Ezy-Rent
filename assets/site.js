@@ -243,8 +243,29 @@ function setupHeroVideo() {
 
   if (!list.length) return;
   let index = 0;
+  let retryTimer = 0;
+
+  const revealFrame = () => {
+    hero.dataset.ready = 'true';
+    video.style.opacity = '0.78';
+  };
+
+  const attemptPlay = () => {
+    const p = video.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(() => {
+        window.clearTimeout(retryTimer);
+        retryTimer = window.setTimeout(() => {
+          if (document.visibilityState === 'visible' && video.paused) attemptPlay();
+        }, 600);
+      });
+    }
+  };
 
   const setSource = (src) => {
+    hero.dataset.ready = 'false';
+    video.style.opacity = '0.22';
+    window.clearTimeout(retryTimer);
     while (video.firstChild) video.removeChild(video.firstChild);
     const source = document.createElement('source');
     source.src = src;
@@ -253,8 +274,7 @@ function setupHeroVideo() {
     if (lower.endsWith('.webm')) source.type = 'video/webm';
     video.appendChild(source);
     video.load();
-    const p = video.play();
-    if (p && typeof p.catch === 'function') p.catch(() => {});
+    attemptPlay();
   };
 
   const go = (nextIndex) => {
@@ -262,17 +282,33 @@ function setupHeroVideo() {
     setSource(list[index]);
   };
 
-  video.addEventListener('playing', () => {
-    hero.dataset.ready = 'true';
-  }, { passive: true });
+  video.addEventListener('loadeddata', revealFrame, { passive: true });
+  video.addEventListener('canplay', revealFrame, { passive: true });
+  video.addEventListener('playing', revealFrame, { passive: true });
 
   video.addEventListener('ended', () => {
     go(index + 1);
   }, { passive: true });
 
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && video.paused) attemptPlay();
+  });
+
+  document.addEventListener('pointerdown', () => {
+    if (video.paused) attemptPlay();
+  }, { once: true, passive: true });
+
+  document.addEventListener('keydown', () => {
+    if (video.paused) attemptPlay();
+  }, { once: true });
+
   video.muted = true;
+  video.defaultMuted = true;
   video.loop = false;
   video.playsInline = true;
+  video.setAttribute('muted', '');
+  video.setAttribute('autoplay', '');
+  video.setAttribute('playsinline', '');
   go(0);
 }
 

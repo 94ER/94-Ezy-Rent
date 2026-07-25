@@ -234,10 +234,10 @@ nav {
   height: 100%;
   object-fit: cover;
   filter: saturate(1.05) contrast(1.05);
-  opacity: 0;
+  opacity: 0.78;
   transition: opacity 0.35s ease;
 }
-.hero-media[data-ready="true"] .hero-video { opacity: 0.42; }
+.hero-media[data-ready="false"] .hero-video { opacity: 0.22; }
 .hero-media::after {
   content: '';
   position: absolute;

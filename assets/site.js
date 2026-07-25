@@ -242,6 +242,7 @@ function setupHeroVideo() {
     .filter(Boolean);
 
   if (!list.length) return;
+  let index = 0;
 
   const setSource = (src) => {
     while (video.firstChild) video.removeChild(video.firstChild);
@@ -256,13 +257,23 @@ function setupHeroVideo() {
     if (p && typeof p.catch === 'function') p.catch(() => {});
   };
 
+  const go = (nextIndex) => {
+    index = (nextIndex + list.length) % list.length;
+    setSource(list[index]);
+  };
+
   video.addEventListener('playing', () => {
     hero.dataset.ready = 'true';
   }, { passive: true });
+
+  video.addEventListener('ended', () => {
+    go(index + 1);
+  }, { passive: true });
+
   video.muted = true;
-  video.loop = true;
+  video.loop = false;
   video.playsInline = true;
-  setSource(list[0]);
+  go(0);
 }
 
 function setupLiveReviews() {

@@ -2,7 +2,10 @@ function setupNav() {
   const nav = document.querySelector('nav');
   const btn = document.querySelector('.nav-toggle');
   if (!nav || !btn) return;
-  const isHome = document.body?.hasAttribute('data-home');
+  const supportsTransparentNav = Boolean(
+    document.body?.hasAttribute('data-home') ||
+    document.body?.hasAttribute('data-transparent-nav')
+  );
   const hero = document.getElementById('hero');
 
   const setOpen = (open) => {
@@ -12,7 +15,7 @@ function setupNav() {
   };
 
   const updateScrolledState = () => {
-    if (!isHome || !(hero instanceof HTMLElement)) {
+    if (!supportsTransparentNav || !(hero instanceof HTMLElement)) {
       nav.dataset.scrolled = 'true';
       return;
     }

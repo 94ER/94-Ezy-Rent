@@ -1143,7 +1143,8 @@ nav[data-open="true"] {
   box-shadow: 0 14px 44px rgba(0,0,0,0.22);
 }
 
-body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) {
+body[data-home] nav[data-scrolled="false"]:not([data-open="true"]),
+body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) {
   background: transparent;
   border-bottom-color: transparent;
   box-shadow: none;
@@ -1203,7 +1204,8 @@ nav > .nav-inner.container {
   z-index: 3;
 }
 
-body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle {
+body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle,
+body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle {
   border-color: rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.06);
   box-shadow: 0 10px 28px rgba(0,0,0,0.14);
@@ -1211,7 +1213,10 @@ body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle {
 
 body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span,
 body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span::before,
-body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span::after {
+body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span::after,
+body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span,
+body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span::before,
+body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span::after {
   background: rgba(255,255,255,0.96);
 }
 

@@ -1154,7 +1154,7 @@ nav::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.38);
+  background: rgba(0,0,0,0.88);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.22s ease;
@@ -1881,6 +1881,10 @@ footer {
   .nav-links {
     width: min(300px, 86vw);
     padding-top: 86px;
+  }
+
+  nav::after {
+    background: rgba(0,0,0,0.96);
   }
 
   #hero > .container {

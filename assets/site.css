@@ -1236,12 +1236,12 @@ nav[data-open="true"] .nav-logo {
 
 .nav-logo-img {
   width: 100%;
-  max-width: 100%;
+  max-width: none;
   height: 100%;
   display: block;
-  object-fit: contain;
-  object-position: center center;
-  transform: scale(1.8);
+  object-fit: cover;
+  object-position: center 72%;
+  transform: scale(1.22);
   transform-origin: center;
 }
 

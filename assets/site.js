@@ -19,7 +19,11 @@ function setupNav() {
       nav.dataset.scrolled = 'true';
       return;
     }
-    const threshold = Math.max(32, hero.offsetHeight - nav.offsetHeight - 120);
+    const isSubpageHero = hero.classList.contains('subpage-hero');
+    const threshold = Math.max(
+      isSubpageHero ? 72 : 32,
+      hero.offsetHeight - nav.offsetHeight - (isSubpageHero ? 48 : 120)
+    );
     nav.dataset.scrolled = window.scrollY > threshold ? 'true' : 'false';
   };
 

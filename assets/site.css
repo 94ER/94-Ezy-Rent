@@ -1146,6 +1146,13 @@ body[data-home] nav[data-scrolled="true"] {
   backdrop-filter: blur(14px);
 }
 
+body[data-home] nav[data-open="true"] {
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
 nav[data-open="true"][data-scrolled="true"] {
   box-shadow: 0 14px 44px rgba(0,0,0,0.22);
 }
@@ -1219,6 +1226,12 @@ body[data-home] nav[data-scrolled="true"] .nav-toggle {
     0 10px 28px rgba(0,0,0,0.18);
 }
 
+body[data-home] nav[data-open="true"] .nav-toggle {
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+}
+
 body[data-home] nav[data-scrolled="false"] .nav-toggle,
 body[data-transparent-nav] nav[data-scrolled="false"] .nav-toggle {
   border-color: rgba(255,255,255,0.14);
@@ -1242,6 +1255,10 @@ body[data-transparent-nav] nav[data-scrolled="false"] .nav-logo {
 
 body[data-home] nav[data-scrolled="true"] .nav-logo {
   filter: drop-shadow(0 10px 26px rgba(0,0,0,0.14));
+}
+
+body[data-home] nav[data-open="true"] .nav-logo {
+  filter: drop-shadow(0 10px 28px rgba(0,0,0,0.18));
 }
 
 .nav-toggle span,

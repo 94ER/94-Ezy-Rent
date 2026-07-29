@@ -1240,8 +1240,8 @@ nav[data-open="true"] .nav-logo {
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center 66%;
-  transform: scale(1.34);
+  object-position: center 58%;
+  transform: scale(1.29);
   transform-origin: center;
 }
 

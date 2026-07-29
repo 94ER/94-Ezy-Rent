@@ -236,8 +236,6 @@ nav {
   object-position: center center;
   filter: none;
   opacity: 0.98;
-  transform: translateZ(0) scale(1.005);
-  backface-visibility: hidden;
   transition: opacity 0.35s ease;
 }
 .hero-media[data-ready="false"] .hero-video { opacity: 0.84; }

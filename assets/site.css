@@ -1131,12 +1131,19 @@ nav {
   height: var(--nav-h);
   display: block;
   padding: 0;
-  background: rgba(0,0,0,0.94);
+  background: linear-gradient(180deg, rgba(8,8,8,0.94), rgba(8,8,8,0.88));
   border-right: none;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   overflow: visible;
   transition: background 0.22s ease, box-shadow 0.22s ease;
   backdrop-filter: blur(12px);
+}
+
+body[data-home] nav[data-scrolled="true"] {
+  background: linear-gradient(180deg, rgba(8,8,8,0.90), rgba(8,8,8,0.84));
+  border-bottom-color: rgba(255,255,255,0.10);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+  backdrop-filter: blur(14px);
 }
 
 nav[data-open="true"][data-scrolled="true"] {
@@ -1204,6 +1211,14 @@ nav > .nav-inner.container {
   z-index: 3;
 }
 
+body[data-home] nav[data-scrolled="true"] .nav-toggle {
+  border-color: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.04),
+    0 10px 28px rgba(0,0,0,0.18);
+}
+
 body[data-home] nav[data-scrolled="false"] .nav-toggle,
 body[data-transparent-nav] nav[data-scrolled="false"] .nav-toggle {
   border-color: rgba(255,255,255,0.14);
@@ -1223,6 +1238,10 @@ body[data-transparent-nav] nav[data-scrolled="false"] .nav-toggle span::after {
 body[data-home] nav[data-scrolled="false"] .nav-logo,
 body[data-transparent-nav] nav[data-scrolled="false"] .nav-logo {
   filter: drop-shadow(0 10px 28px rgba(0,0,0,0.18));
+}
+
+body[data-home] nav[data-scrolled="true"] .nav-logo {
+  filter: drop-shadow(0 10px 26px rgba(0,0,0,0.14));
 }
 
 .nav-toggle span,

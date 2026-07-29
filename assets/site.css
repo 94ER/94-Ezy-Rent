@@ -1217,7 +1217,7 @@ body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle s
 .nav-logo {
   display: block;
   position: absolute;
-  top: 54%;
+  top: 56%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 220px;
@@ -1241,7 +1241,7 @@ nav[data-open="true"] .nav-logo {
   display: block;
   object-fit: contain;
   object-position: center center;
-  transform: none;
+  transform: scale(1.2);
   transform-origin: center;
 }
 

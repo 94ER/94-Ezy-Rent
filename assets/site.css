@@ -1220,8 +1220,8 @@ body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle s
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 168px;
-  height: 66px;
+  width: 220px;
+  height: 86px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1736,8 +1736,8 @@ footer {
   }
 
   .nav-logo {
-    width: 138px;
-    height: 54px;
+    width: 168px;
+    height: 66px;
   }
 
   .nav-toggle {

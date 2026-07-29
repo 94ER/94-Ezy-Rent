@@ -2,13 +2,27 @@ function setupNav() {
   const nav = document.querySelector('nav');
   const btn = document.querySelector('.nav-toggle');
   if (!nav || !btn) return;
+  const isHome = document.body?.hasAttribute('data-home');
+  const hero = document.getElementById('hero');
 
   const setOpen = (open) => {
     nav.dataset.open = open ? 'true' : 'false';
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    updateScrolledState();
+  };
+
+  const updateScrolledState = () => {
+    if (!isHome || !(hero instanceof HTMLElement)) {
+      nav.dataset.scrolled = 'true';
+      return;
+    }
+    const threshold = Math.max(32, hero.offsetHeight - nav.offsetHeight - 120);
+    const forcedSolid = nav.dataset.open === 'true';
+    nav.dataset.scrolled = (forcedSolid || window.scrollY > threshold) ? 'true' : 'false';
   };
 
   setOpen(false);
+  updateScrolledState();
 
   btn.addEventListener('click', () => {
     const open = nav.dataset.open !== 'true';
@@ -25,6 +39,9 @@ function setupNav() {
   nav.querySelectorAll('a').forEach((a) => {
     a.addEventListener('click', () => setOpen(false));
   });
+
+  window.addEventListener('scroll', updateScrolledState, { passive: true });
+  window.addEventListener('resize', updateScrolledState);
 }
 
 function setupSplash() {
@@ -236,14 +253,22 @@ function setupHeroVideo() {
   const video = document.getElementById('hero-video');
   if (!(hero instanceof HTMLElement) || !(video instanceof HTMLVideoElement)) return;
 
-  const list = String(hero.dataset.heroVideos || '')
+  const desktopList = String(hero.dataset.heroVideos || '')
     .split('|')
     .map((s) => s.trim())
     .filter(Boolean);
-
-  if (!list.length) return;
+  const mobileList = String(hero.dataset.heroMobileVideos || '')
+    .split('|')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const mobileQuery = window.matchMedia('(max-width: 720px)');
+  let list = [];
   let index = 0;
   let retryTimer = 0;
+  let activeMode = '';
+
+  const pickList = () => (mobileQuery.matches && mobileList.length ? mobileList : desktopList);
+  if (!desktopList.length) return;
 
   const revealFrame = () => {
     hero.dataset.ready = 'true';
@@ -282,6 +307,17 @@ function setupHeroVideo() {
     setSource(list[index]);
   };
 
+  const syncPlaylist = (force = false) => {
+    const nextList = pickList();
+    const nextMode = mobileQuery.matches && mobileList.length ? 'mobile' : 'desktop';
+    if (!nextList.length) return;
+    if (!force && activeMode === nextMode) return;
+    activeMode = nextMode;
+    list = nextList;
+    index = 0;
+    go(0);
+  };
+
   video.addEventListener('loadeddata', revealFrame, { passive: true });
   video.addEventListener('canplay', revealFrame, { passive: true });
   video.addEventListener('playing', revealFrame, { passive: true });
@@ -309,7 +345,13 @@ function setupHeroVideo() {
   video.setAttribute('muted', '');
   video.setAttribute('autoplay', '');
   video.setAttribute('playsinline', '');
-  go(0);
+  syncPlaylist(true);
+
+  if (typeof mobileQuery.addEventListener === 'function') {
+    mobileQuery.addEventListener('change', () => syncPlaylist());
+  } else if (typeof mobileQuery.addListener === 'function') {
+    mobileQuery.addListener(() => syncPlaylist());
+  }
 }
 
 function setupLiveReviews() {

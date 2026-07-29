@@ -1243,12 +1243,12 @@ nav[data-open="true"] .nav-logo {
 
 .nav-logo-img {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
-  object-position: center 72%;
-  transform: scale(1.22);
+  object-fit: contain;
+  object-position: center center;
+  transform: scale(1.8);
   transform-origin: center;
 }
 

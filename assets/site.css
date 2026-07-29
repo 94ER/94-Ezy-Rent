@@ -1139,11 +1139,13 @@ nav {
   backdrop-filter: blur(12px);
 }
 
-body[data-home] nav[data-scrolled="true"] {
-  background: linear-gradient(180deg, rgba(8,8,8,0.90), rgba(8,8,8,0.84));
-  border-bottom-color: rgba(255,255,255,0.10);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.14);
-  backdrop-filter: blur(14px);
+body[data-home] nav[data-scrolled="true"],
+body[data-home] nav[data-scrolled="false"],
+body[data-transparent-nav] nav[data-scrolled="false"] {
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 body[data-home] nav[data-open="true"] {
@@ -1157,12 +1159,8 @@ nav[data-open="true"][data-scrolled="true"] {
   box-shadow: 0 14px 44px rgba(0,0,0,0.22);
 }
 
-body[data-home] nav[data-scrolled="false"],
-body[data-transparent-nav] nav[data-scrolled="false"] {
-  background: transparent;
-  border-bottom-color: transparent;
+body[data-home] nav[data-open="true"][data-scrolled="true"] {
   box-shadow: none;
-  backdrop-filter: none;
 }
 
 nav::after {
@@ -1218,20 +1216,13 @@ nav > .nav-inner.container {
   z-index: 3;
 }
 
-body[data-home] nav[data-scrolled="true"] .nav-toggle {
-  border-color: rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.04);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.04),
-    0 10px 28px rgba(0,0,0,0.18);
-}
-
 body[data-home] nav[data-open="true"] .nav-toggle {
   border-color: rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.06);
   box-shadow: 0 10px 28px rgba(0,0,0,0.14);
 }
 
+body[data-home] nav[data-scrolled="true"] .nav-toggle,
 body[data-home] nav[data-scrolled="false"] .nav-toggle,
 body[data-transparent-nav] nav[data-scrolled="false"] .nav-toggle {
   border-color: rgba(255,255,255,0.14);
@@ -1248,16 +1239,13 @@ body[data-transparent-nav] nav[data-scrolled="false"] .nav-toggle span::after {
   background: rgba(255,255,255,0.96);
 }
 
-body[data-home] nav[data-scrolled="false"] .nav-logo,
-body[data-transparent-nav] nav[data-scrolled="false"] .nav-logo {
+body[data-home] nav[data-open="true"] .nav-logo {
   filter: drop-shadow(0 10px 28px rgba(0,0,0,0.18));
 }
 
-body[data-home] nav[data-scrolled="true"] .nav-logo {
-  filter: drop-shadow(0 10px 26px rgba(0,0,0,0.14));
-}
-
-body[data-home] nav[data-open="true"] .nav-logo {
+body[data-home] nav[data-scrolled="true"] .nav-logo,
+body[data-home] nav[data-scrolled="false"] .nav-logo,
+body[data-transparent-nav] nav[data-scrolled="false"] .nav-logo {
   filter: drop-shadow(0 10px 28px rgba(0,0,0,0.18));
 }
 

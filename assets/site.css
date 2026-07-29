@@ -235,17 +235,19 @@ nav {
   object-fit: cover;
   object-position: center center;
   filter: none;
-  opacity: 0.94;
+  opacity: 0.98;
+  transform: translateZ(0) scale(1.005);
+  backface-visibility: hidden;
   transition: opacity 0.35s ease;
 }
-.hero-media[data-ready="false"] .hero-video { opacity: 0.72; }
+.hero-media[data-ready="false"] .hero-video { opacity: 0.84; }
 .hero-media::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.08) 36%, rgba(0,0,0,0.02) 100%),
-    linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.18));
+    linear-gradient(90deg, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0.05) 36%, rgba(0,0,0,0.01) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.10));
 }
 .hero-video-controls {
   position: absolute;
@@ -1139,12 +1141,12 @@ nav {
   backdrop-filter: blur(12px);
 }
 
-nav[data-open="true"] {
+nav[data-open="true"][data-scrolled="true"] {
   box-shadow: 0 14px 44px rgba(0,0,0,0.22);
 }
 
-body[data-home] nav[data-scrolled="false"]:not([data-open="true"]),
-body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) {
+body[data-home] nav[data-scrolled="false"],
+body[data-transparent-nav] nav[data-scrolled="false"] {
   background: transparent;
   border-bottom-color: transparent;
   box-shadow: none;
@@ -1204,19 +1206,19 @@ nav > .nav-inner.container {
   z-index: 3;
 }
 
-body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle,
-body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle {
+body[data-home] nav[data-scrolled="false"] .nav-toggle,
+body[data-transparent-nav] nav[data-scrolled="false"] .nav-toggle {
   border-color: rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.06);
   box-shadow: 0 10px 28px rgba(0,0,0,0.14);
 }
 
-body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span,
-body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span::before,
-body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span::after,
-body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span,
-body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span::before,
-body[data-transparent-nav] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle span::after {
+body[data-home] nav[data-scrolled="false"] .nav-toggle span,
+body[data-home] nav[data-scrolled="false"] .nav-toggle span::before,
+body[data-home] nav[data-scrolled="false"] .nav-toggle span::after,
+body[data-transparent-nav] nav[data-scrolled="false"] .nav-toggle span,
+body[data-transparent-nav] nav[data-scrolled="false"] .nav-toggle span::before,
+body[data-transparent-nav] nav[data-scrolled="false"] .nav-toggle span::after {
   background: rgba(255,255,255,0.96);
 }
 
@@ -1472,8 +1474,8 @@ nav[data-open="true"] .nav-links {
 
 .hero-media::after {
   background:
-    linear-gradient(90deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 34%, rgba(0,0,0,0.02) 100%),
-    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.14));
+    linear-gradient(90deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.04) 34%, rgba(0,0,0,0.01) 100%),
+    linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.09));
 }
 
 .hero-grid {
@@ -1916,10 +1918,10 @@ footer {
 
   .hero-media::after {
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.20) 100%);
+      linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.12) 100%);
   }
 
-  body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-logo {
+  body[data-home] nav[data-scrolled="false"] .nav-logo {
     filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18));
   }
 

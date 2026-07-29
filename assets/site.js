@@ -20,8 +20,7 @@ function setupNav() {
       return;
     }
     const threshold = Math.max(32, hero.offsetHeight - nav.offsetHeight - 120);
-    const forcedSolid = nav.dataset.open === 'true';
-    nav.dataset.scrolled = (forcedSolid || window.scrollY > threshold) ? 'true' : 'false';
+    nav.dataset.scrolled = window.scrollY > threshold ? 'true' : 'false';
   };
 
   setOpen(false);

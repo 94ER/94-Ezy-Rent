@@ -1225,6 +1225,7 @@ body[data-home] nav[data-scrolled="false"]:not([data-open="true"]) .nav-toggle s
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   z-index: 3;
   transition: transform 0.22s ease;
 }
@@ -1234,11 +1235,14 @@ nav[data-open="true"] .nav-logo {
 }
 
 .nav-logo-img {
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  max-width: none;
   height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center 56%;
+  transform: scale(1.48);
+  transform-origin: center;
 }
 
 .nav-links {

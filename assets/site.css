@@ -1241,7 +1241,7 @@ nav[data-open="true"] .nav-logo {
   display: block;
   object-fit: contain;
   object-position: center center;
-  transform: scale(1.5);
+  transform: scale(1.8);
   transform-origin: center;
 }
 

@@ -94,6 +94,38 @@ function setupReveal() {
   els.forEach((el) => io.observe(el));
 }
 
+function setupBranchesShowcase() {
+  const section = document.getElementById('branches');
+  const showcase = section?.querySelector('.branches-showcase');
+  if (!(section instanceof HTMLElement) || !(showcase instanceof HTMLElement)) return;
+
+  const trigger = () => {
+    showcase.classList.remove('is-active');
+    void showcase.offsetWidth;
+    showcase.classList.add('is-active');
+  };
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) trigger();
+    });
+  }, { threshold: 0.3 });
+
+  io.observe(section);
+
+  document.querySelectorAll('a[href="#branches"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      window.setTimeout(trigger, 320);
+    });
+  });
+
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#branches') {
+      window.setTimeout(trigger, 120);
+    }
+  });
+}
+
 function setupCarousels() {
   document.querySelectorAll('[data-carousel]').forEach((root) => {
     if (root instanceof HTMLElement && root.dataset.carouselInit === 'true') return;
@@ -469,6 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupMediaPreviews();
   setupNav();
   setupReveal();
+  setupBranchesShowcase();
   setupCarousels();
   setupBookingAutofill();
   setupTutorialFilters();

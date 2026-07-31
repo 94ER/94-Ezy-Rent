@@ -1981,6 +1981,233 @@ nav[data-open="true"] .nav-links {
   background: #ffffff;
 }
 
+#branches {
+  background: #050505;
+}
+
+.branches-showcase {
+  color: #ffffff;
+}
+
+.branches-showcase .sec-label,
+.branches-showcase .sec-title,
+.branches-showcase .lead {
+  color: #ffffff;
+}
+
+.branches-showcase .sec-label::after {
+  background: rgba(255,255,255,0.55);
+}
+
+.branches-showcase .lead {
+  max-width: 62ch;
+  color: rgba(255,255,255,0.72);
+}
+
+.branches-map-shell {
+  margin-top: 34px;
+  padding: clamp(28px, 4vw, 42px);
+  border-radius: 36px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    radial-gradient(circle at 18% 14%, rgba(208,29,29,0.16), transparent 32%),
+    linear-gradient(180deg, rgba(18,18,18,0.98), rgba(7,7,7,0.98));
+  box-shadow: 0 24px 70px rgba(0,0,0,0.30);
+}
+
+.branches-map-stage {
+  position: relative;
+  min-height: clamp(390px, 48vw, 620px);
+  overflow: hidden;
+}
+
+.branches-landmass {
+  position: absolute;
+  background:
+    linear-gradient(180deg, #ef101f 0%, #bf0012 100%);
+  filter: drop-shadow(0 14px 30px rgba(0,0,0,0.18));
+}
+
+.branches-landmass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(255,255,255,0.10);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.branches-landmass-west {
+  left: 7%;
+  top: 9%;
+  width: 36%;
+  height: 72%;
+  clip-path: polygon(12% 4%, 28% 10%, 37% 18%, 53% 20%, 67% 33%, 75% 49%, 71% 63%, 77% 76%, 73% 88%, 63% 97%, 48% 95%, 36% 85%, 28% 72%, 16% 58%, 9% 39%, 7% 21%);
+}
+
+.branches-landmass-east {
+  right: 7%;
+  top: 15%;
+  width: 42%;
+  height: 52%;
+  clip-path: polygon(15% 38%, 22% 22%, 35% 11%, 53% 15%, 68% 26%, 86% 34%, 93% 48%, 85% 61%, 73% 67%, 63% 79%, 43% 86%, 26% 78%, 12% 61%);
+}
+
+.branch-pin {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(22px) scale(0.82);
+  transform-origin: center bottom;
+}
+
+.branches-showcase.is-active .branch-pin {
+  animation: branchPinPop 0.62s cubic-bezier(0.18, 0.9, 0.24, 1.2) forwards;
+}
+
+.branches-showcase.is-active .branch-pin:nth-of-type(1) { animation-delay: 0.04s; }
+.branches-showcase.is-active .branch-pin:nth-of-type(2) { animation-delay: 0.11s; }
+.branches-showcase.is-active .branch-pin:nth-of-type(3) { animation-delay: 0.18s; }
+.branches-showcase.is-active .branch-pin:nth-of-type(4) { animation-delay: 0.25s; }
+.branches-showcase.is-active .branch-pin:nth-of-type(5) { animation-delay: 0.32s; }
+.branches-showcase.is-active .branch-pin:nth-of-type(6) { animation-delay: 0.39s; }
+.branches-showcase.is-active .branch-pin:nth-of-type(7) { animation-delay: 0.46s; }
+.branches-showcase.is-active .branch-pin:nth-of-type(8) { animation-delay: 0.53s; }
+
+.branch-pin-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #d50000;
+  border: 4px solid #ffffff;
+  box-shadow:
+    0 0 0 4px rgba(0,0,0,0.26),
+    0 16px 24px rgba(0,0,0,0.24);
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.branch-pin-dot::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 2px;
+  height: 18px;
+  background: rgba(255,255,255,0.76);
+  transform: translateX(-50%);
+  transform-origin: top center;
+}
+
+.branch-pin-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 6px;
+  border: 2px solid rgba(0,0,0,0.78);
+  background: #ffffff;
+  color: #111111;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 8px 8px 0 rgba(0,0,0,0.78);
+  transform: skew(-10deg);
+}
+
+.branch-pin-penang { left: 4%; top: 25%; }
+.branch-pin-kl { left: 25%; top: 58%; }
+.branch-pin-melaka { left: 21%; top: 69%; }
+.branch-pin-jb { left: 34%; top: 82%; }
+.branch-pin-singapore { left: 27%; top: 91%; }
+.branch-pin-kk { right: 17%; top: 23%; }
+.branch-pin-semporna { right: 7%; top: 50%; }
+.branch-pin-taiwan { right: 2%; top: 6%; }
+
+.branches-pickup-card {
+  margin-top: 26px;
+  padding: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+}
+
+.branches-ribbon {
+  display: inline-flex;
+  align-items: center;
+  min-height: 70px;
+  padding: 0 34px;
+  margin: 24px 24px 0;
+  background: linear-gradient(90deg, #d50000 0%, #b80000 100%);
+  color: #ffffff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 95% 0, 100% 100%, 0 100%);
+  box-shadow: 12px 12px 0 rgba(255,255,255,0.90);
+}
+
+.branches-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 42px;
+  padding: 34px 28px 0;
+}
+
+.branches-list-item {
+  position: relative;
+  padding-left: 26px;
+  color: #ffffff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.branches-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #d50000;
+  border: 3px solid #ffffff;
+  transform: translateY(-50%);
+}
+
+.branches-note {
+  margin: 26px 28px 28px;
+  color: rgba(255,255,255,0.74);
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+@keyframes branchPinPop {
+  0% {
+    opacity: 0;
+    transform: translateY(26px) scale(0.82);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.07);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 #about,
 #achievements,
 #catalogue-preview,
@@ -2170,6 +2397,16 @@ footer {
 }
 
 @media (max-width: 1100px) {
+  .branches-map-stage {
+    min-height: 520px;
+  }
+
+  .branch-pin-label {
+    min-height: 38px;
+    padding: 0 13px;
+    font-size: 0.92rem;
+  }
+
   .product-rail {
     grid-auto-columns: minmax(min(82vw, 390px), 390px);
   }
@@ -2261,6 +2498,82 @@ footer {
 
   .models-section {
     background: #f2f2f2;
+  }
+
+  .branches-map-shell {
+    padding: 20px 16px 22px;
+    border-radius: 26px;
+  }
+
+  .branches-map-stage {
+    min-height: 430px;
+  }
+
+  .branches-landmass-west {
+    left: 2%;
+    top: 12%;
+    width: 45%;
+    height: 65%;
+  }
+
+  .branches-landmass-east {
+    right: 1%;
+    top: 17%;
+    width: 49%;
+    height: 42%;
+  }
+
+  .branch-pin {
+    gap: 8px;
+  }
+
+  .branch-pin-label {
+    min-height: 32px;
+    padding: 0 10px;
+    font-size: 0.76rem;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.78);
+  }
+
+  .branch-pin-dot {
+    width: 14px;
+    height: 14px;
+    border-width: 3px;
+  }
+
+  .branch-pin-dot::after {
+    height: 12px;
+  }
+
+  .branch-pin-penang { left: 0%; top: 28%; }
+  .branch-pin-kl { left: 23%; top: 57%; }
+  .branch-pin-melaka { left: 16%; top: 68%; }
+  .branch-pin-jb { left: 28%; top: 80%; }
+  .branch-pin-singapore { left: 20%; top: 89%; }
+  .branch-pin-kk { right: 12%; top: 24%; }
+  .branch-pin-semporna { right: 1%; top: 49%; }
+  .branch-pin-taiwan { right: -2%; top: 9%; }
+
+  .branches-ribbon {
+    min-height: 56px;
+    margin: 18px 14px 0;
+    padding: 0 20px;
+    box-shadow: 8px 8px 0 rgba(255,255,255,0.90);
+    font-size: clamp(1.35rem, 7vw, 1.9rem);
+  }
+
+  .branches-list {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 24px 18px 0;
+  }
+
+  .branches-list-item {
+    font-size: 1.22rem;
+  }
+
+  .branches-note {
+    margin: 20px 18px 20px;
+    font-size: 0.96rem;
   }
 
   .product-rail {

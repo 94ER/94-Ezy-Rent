@@ -539,8 +539,8 @@ footer {
 .hero-ctas { animation: fadeUp 0.6s ease 0.45s both; }
 .hero-brands { animation: fadeUp 0.6s ease 0.6s both; }
 </style>
-<link rel="stylesheet" href="assets/site.css?v=20260730b1" />
-<script src="assets/site.js?v=20260729f" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=20260730b2" />
+<script src="assets/site.js?v=20260730g" defer></script>
 </head>
 <body data-home>
 
@@ -742,40 +742,64 @@ footer {
 
 <section class="page-section" id="branches">
   <div class="container">
-    <div class="sec-label">Branches</div>
-    <h2 class="sec-title">Our Branches</h2>
-    <p class="lead">Pickup coordination and customer support are arranged through our active branch and service locations.</p>
-    <div class="branch-grid reveal">
-      <article class="branch-card">
-        <span class="branch-tag">PG</span>
-        <h3 class="branch-title">Penang HQ</h3>
-        <p class="branch-text">Main coordination point for bookings, collection arrangement, and customer support.</p>
-        <div class="branch-meta">Primary branch</div>
-      </article>
-      <article class="branch-card">
-        <span class="branch-tag">KL</span>
-        <h3 class="branch-title">Kuala Lumpur</h3>
-        <p class="branch-text">City coverage for creators, event teams, and business shoots requiring fast scheduling.</p>
-        <div class="branch-meta">Service point</div>
-      </article>
-      <article class="branch-card">
-        <span class="branch-tag">JB</span>
-        <h3 class="branch-title">Johor Bahru</h3>
-        <p class="branch-text">Flexible arrangements for southern region rentals and client handovers.</p>
-        <div class="branch-meta">Service point</div>
-      </article>
-      <article class="branch-card">
-        <span class="branch-tag">KK</span>
-        <h3 class="branch-title">Kota Kinabalu</h3>
-        <p class="branch-text">Support for Sabah travel shoots, tourism content, and outdoor creator projects.</p>
-        <div class="branch-meta">Service point</div>
-      </article>
-    </div>
-    <div style="margin-top:1.8rem;" class="reveal">
-      <div class="area-pills">
-        <span class="area-pill">Melaka</span>
-        <span class="area-pill">Singapore</span>
-        <span class="area-pill">Taiwan</span>
+    <div class="branches-showcase reveal">
+      <div class="sec-label">Branches</div>
+      <h2 class="sec-title">Self-Pickup Near You</h2>
+      <p class="lead">A more visual branch guide that makes self-pickup points clear at a glance, with animated markers that jump into focus when clients arrive at this section.</p>
+
+      <div class="branches-map-shell" data-branches-showcase>
+        <div class="branches-map-stage">
+          <div class="branches-landmass branches-landmass-west" aria-hidden="true"></div>
+          <div class="branches-landmass branches-landmass-east" aria-hidden="true"></div>
+
+          <div class="branch-pin branch-pin-penang" data-branch-pin>
+            <span class="branch-pin-dot"></span>
+            <span class="branch-pin-label">Penang</span>
+          </div>
+          <div class="branch-pin branch-pin-kl" data-branch-pin>
+            <span class="branch-pin-dot"></span>
+            <span class="branch-pin-label">Kuala Lumpur</span>
+          </div>
+          <div class="branch-pin branch-pin-melaka" data-branch-pin>
+            <span class="branch-pin-dot"></span>
+            <span class="branch-pin-label">Melaka</span>
+          </div>
+          <div class="branch-pin branch-pin-jb" data-branch-pin>
+            <span class="branch-pin-dot"></span>
+            <span class="branch-pin-label">Johor Bahru</span>
+          </div>
+          <div class="branch-pin branch-pin-singapore" data-branch-pin>
+            <span class="branch-pin-dot"></span>
+            <span class="branch-pin-label">Singapore</span>
+          </div>
+          <div class="branch-pin branch-pin-kk" data-branch-pin>
+            <span class="branch-pin-dot"></span>
+            <span class="branch-pin-label">Kota Kinabalu</span>
+          </div>
+          <div class="branch-pin branch-pin-semporna" data-branch-pin>
+            <span class="branch-pin-dot"></span>
+            <span class="branch-pin-label">Semporna</span>
+          </div>
+          <div class="branch-pin branch-pin-taiwan" data-branch-pin>
+            <span class="branch-pin-dot"></span>
+            <span class="branch-pin-label">Taiwan</span>
+          </div>
+        </div>
+
+        <div class="branches-pickup-card reveal">
+          <div class="branches-ribbon">Self-Pickup Available</div>
+          <div class="branches-list">
+            <span class="branches-list-item">Penang</span>
+            <span class="branches-list-item">Kuala Lumpur</span>
+            <span class="branches-list-item">Johor Bahru</span>
+            <span class="branches-list-item">Melaka</span>
+            <span class="branches-list-item">Kota Kinabalu</span>
+            <span class="branches-list-item">Semporna</span>
+            <span class="branches-list-item">Singapore</span>
+            <span class="branches-list-item">Taiwan</span>
+          </div>
+          <p class="branches-note">Malaysia-wide delivery and Lalamove support are available too. Message us on WhatsApp to confirm branch coverage, gear availability, and the most suitable pickup point for your shoot.</p>
+        </div>
       </div>
     </div>
   </div>

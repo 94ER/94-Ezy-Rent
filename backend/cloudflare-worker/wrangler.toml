@@ -3,4 +3,5 @@ main = "src/index.js"
 compatibility_date = "2026-05-01"
 
 [vars]
-CACHE_TTL_SECONDS = "21600"
+CACHE_TTL_SECONDS = "604800"
+GOOGLE_PLACE_ID = "ChIJbYYrdQDJSjARNd9ALh1qvpg"

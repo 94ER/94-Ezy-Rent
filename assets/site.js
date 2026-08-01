@@ -140,12 +140,30 @@ function setupCarousels() {
     let index = 0;
     let autoTimer = null;
     let wiredDots = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
 
     const stopAuto = () => {
       if (autoTimer) {
         window.clearInterval(autoTimer);
         autoTimer = null;
       }
+    };
+
+    const syncMedia = (items) => {
+      items.forEach((item, itemIndex) => {
+        const videos = Array.from(item.querySelectorAll('video'));
+        videos.forEach((video) => {
+          if (!(video instanceof HTMLVideoElement)) return;
+          if (itemIndex === index) {
+            const play = video.play();
+            if (play && typeof play.catch === 'function') play.catch(() => {});
+          } else {
+            video.pause();
+            try { video.currentTime = 0; } catch (e) {}
+          }
+        });
+      });
     };
 
     const update = () => {
@@ -159,6 +177,8 @@ function setupCarousels() {
       items.forEach((item, itemIndex) => {
         item.classList.toggle('active', itemIndex === index);
       });
+
+      syncMedia(items);
 
       if (dots instanceof HTMLElement) {
         Array.from(dots.children).forEach((dot, dotIndex) => {
@@ -175,7 +195,7 @@ function setupCarousels() {
       if (slides().length <= 1) return;
       autoTimer = window.setInterval(() => {
         goTo(index + 1);
-      }, 4800);
+      }, 3000);
     };
 
     const goTo = (nextIndex) => {
@@ -189,13 +209,14 @@ function setupCarousels() {
       if (!(dots instanceof HTMLElement)) return;
       const items = slides();
       if (!items.length) return;
+      const dotLabel = root.dataset.carouselDotLabel || 'slide';
       if (dots.childElementCount !== items.length) {
         wiredDots = false;
         dots.innerHTML = items.map((_, dotIndex) => `
           <button
             class="carousel-dot${dotIndex === 0 ? ' active' : ''}"
             type="button"
-            aria-label="View review ${dotIndex + 1}"
+            aria-label="View ${dotLabel} ${dotIndex + 1}"
             aria-current="${dotIndex === 0 ? 'true' : 'false'}"
           ></button>
         `).join('');
@@ -234,6 +255,25 @@ function setupCarousels() {
         if (!root.contains(document.activeElement)) startAuto();
       }, 0);
     });
+
+    root.addEventListener('touchstart', (e) => {
+      const touch = e.changedTouches?.[0];
+      if (!touch) return;
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      stopAuto();
+    }, { passive: true });
+
+    root.addEventListener('touchend', (e) => {
+      const touch = e.changedTouches?.[0];
+      if (!touch) return;
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+      if (Math.abs(deltaX) > 44 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        goTo(index + (deltaX < 0 ? 1 : -1));
+      }
+      startAuto();
+    }, { passive: true });
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) stopAuto();
@@ -393,63 +433,76 @@ function setupHeroVideo() {
 }
 
 function setupLiveReviews() {
-  const root = document.querySelector('.live-widgets');
+  const root = document.querySelector('#reviews .reviews-shell[data-live-api]');
   if (!(root instanceof HTMLElement)) return;
   const api = String(root.dataset.liveApi || '').trim();
-  const google = document.getElementById('google-live-widget');
-  const fb = document.getElementById('facebook-live-widget');
-  if (!(google instanceof HTMLElement) || !(fb instanceof HTMLElement)) return;
+  const subtitle = root.querySelector('.reviews-subtitle');
+  const stickerStars = root.querySelector('.reviews-sticker-stars');
+  const readAll = root.querySelector('.reviews-readall');
 
   if (!api) {
-    google.textContent = 'Connect live API to enable auto-updating reviews.';
-    fb.textContent = 'Connect live API to enable auto-updating reviews.';
+    if (subtitle instanceof HTMLElement) {
+      subtitle.textContent = 'Live Google reviews are ready to connect once the review API URL is deployed.';
+    }
     return;
   }
 
   const base = api.replace(/\/+$/, '');
-  const esc = (s) => String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const stars = (n) => '★'.repeat(Math.max(0, Math.min(5, Number(n) || 0)));
 
-  const renderList = (el, block, platform) => {
-    if (block && typeof block === 'object') {
-      if (block.disabled) {
-        el.textContent = `${platform} live reviews are not connected yet.`;
-        return;
-      }
-      if (block.error) {
-        el.textContent = `${platform} live reviews error: ${block.error}`;
-        return;
-      }
+  const syncGoogleReviews = (block) => {
+    if (!block || typeof block !== 'object') return false;
+    if (block.error || block.disabled) return false;
+    const items = Array.isArray(block.reviews) ? block.reviews : [];
+    if (!items.length) return false;
+
+    reviewHighlights = items.slice(0, 7).map((r) => ({
+      name: String(r.name || 'Google user').trim() || 'Google user',
+      meta: String(r.meta || '').trim() || 'Google review',
+      stars: Math.max(0, Math.min(5, Math.round(Number(r.rating) || 0))),
+      when: String(r.meta || '').trim() || 'Recently',
+      text: String(r.text || '').trim()
+    })).filter((r) => r.text);
+
+    if (!reviewHighlights.length) return false;
+
+    renderReviewHighlights();
+
+    if (stickerStars instanceof HTMLElement) {
+      const rating = Math.max(0, Math.min(5, Math.round(Number(block.rating) || 5)));
+      stickerStars.textContent = '★'.repeat(rating || 5);
     }
-    const items = block?.reviews;
-    if (!Array.isArray(items) || !items.length) {
-      el.textContent = `No ${platform} reviews available yet.`;
-      return;
+
+    if (subtitle instanceof HTMLElement) {
+      const parts = [];
+      if (block.total) parts.push(`${Number(block.total).toLocaleString('en-MY')} ratings on Google`);
+      parts.push('Auto-updated from our live Google review API');
+      subtitle.textContent = parts.join(' · ');
     }
-    el.innerHTML = items.slice(0, 6).map((r) => `
-      <div class="live-review">
-        <div class="live-review-top">
-          <div class="live-review-name">${esc(r.name)}</div>
-          <div class="live-review-stars">${stars(r.rating)}</div>
-        </div>
-        <div class="live-review-meta">${esc(r.meta || '')}</div>
-        <div class="live-review-text">${esc(r.text || '')}</div>
-      </div>
-    `).join('');
+
+    if (readAll instanceof HTMLAnchorElement) {
+      readAll.dataset.liveConnected = 'true';
+    }
+
+    return true;
   };
 
   const load = async () => {
-    google.textContent = 'Loading…';
-    fb.textContent = 'Loading…';
+    if (subtitle instanceof HTMLElement) {
+      subtitle.textContent = 'Loading live Google reviews…';
+    }
     try {
       const res = await fetch(`${base}/reviews`, { cache: 'no-store' });
       if (!res.ok) throw new Error(String(res.status));
       const data = await res.json();
-      renderList(google, data?.google, 'Google');
-      renderList(fb, data?.facebook, 'Facebook');
+      const ok = syncGoogleReviews(data?.google);
+      if (!ok && subtitle instanceof HTMLElement) {
+        const err = data?.google?.error ? `Live Google reviews error: ${data.google.error}` : 'No live Google reviews available yet.';
+        subtitle.textContent = err;
+      }
     } catch (e) {
-      google.textContent = 'Unable to load live Google reviews.';
-      fb.textContent = 'Unable to load live Facebook recommendations.';
+      if (subtitle instanceof HTMLElement) {
+        subtitle.textContent = 'Unable to load live Google reviews right now.';
+      }
     }
   };
 

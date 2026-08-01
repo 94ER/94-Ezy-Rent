@@ -539,8 +539,8 @@ footer {
 .hero-ctas { animation: fadeUp 0.6s ease 0.45s both; }
 .hero-brands { animation: fadeUp 0.6s ease 0.6s both; }
 </style>
-<link rel="stylesheet" href="assets/site.css?v=20260730b2" />
-<script src="assets/site.js?v=20260730g" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=20260801a4" />
+<script src="assets/site.js?v=20260801a5" defer></script>
 </head>
 <body data-home>
 
@@ -809,85 +809,167 @@ footer {
 
 <section class="page-section" id="achievements">
   <div class="container">
-    <div class="sec-label">Creator Proof</div>
-    <h2 class="sec-title">Featured By Creators</h2>
-    <p class="lead">Keep the trust-building content, but now framed in a cleaner editorial section that feels closer to a premium automotive or brand storytelling site.</p>
-    <div class="reel-grid reveal">
-
-    <!-- ═══ VIDEO CARD 1 — INFLUENCER FEATURE ═══════════════════════
-         HOW TO ADD YOUR VIDEO:
-         1. Go to your YouTube video → click Share → Copy Link
-         2. The video ID is the part after "watch?v=" e.g. https://youtu.be/dQw4w9WgXcQ → ID is dQw4w9WgXcQ
-         3. Replace YOUR_VIDEO_ID_1 below with your actual ID
-         ══════════════════════════════════════════════════════════════ -->
-    <div class="reel-card">
-      <div class="reel-thumb">
-        <div class="reel-thumb-placeholder" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/YOUR_VIDEO_ID_1?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
-          <div class="play-btn"></div>
-          <span style="font-size:0.7rem;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Click to Play</span>
+    <div class="sec-label">Campaign Story</div>
+    <h2 class="sec-title">KOL Collabs, Ads & FM Features</h2>
+    <p class="lead">A wide white storytelling slideshow inspired by premium automotive campaigns, built to present creator collaborations, influencer ad placements, and FM interview recognition in a cleaner and more credible way.</p>
+    <div class="creator-carousel reveal" data-carousel="creator-proof" data-carousel-dot-label="creator video">
+      <div class="creator-carousel-head">
+        <div class="creator-proofline">
+          <span>KOL campaigns</span>
+          <span class="reviews-dot">·</span>
+          <span>FM achievement stories</span>
+        </div>
+        <div class="creator-carousel-actions">
+          <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous creator video">←</button>
+          <button class="carousel-btn" type="button" data-carousel-next aria-label="Next creator video">→</button>
         </div>
       </div>
-      <div class="reel-caption">
-        <div class="reel-type">Influencer Feature</div>
-        <!-- CHANGE THE TITLE AND DESCRIPTION BELOW TO MATCH YOUR VIDEO -->
-        <div class="reel-title">Mega Influencer Collaboration</div>
-        <div class="reel-desc">Top Malaysian content creator featuring our DJI drone rental for their travel series — 2M+ views.</div>
+      <div class="carousel-track creator-carousel-track" aria-label="Featured creator videos">
+        <article class="creator-slide">
+          <div class="creator-media">
+            <video class="creator-video" muted loop playsinline preload="metadata">
+              <source src="assets/Muachi-collab.mp4?v=20260801a2" type="video/mp4" />
+            </video>
+          </div>
+          <div class="creator-copy">
+            <div class="reel-type">KOL Collaboration</div>
+            <div class="reel-title">Muachi Creator Collaboration</div>
+            <div class="reel-desc">A real creator collaboration story showing 94 EZY RENT gear in audience-facing content, campaign styling, and premium social storytelling.</div>
+            <a class="creator-cta" href="https://www.instagram.com/reel/DXgvdRoE0La/?igsh=MWIzaGxzcXZ0NW5xOA==" target="_blank" rel="noreferrer">View Collaboration</a>
+          </div>
+        </article>
+        <article class="creator-slide">
+          <div class="creator-media">
+            <video class="creator-video" muted loop playsinline preload="metadata">
+              <source src="assets/CAYEE_COLLAB.mp4?v=20260801a1" type="video/mp4" />
+            </video>
+          </div>
+          <div class="creator-copy">
+            <div class="reel-type">Influencer Ad</div>
+            <div class="reel-title">CAYEE Campaign Story</div>
+            <div class="reel-desc">A cleaner ad-style creator feature built for paid reach, polished shareability, and a stronger premium brand impression across social platforms.</div>
+            <a class="creator-cta" href="https://www.instagram.com/reel/DVnmPzrD8EN/?igsh=MWdvY3RpNHQ0OTVoYg==" target="_blank" rel="noreferrer">Watch Story</a>
+          </div>
+        </article>
+        <article class="creator-slide">
+          <div class="creator-media">
+            <video class="creator-video" muted loop playsinline preload="metadata">
+              <source src="assets/keryn_collab.mp4?v=20260801a1" type="video/mp4" />
+            </video>
+          </div>
+          <div class="creator-copy">
+            <div class="reel-type">Creator Story</div>
+            <div class="reel-title">Keryn Social Feature</div>
+            <div class="reel-desc">A creator-led feature that supports brand trust through organic social storytelling, polished presentation, and real audience-facing content placement.</div>
+            <a class="creator-cta" href="https://www.instagram.com/reel/DQKAqyjkqOs/?igsh=MWl4ZTlsbXc3enF2" target="_blank" rel="noreferrer">View Feature</a>
+          </div>
+        </article>
+        <article class="creator-slide">
+          <div class="creator-media">
+            <video class="creator-video" muted loop playsinline preload="metadata">
+              <source src="assets/Serena-colabration.MP4?v=20260801a1" type="video/mp4" />
+            </video>
+          </div>
+          <div class="creator-copy">
+            <div class="reel-type">Collaboration</div>
+            <div class="reel-title">Serena Collaboration Feature</div>
+            <div class="reel-desc">A premium collaboration placement reserved for a direct link later, while still showcasing the creator partnership inside the homepage story sequence.</div>
+            <a class="creator-cta" href="#contact">Enquire Story</a>
+          </div>
+        </article>
+        <article class="creator-slide">
+          <div class="creator-media">
+            <video class="creator-video" muted loop playsinline preload="metadata">
+              <source src="assets/FM interview.mp4?v=20260801a2" type="video/mp4" />
+            </video>
+          </div>
+          <div class="creator-copy">
+            <div class="reel-type">FM Interview</div>
+            <div class="reel-title">Broadcast Recognition That Builds Trust</div>
+            <div class="reel-desc">A media-recognition slide that reinforces 94 EZY RENT as a serious, trusted, and publicly featured rental brand with real industry visibility.</div>
+            <a class="creator-cta" href="https://www.instagram.com/reel/DV8pi1iAb14/?igsh=aTdtM2Nna2N0OWEz" target="_blank" rel="noreferrer">See Highlight</a>
+          </div>
+        </article>
       </div>
-    </div>
-
-    <!-- ═══ VIDEO CARD 2 — FM INTERVIEW ═══════════════════════════════
-         Replace YOUR_VIDEO_ID_2 with your actual YouTube video ID
-         ══════════════════════════════════════════════════════════════ -->
-    <div class="reel-card">
-      <div class="reel-thumb">
-        <div class="reel-thumb-placeholder" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/YOUR_VIDEO_ID_2?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
-          <div class="play-btn"></div>
-          <span style="font-size:0.7rem;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Click to Play</span>
-        </div>
-      </div>
-      <div class="reel-caption">
-        <div class="reel-type">Radio / FM Interview</div>
-        <!-- CHANGE THE TITLE AND DESCRIPTION BELOW TO MATCH YOUR VIDEO -->
-        <div class="reel-title">94 EZY RENT on Air</div>
-        <div class="reel-desc">Our founder interviewed on national FM radio — sharing the story behind Malaysia's easiest camera rental.</div>
-      </div>
-    </div>
-
-    <!-- ═══ VIDEO CARD 3 — INSTAGRAM / ACHIEVEMENT ════════════════════
-         Replace YOUR_VIDEO_ID_3 with your actual YouTube video ID
-         (To use an Instagram Reel, upload it to YouTube first, then paste the ID)
-         ══════════════════════════════════════════════════════════════ -->
-    <div class="reel-card">
-      <div class="reel-thumb">
-        <div class="reel-thumb-placeholder" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/YOUR_VIDEO_ID_3?autoplay=1\' allow=\'autoplay; encrypted-media\' allowfullscreen></iframe>'">
-          <div class="play-btn"></div>
-          <span style="font-size:0.7rem;color:#555;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">Click to Play</span>
-        </div>
-      </div>
-      <div class="reel-caption">
-        <div class="reel-type">Instagram Reel</div>
-        <!-- CHANGE THE TITLE AND DESCRIPTION BELOW TO MATCH YOUR VIDEO -->
-        <div class="reel-title">Viral Reel Highlight</div>
-        <div class="reel-desc">Our Instagram reel showcasing client work shot with 94 EZY RENT gear — hundreds of shares.</div>
-      </div>
-    </div>
-
-    <!-- ═══ ADD MORE VIDEO CARDS HERE ════════════════════════════════
-         Copy one of the blocks above, paste it here, and change the video ID + title + description
-         ══════════════════════════════════════════════════════════════ -->
-
+      <div class="carousel-dots" data-carousel-dots aria-label="Creator video navigation dots"></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<section class="page-section" id="catalogue-preview">
-  <div class="container reveal">
-    <div class="sec-label">Full Lineup</div>
-    <h2 class="sec-title">Browse The Entire Collection</h2>
-    <p class="lead">See the full range of drones, action cameras, 360 devices, digital cameras, and accessories with enquiry links ready to prefill your booking form.</p>
-    <a class="btn-primary" href="catalogue.html">Browse Gear →</a>
+<section class="page-section" id="rednote-feed">
+  <div class="container">
+    <div class="xhs-feed-shell reveal">
+      <div class="xhs-feed-head">
+        <div class="xhs-label">小红书 XIAOHONGSHU</div>
+        <h2 class="sec-title">Guides From Our Feed</h2>
+        <p class="lead">A curated RedNote guide wall for beginners, travellers, and content creators who want quick tips before renting the right gear.</p>
+      </div>
+
+      <div class="xhs-guide-grid">
+        <a class="xhs-guide-card xhs-guide-card-large" href="http://xhslink.com/o/8cXg5ga8mEH" target="_blank" rel="noreferrer">
+          <div class="xhs-guide-poster">
+            <div class="xhs-guide-kicker">Creator Rental</div>
+            <div class="xhs-guide-display">Rent Your Camera</div>
+            <div class="xhs-guide-tags">
+              <span>Beginner</span>
+              <span>Rental Guide</span>
+            </div>
+          </div>
+          <div class="xhs-guide-caption">Rent your camera</div>
+        </a>
+
+        <a class="xhs-guide-card xhs-guide-card-large" href="http://xhslink.com/o/8lNw2x84CEB" target="_blank" rel="noreferrer">
+          <div class="xhs-guide-poster">
+            <div class="xhs-guide-kicker">Fujifilm Tips</div>
+            <div class="xhs-guide-display">Transfer Images & Videos</div>
+            <div class="xhs-guide-tags">
+              <span>Fujifilm</span>
+              <span>Simple Steps</span>
+            </div>
+          </div>
+          <div class="xhs-guide-caption">Fujifilm cameras transfer images and videos with simple steps</div>
+        </a>
+
+        <a class="xhs-guide-card" href="http://xhslink.com/o/1l33xpF3Ij1" target="_blank" rel="noreferrer">
+          <div class="xhs-guide-poster">
+            <div class="xhs-guide-kicker">Drone Basics</div>
+            <div class="xhs-guide-display">DJI Drones Beginner Guide</div>
+            <div class="xhs-guide-tags">
+              <span>First Flight</span>
+            </div>
+          </div>
+          <div class="xhs-guide-caption">DJI drones beginner guide</div>
+        </a>
+
+        <a class="xhs-guide-card" href="http://xhslink.com/o/3rwN3gfs1DE" target="_blank" rel="noreferrer">
+          <div class="xhs-guide-poster">
+            <div class="xhs-guide-kicker">360 Workflow</div>
+            <div class="xhs-guide-display">Insta360 X5 Edits Guide</div>
+            <div class="xhs-guide-tags">
+              <span>Edit Tips</span>
+            </div>
+          </div>
+          <div class="xhs-guide-caption">Insta360 X5 edits guide</div>
+        </a>
+
+        <a class="xhs-guide-card" href="http://xhslink.com/o/6H3qAcEu1Ck" target="_blank" rel="noreferrer">
+          <div class="xhs-guide-poster">
+            <div class="xhs-guide-kicker">Pocket 3 Setup</div>
+            <div class="xhs-guide-display">Pocket 3 Settings</div>
+            <div class="xhs-guide-tags">
+              <span>Quick Setup</span>
+            </div>
+          </div>
+          <div class="xhs-guide-caption">Pocket 3 Settings</div>
+        </a>
+      </div>
+
+      <div class="xhs-feed-cta-wrap">
+        <a class="xhs-feed-cta" href="https://xhslink.cn/m/9kJpMuZeTEn" target="_blank" rel="noreferrer">Follow On Xiaohongshu</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -895,53 +977,26 @@ footer {
 
 <section class="page-section" id="reviews">
   <div class="container">
-    <div class="sec-label">Reviews</div>
-    <h2 class="sec-title">Trusted By Creators</h2>
-    <p class="lead">Real words from real creators — designed in a premium Google-review style while keeping your 94Ezy Rent theme.</p>
-
-    <div class="reviews-shell reveal" data-carousel="reviews">
-      <div class="reviews-overview">
-        <div class="reviews-score">
-          <span class="reviews-score-num">5.0</span>
-          <span class="reviews-score-label">on Google</span>
+    <div class="reviews-shell reviews-editorial reveal" data-carousel="reviews" data-carousel-dot-label="review" data-live-api="https://ezyrent-live-reviews.94renteasy.workers.dev">
+      <div class="reviews-heading">
+        <div class="reviews-sticker">
+          <span class="reviews-sticker-stars" aria-hidden="true">★★★★★</span>
+          <span>Google Reviews</span>
         </div>
-        <div class="reviews-proof">
-          <span>100+ Creators Served</span>
-          <span class="reviews-dot">·</span>
-          <span>WhatsApp Verified</span>
-        </div>
-      </div>
-      <div class="reviews-meta">
-        <div class="reviews-badge google-badge" aria-label="Google Reviews">
-          <span class="g-word" aria-hidden="true">
-            <span class="g-l b">G</span><span class="g-l r">o</span><span class="g-l y">o</span><span class="g-l b">g</span><span class="g-l g">l</span><span class="g-l r">e</span>
-          </span>
-          <span class="google-badge-copy"><strong>Reviews</strong></span>
-        </div>
-        <div class="reviews-actions">
-          <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous review">←</button>
-          <button class="carousel-btn" type="button" data-carousel-next aria-label="Next review">→</button>
-        </div>
+        <h2 class="reviews-title-bar">What renters say</h2>
+        <p class="reviews-subtitle">Real reviews from our Google profile.</p>
       </div>
 
-      <div class="carousel-track" id="reviews-track" aria-label="Customer reviews"></div>
-      <div class="carousel-dots" data-carousel-dots aria-label="Review navigation dots"></div>
+      <div class="reviews-stage">
+        <button class="carousel-btn reviews-stage-btn" type="button" data-carousel-prev aria-label="Previous review">←</button>
+        <div class="carousel-track" id="reviews-track" aria-label="Customer reviews"></div>
+        <button class="carousel-btn reviews-stage-btn" type="button" data-carousel-next aria-label="Next review">→</button>
+      </div>
 
-      <div class="live-widgets" data-live-api="">
-        <div class="live-widget">
-          <div class="live-widget-head">
-            <strong>Google Reviews</strong>
-            <a class="live-widget-link" href="https://maps.app.goo.gl/J9SGgpZp87vZYeEm6?g_st=ic" target="_blank" rel="noreferrer">Open</a>
-          </div>
-          <div class="live-widget-body" id="google-live-widget">Loading…</div>
-        </div>
-        <div class="live-widget">
-          <div class="live-widget-head">
-            <strong>Facebook Recommendations</strong>
-            <a class="live-widget-link" href="https://www.facebook.com/share/1Cr326tD3X/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Open</a>
-          </div>
-          <div class="live-widget-body" id="facebook-live-widget">Facebook live API is optional. Google live reviews will work first.</div>
-        </div>
+      <div class="reviews-swipe-hint">← swipe for more →</div>
+
+      <div class="reviews-readall-wrap">
+        <a class="reviews-readall" href="https://maps.app.goo.gl/J9SGgpZp87vZYeEm6?g_st=ic" target="_blank" rel="noreferrer">Read All Reviews On Google</a>
       </div>
     </div>
   </div>
@@ -1153,7 +1208,7 @@ footer {
 </div><!-- end #main-content -->
 
 <script>
-const reviewHighlights = [
+let reviewHighlights = [
   { name:'Angeline Chew', meta:'Local Guide · 9 reviews', stars:5, when:'Recently', text:'Third time renting here — always smooth, fair pricing, and super friendly guidance on how the gear works. Can do meet-up too. Love renting from this shop.' },
   { name:'Kimmy Lee', meta:'14 reviews', stars:5, when:'Recently', text:'My first camera rental experience was fantastic. Excellent service and they responded quickly. Looking forward to renting again next time.' },
   { name:'Jaslyn__ccclx', meta:'Local Guide · 16 reviews', stars:5, when:'Recently', text:'Camera delivered on time. Flexible collection. Price affordable.' },
@@ -1162,6 +1217,16 @@ const reviewHighlights = [
   { name:'Xuan Kang', meta:'5 reviews', stars:5, when:'Recently', text:'Rented the DJI Pocket 3 — unit was in really good condition and super easy to use. Everything worked perfectly. Smooth and hassle-free process. Would rent again for sure.' },
   { name:'小姐姐 JO', meta:'Local Guide · 23 reviews', stars:5, when:'Recently', text:'Second time renting and I came back again for a reason. Consistently good, friendly and professional service. Equipment was well maintained and gave me lots of confidence using it. Highly recommended.' }
 ];
+
+function escapeHtml(value) {
+  return String(value || '').replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[char]));
+}
 
 function initials(name) {
   const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
@@ -1172,28 +1237,19 @@ function renderReviewHighlights() {
   const track = document.getElementById('reviews-track');
   if (!track) return;
   track.innerHTML = reviewHighlights.map(r => `
-    <article class="review-card" role="group" aria-label="Review by ${r.name}">
-      <div class="review-quote">“${r.text}”</div>
+    <article class="review-card editorial-review-card" role="group" aria-label="Review by ${escapeHtml(r.name)}">
+      <div class="review-card-top">
+        <div class="review-stars" aria-label="${Number(r.stars) || 0} out of 5 stars">${'★'.repeat(Math.max(0, Math.min(5, Number(r.stars) || 0)))}</div>
+        <div class="review-google-mark" aria-hidden="true">G</div>
+      </div>
+      <div class="review-quote">“${escapeHtml(r.text)}”</div>
       <div class="review-bottom">
-        <div class="reviewer">
-          <div class="reviewer-avatar">${initials(r.name)}</div>
-          <div class="reviewer-info">
-            <div class="reviewer-name">${r.name}</div>
-            <div class="reviewer-meta">${r.meta}</div>
-          </div>
+        <div class="reviewer-info">
+          <div class="reviewer-name">${escapeHtml(r.name)}</div>
+          <div class="reviewer-meta">${escapeHtml(r.meta)}</div>
         </div>
         <div class="review-side">
-          <div class="review-stars" aria-label="${r.stars} out of 5 stars">${'★'.repeat(r.stars)}</div>
-          <div class="review-stamp">
-            <span>Verified</span>
-            <span class="reviews-dot">·</span>
-            <span>${r.when || 'Recently'}</span>
-          </div>
-          <div class="review-google" aria-label="Google review">
-            <span class="g-word mini" aria-hidden="true">
-              <span class="g-l b">G</span><span class="g-l r">o</span><span class="g-l y">o</span><span class="g-l b">g</span><span class="g-l g">l</span><span class="g-l r">e</span>
-            </span>
-          </div>
+          <div class="review-time">${escapeHtml(r.when || 'Recently')}</div>
         </div>
       </div>
     </article>

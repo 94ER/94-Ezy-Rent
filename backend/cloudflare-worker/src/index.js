@@ -26,6 +26,7 @@ const normalizeGoogle = (payload) => {
     name: result.name || 'Google',
     rating: result.rating || null,
     total: result.user_ratings_total || null,
+    address: result.formatted_address || '',
     reviews: reviews.slice(0, 6).map((r) => ({
       name: r.author_name || 'Google user',
       rating: r.rating || 0,
@@ -54,12 +55,27 @@ const fetchGoogle = async (env) => {
   }
   const u = new URL('https://maps.googleapis.com/maps/api/place/details/json');
   u.searchParams.set('place_id', env.GOOGLE_PLACE_ID);
-  u.searchParams.set('fields', 'name,rating,user_ratings_total,reviews');
+  u.searchParams.set('fields', 'name,formatted_address,rating,user_ratings_total,reviews');
   u.searchParams.set('reviews_sort', 'newest');
   u.searchParams.set('key', env.GOOGLE_API_KEY);
   const res = await fetch(u.toString());
   if (!res.ok) return { error: `Google API error ${res.status}` };
-  return normalizeGoogle(await res.json());
+  const payload = await res.json();
+  const status = String(payload?.status || '').trim();
+  if (status && status !== 'OK') {
+    const message = cleanText(payload?.error_message || '');
+    return {
+      error: `Google status: ${status}${message ? ` - ${message}` : ''}`,
+      status,
+      placeId: env.GOOGLE_PLACE_ID
+    };
+  }
+  const normalized = normalizeGoogle(payload);
+  return {
+    ...normalized,
+    status: status || 'OK',
+    placeId: env.GOOGLE_PLACE_ID
+  };
 };
 
 const fetchFacebook = async (env) => {

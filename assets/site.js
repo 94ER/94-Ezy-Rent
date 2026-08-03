@@ -510,7 +510,9 @@ function setupLiveReviews() {
   const syncGoogleReviews = (block) => {
     if (!block || typeof block !== 'object') return false;
     if (block.error || block.disabled) return false;
-    const items = Array.isArray(block.reviews) ? block.reviews : [];
+    const items = (Array.isArray(block.reviews) ? block.reviews : []).filter(
+      (r) => Math.round(Number(r?.rating) || 0) === 5
+    );
     if (!items.length) return false;
 
     reviewHighlights = items.slice(0, 7).map((r) => ({
@@ -533,7 +535,7 @@ function setupLiveReviews() {
     if (subtitle instanceof HTMLElement) {
       const parts = [];
       if (block.total) parts.push(`${Number(block.total).toLocaleString('en-MY')} ratings on Google`);
-      parts.push('Auto-updated from our live Google review API');
+      parts.push('Showing only live 5-star Google reviews');
       subtitle.textContent = parts.join(' · ');
     }
 

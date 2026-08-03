@@ -18,6 +18,7 @@ const getTtl = (env) => {
 };
 
 const cleanText = (s) => String(s || '').replace(/\s+/g, ' ').trim();
+const isFiveStar = (review) => Math.round(Number(review?.rating) || 0) === 5;
 
 const normalizeGoogle = (payload) => {
   const result = payload?.result || {};
@@ -27,12 +28,15 @@ const normalizeGoogle = (payload) => {
     rating: result.rating || null,
     total: result.user_ratings_total || null,
     address: result.formatted_address || '',
-    reviews: reviews.slice(0, 6).map((r) => ({
-      name: r.author_name || 'Google user',
-      rating: r.rating || 0,
-      meta: r.relative_time_description || '',
-      text: cleanText(r.text || '')
-    })).filter((r) => r.text)
+    reviews: reviews
+      .map((r) => ({
+        name: r.author_name || 'Google user',
+        rating: r.rating || 0,
+        meta: r.relative_time_description || '',
+        text: cleanText(r.text || '')
+      }))
+      .filter((r) => r.text && isFiveStar(r))
+      .slice(0, 6)
   };
 };
 

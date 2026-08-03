@@ -693,6 +693,7 @@ h1.hero-title {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
   min-height: 58px;
   padding: 0 22px;
   border: 4px solid #111111;
@@ -704,6 +705,27 @@ h1.hero-title {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #111111;
+}
+
+.xhs-label-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ef2b2d;
+  color: #ffffff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.xhs-label-text {
+  display: inline-flex;
+  align-items: center;
 }
 
 .xhs-feed-shell .sec-title {
@@ -1882,6 +1904,12 @@ footer {
     padding: 0 16px;
     box-shadow: 5px 5px 0 #111111;
     font-size: 0.94rem;
+  }
+  .xhs-label-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    font-size: 0.92rem;
   }
   .xhs-guide-grid {
     gap: 16px;

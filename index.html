@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -428,16 +428,24 @@ h1.hero-title {
   font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888;
 }
 .field-label .req { color: var(--red); }
+.booking-hint {
+  font-size: 0.74rem;
+  color: #666;
+  line-height: 1.55;
+}
 .field-input, .field-select {
-  background: #111; border: 1px solid #333; border-radius: 4px;
-  color: var(--white); padding: 0.65rem 0.9rem;
+  background: #fff; border: 1px solid #d0d0d0; border-radius: 4px;
+  color: #111 !important; padding: 0.65rem 0.9rem;
   font-family: 'Barlow', sans-serif; font-size: 0.9rem;
   outline: none; width: 100%; appearance: none; transition: border-color 0.2s;
+  -webkit-text-fill-color: #111 !important;
+  caret-color: #111;
 }
 .field-input:focus, .field-select:focus { border-color: var(--red); }
-.field-input.b-error, .field-select.b-error { border-color: var(--red) !important; background: rgba(208,29,29,0.06); }
-.field-input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.4; }
-.field-select option, .field-select optgroup { background: #1A1A1A; color: #fff; }
+.field-input::placeholder { color: #7a7a7a; }
+.field-input.b-error, .field-select.b-error { border-color: var(--red) !important; background: #fff4f4; }
+.field-input[type="date"] { color-scheme: light; }
+.field-select option, .field-select optgroup { background: #fff; color: #111; }
 .b-field-err { font-size: 0.7rem; color: #FF6B6B; min-height: 14px; }
 .usage-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -539,8 +547,8 @@ footer {
 .hero-ctas { animation: fadeUp 0.6s ease 0.45s both; }
 .hero-brands { animation: fadeUp 0.6s ease 0.6s both; }
 </style>
-<link rel="stylesheet" href="assets/site.css?v=20260801a4" />
-<script src="assets/site.js?v=20260801a5" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=20260802a3" />
+<script src="assets/site.js?v=20260802a3" defer></script>
 </head>
 <body data-home>
 
@@ -749,8 +757,7 @@ footer {
 
       <div class="branches-map-shell" data-branches-showcase>
         <div class="branches-map-stage">
-          <div class="branches-landmass branches-landmass-west" aria-hidden="true"></div>
-          <div class="branches-landmass branches-landmass-east" aria-hidden="true"></div>
+          <img class="branches-map-image" src="assets/MAP.PNG?v=20260802a2" alt="Malaysia branch coverage map" />
 
           <div class="branch-pin branch-pin-penang" data-branch-pin>
             <span class="branch-pin-dot"></span>
@@ -1049,15 +1056,14 @@ footer {
               <option>Olympus OM-D E-M5 III</option>
               <option>RICOH GR IIIx</option>
             </optgroup>
-            <optgroup label="🔧 Accessories">
-              <option>Extra Batteries Pack</option>
-              <option>Memory Card Bundle</option>
-              <option>DJI Mic 2</option>
-            </optgroup>
+            <option value="__other__">Other gear request</option>
           </select>
+          <div class="booking-hint">Accessories and bundles are not listed here. Choose Other gear request and type what you need.</div>
+          <input class="field-input" id="b-equip-other" type="text" placeholder="Type the gear you want to rent..." style="display:none;margin-top:10px;" />
           <div id="b-recommend-note" style="display:none;margin-top:8px;padding:0.65rem 0.9rem;background:rgba(208,29,29,0.08);border:1px solid rgba(208,29,29,0.25);border-radius:4px;font-size:0.8rem;color:#aaa;line-height:1.6;">
             💡 <strong style="color:#fff">No worries!</strong> Fill in your dates, location and shooting purpose — our team will recommend the best gear for you on WhatsApp.
           </div>
+          <div class="b-field-err" id="berr-equip"></div>
         </div>
       </div>
 
@@ -1065,12 +1071,12 @@ footer {
       <div class="booking-row">
         <div class="field-group">
           <label class="field-label">Start Date <span class="req">*</span></label>
-          <input class="field-input" id="b-start" type="text" inputmode="numeric" placeholder="YYYY/MM/DD" onchange="bUpdateEndMin()" />
+          <input class="field-input" id="b-start" type="date" onchange="bUpdateEndMin()" />
           <div class="b-field-err" id="berr-start"></div>
         </div>
         <div class="field-group">
           <label class="field-label">End Date <span class="req">*</span></label>
-          <input class="field-input" id="b-end" type="text" inputmode="numeric" placeholder="YYYY/MM/DD" />
+          <input class="field-input" id="b-end" type="date" />
           <div class="b-field-err" id="berr-end"></div>
         </div>
         <div class="field-group">
@@ -1103,7 +1109,7 @@ footer {
 
       <!-- Shooting purpose -->
       <div class="field-group">
-        <label class="field-label" style="margin-bottom:10px;">What are you shooting? <span style="color:#444;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <label class="field-label" style="margin-bottom:10px;">What are you shooting? <span class="req">*</span></label>
         <div class="usage-grid">
           <div class="usage-option" onclick="bToggleUsage(this)">
             <span class="usage-icon">💍</span><span class="usage-name">Wedding / Event</span>
@@ -1120,10 +1126,12 @@ footer {
           <div class="usage-option" onclick="bToggleUsage(this)">
             <span class="usage-icon">🏠</span><span class="usage-name">Real Estate</span>
           </div>
-          <div class="usage-option" onclick="bToggleUsage(this)">
-            <span class="usage-icon">🎥</span><span class="usage-name">Personal / Other</span>
+          <div class="usage-option" data-usage="__other__" onclick="bToggleUsage(this)">
+            <span class="usage-icon">✍️</span><span class="usage-name">Other</span>
           </div>
         </div>
+        <input class="field-input" id="b-usage-other" type="text" placeholder="Type what the shoot is for..." style="display:none;margin-top:10px;" />
+        <div class="b-field-err" id="berr-usage"></div>
       </div>
 
       <p class="booking-note">⚡ Clicking the button below will open WhatsApp with all your details pre-filled. Our customer service team will confirm availability and pricing within 1 hour.</p>
@@ -1154,7 +1162,7 @@ footer {
       <div class="contact-handle">@94ezyrent</div>
       <div class="contact-action">See our work</div>
     </a>
-    <a class="contact-card" href="https://www.xiaohongshu.com/user/profile/YOUR_ID" target="_blank">
+    <a class="contact-card" href="https://xhslink.cn/m/9kJpMuZeTEn" target="_blank">
       <span class="contact-platform">小红书 · RedNote</span>
       <div class="contact-name">RedNote</div>
       <div class="contact-handle">Follow us on 小红书</div>
@@ -1170,38 +1178,60 @@ footer {
   </div>
 </section>
 
-<div class="divider"></div>
-
-<section class="page-section" id="vision">
-  <div class="container reveal">
-    <div class="sec-label">Vision &amp; Mission</div>
-    <h2 class="sec-title">Built For Creators</h2>
-    <p class="lead">We keep professional gear accessible, reliable, and easy to use — so you can focus on your content.</p>
-    <div class="vm-grid">
-      <div class="vm-card">
-        <div class="vm-title">Vision</div>
-        <div class="vm-text">To be the most trusted creator-first camera and photography rental partner in Malaysia.</div>
-      </div>
-      <div class="vm-card">
-        <div class="vm-title">Mission</div>
-        <div class="vm-text">Deliver clean, well-maintained gear with fast support, fair pricing, and beginner-friendly guidance — making every rental smooth and stress-free.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
+<footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-logo">94好租 <span style="opacity:0.35;">|</span> 94Ezy <span class="red">Rent</span></div>
-    <div class="footer-links">
-      <a href="index.html">Main Page</a>
-      <a href="catalogue.html">Gear</a>
-      <a href="tutorials.html">Tutorial</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="faq.html">FAQ</a>
-      <a href="#contact">Contact</a>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img class="footer-brand-mark" src="assets/logo.png?v=20260729d" alt="94好租 | 94 Ezy Rent" />
+        <p class="footer-brand-copy">Camera, drone and vlog gear rental across Malaysia and Singapore. Shoot more, spend less.</p>
+      </div>
+
+      <div class="footer-nav-grid">
+        <div class="footer-col">
+          <div class="footer-col-title">Social</div>
+          <div class="footer-col-links">
+            <a href="https://www.instagram.com/94ezyrent" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://facebook.com/94ezyrent" target="_blank" rel="noreferrer">Facebook</a>
+            <a href="https://xhslink.cn/m/9kJpMuZeTEn" target="_blank" rel="noreferrer">Xiaohongshu</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Explore</div>
+          <div class="footer-col-links">
+            <a href="catalogue.html">Gear list</a>
+            <a href="gallery.html">Customer gallery</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#branches">Branches</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="faq.html">FAQ</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-col-links">
+            <a href="https://wa.me/60174753794" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a href="mailto:94renteasy@gmail.com">Email us</a>
+            <a href="#booking">Enquiry form</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Compliance</div>
+          <div class="footer-col-links">
+            <a href="privacy-policy.html">Privacy policy</a>
+            <a href="shipping-policy.html">Shipping policy</a>
+            <a href="terms-and-conditions.html">T&amp;C</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="footer-copy">© 2026 94好租 | 94Ezy Rent · Camera &amp; Photography Equipment Rental</div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-line">© 2026 94 Ezy Rent (94好租). Malaysia &amp; Singapore.</div>
+      <div class="footer-bottom-line">SSM: 202503067061</div>
+    </div>
   </div>
 </footer>
 
@@ -1258,9 +1288,15 @@ function renderReviewHighlights() {
 }
 
 function handleBEquipChange(sel) {
+  if (!(sel instanceof HTMLSelectElement)) return;
   const note = document.getElementById('b-recommend-note');
-  if (!note) return;
-  note.style.display = sel.value === '__recommend__' ? 'block' : 'none';
+  const other = document.getElementById('b-equip-other');
+  if (note) note.style.display = sel.value === '__recommend__' ? 'block' : 'none';
+  if (other instanceof HTMLInputElement) {
+    const showOther = sel.value === '__other__';
+    other.style.display = showOther ? 'block' : 'none';
+    if (!showOther) other.value = '';
+  }
 }
 
 function formatLocalDateSlash(d) {
@@ -1271,7 +1307,7 @@ function formatLocalDateSlash(d) {
 }
 
 function parseSlashDate(s) {
-  const m = String(s || '').trim().match(/^(\d{4})\/(\d{2})\/(\d{2})$/);
+  const m = String(s || '').trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (!m) return null;
   const y = Number(m[1]);
   const mo = Number(m[2]);
@@ -1296,6 +1332,7 @@ function bUpdateEndMin() {
   const endEl = document.getElementById('b-end');
   if (!(startEl instanceof HTMLInputElement) || !(endEl instanceof HTMLInputElement)) return;
   const s = startEl.value.trim();
+  endEl.min = s || '';
   const sd = parseSlashDate(s);
   if (!sd) return;
   const ed = parseSlashDate(endEl.value.trim());
@@ -1310,16 +1347,23 @@ function bToggleUsage(el) {
   const wasOn = el.classList.contains('selected');
   document.querySelectorAll('.usage-option').forEach(o => o.classList.remove('selected'));
   if (!wasOn) el.classList.add('selected');
+  const other = document.getElementById('b-usage-other');
+  const showOther = !wasOn && el.dataset.usage === '__other__';
+  if (other instanceof HTMLInputElement) {
+    other.style.display = showOther ? 'block' : 'none';
+    if (!showOther) other.value = '';
+  }
 }
 
 function bSendToWhatsApp() {
-  ['b-start','b-end','b-location','b-location-other'].forEach(id => document.getElementById(id)?.classList.remove('b-error'));
-  ['berr-start','berr-end','berr-location'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = ''; });
+  ['b-equip','b-equip-other','b-start','b-end','b-location','b-location-other','b-usage-other'].forEach(id => document.getElementById(id)?.classList.remove('b-error'));
+  ['berr-equip','berr-start','berr-end','berr-location','berr-usage'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = ''; });
   const banner = document.getElementById('b-error');
   if (banner) banner.style.display = 'none';
 
   const name = document.getElementById('b-name')?.value.trim() || '';
   const equip = document.getElementById('b-equip')?.value || '';
+  const equipOther = document.getElementById('b-equip-other')?.value.trim() || '';
   const start = document.getElementById('b-start')?.value.trim() || '';
   const end = document.getElementById('b-end')?.value.trim() || '';
   const locSel = document.getElementById('b-location');
@@ -1327,8 +1371,12 @@ function bSendToWhatsApp() {
   const locValue = locSel ? String(locSel.value || '').trim() : '';
   const otherValue = locOther ? String(locOther.value || '').trim() : '';
   const location = locValue === '__other__' ? otherValue : locValue;
-  const usageEl = document.querySelector('#booking .usage-option.selected .usage-name');
-  const usage = usageEl ? usageEl.textContent.trim() : '';
+  const usageOption = document.querySelector('#booking .usage-option.selected');
+  const usageEl = usageOption ? usageOption.querySelector('.usage-name') : null;
+  const usageOther = document.getElementById('b-usage-other')?.value.trim() || '';
+  const usage = usageOption && usageOption.dataset.usage === '__other__'
+    ? usageOther
+    : (usageEl ? usageEl.textContent.trim() : '');
 
   const errors = [];
   const today = new Date();
@@ -1336,12 +1384,16 @@ function bSendToWhatsApp() {
   const sd = parseSlashDate(start);
   const ed = parseSlashDate(end);
 
-  if (!start || !sd) { errors.push('📅 Please enter Start Date (YYYY/MM/DD)'); document.getElementById('b-start')?.classList.add('b-error'); const e = document.getElementById('berr-start'); if (e) e.textContent = 'Use format YYYY/MM/DD.'; }
-  if (!end || !ed) { errors.push('📅 Please enter End Date (YYYY/MM/DD)'); document.getElementById('b-end')?.classList.add('b-error'); const e = document.getElementById('berr-end'); if (e) e.textContent = 'Use format YYYY/MM/DD.'; }
+  if (!equip) { errors.push('📷 Please select Equipment'); document.getElementById('b-equip')?.classList.add('b-error'); const e = document.getElementById('berr-equip'); if (e) e.textContent = 'Equipment is required.'; }
+  if (equip === '__other__' && !equipOther) { errors.push('📷 Please type your gear request'); document.getElementById('b-equip-other')?.classList.add('b-error'); const e = document.getElementById('berr-equip'); if (e) e.textContent = 'Type the gear you want to rent.'; }
+  if (!start || !sd) { errors.push('📅 Please choose Start Date'); document.getElementById('b-start')?.classList.add('b-error'); const e = document.getElementById('berr-start'); if (e) e.textContent = 'Start date is required.'; }
+  if (!end || !ed) { errors.push('📅 Please choose End Date'); document.getElementById('b-end')?.classList.add('b-error'); const e = document.getElementById('berr-end'); if (e) e.textContent = 'End date is required.'; }
   if (sd && sd < today) { errors.push('📅 Start Date must be today or later'); document.getElementById('b-start')?.classList.add('b-error'); const e = document.getElementById('berr-start'); if (e) e.textContent = 'Must be today or later.'; }
   if (sd && ed && ed < sd) { errors.push('📅 End Date cannot be before Start Date'); document.getElementById('b-end')?.classList.add('b-error'); const e = document.getElementById('berr-end'); if (e) e.textContent = 'Must be on or after start date.'; }
   if (!locValue) { errors.push('📍 Please select your State'); document.getElementById('b-location')?.classList.add('b-error'); const e = document.getElementById('berr-location'); if (e) e.textContent = 'State is required.'; }
   if (locValue === '__other__' && !otherValue) { errors.push('📍 Please type your Area'); document.getElementById('b-location-other')?.classList.add('b-error'); const e = document.getElementById('berr-location'); if (e) e.textContent = 'Area is required for custom location.'; }
+  if (!usageOption) { errors.push('🎬 Please choose what you are shooting'); const e = document.getElementById('berr-usage'); if (e) e.textContent = 'Shooting purpose is required.'; }
+  if (usageOption && usageOption.dataset.usage === '__other__' && !usageOther) { errors.push('🎬 Please type your shooting purpose'); document.getElementById('b-usage-other')?.classList.add('b-error'); const e = document.getElementById('berr-usage'); if (e) e.textContent = 'Type what the shoot is for.'; }
 
   if (errors.length) {
     if (banner) {
@@ -1353,17 +1405,21 @@ function bSendToWhatsApp() {
   }
 
   const isRecommend = equip === '__recommend__';
-  const equipLabel = isRecommend ? 'Need a recommendation (please advise based on my details)' : (equip || 'Not specified');
+  const equipLabel = isRecommend
+    ? 'Need a recommendation (please advise based on my details)'
+    : (equip === '__other__' ? equipOther : (equip || 'Not specified'));
+  const startDisplay = sd ? formatLocalDateSlash(sd) : start;
+  const endDisplay = ed ? formatLocalDateSlash(ed) : end;
 
   const msg =
     `Hi 94好租 | 94Ezy Rent! 👋\n\n` +
     `I would like to make a rental enquiry:\n\n` +
     `👤 Name: ${name || 'Not provided'}\n` +
     `📷 Equipment: ${equipLabel}\n` +
-    `📅 Rental From: ${start}\n` +
-    `📅 Rental To: ${end}\n` +
+    `📅 Rental From: ${startDisplay}\n` +
+    `📅 Rental To: ${endDisplay}\n` +
     `📍 Location: ${location}\n` +
-    `🎬 Shooting for: ${usage || 'Not specified'}\n\n` +
+    `🎬 Shooting for: ${usage}\n\n` +
     (isRecommend ? `I'm unsure which gear suits my shoot — could you recommend something?\n\n` : '') +
     `Please advise on availability and pricing. Thank you!`;
 
@@ -1376,12 +1432,17 @@ window.addEventListener('DOMContentLoaded', () => {
   const be = document.getElementById('b-end');
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const todayText = formatLocalDateSlash(today);
+  const todayText = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
   if (bs instanceof HTMLInputElement) {
+    bs.min = todayText;
     const parsed = parseSlashDate(bs.value);
     if (!parsed || parsed < today) bs.value = todayText;
+    ['focus', 'click'].forEach(eventName => {
+      bs.addEventListener(eventName, () => bs.showPicker?.());
+    });
   }
   if (be instanceof HTMLInputElement) {
+    be.min = bs instanceof HTMLInputElement && bs.value ? bs.value : todayText;
     const sd = bs instanceof HTMLInputElement ? parseSlashDate(bs.value) : null;
     const ed = parseSlashDate(be.value);
     if (!sd) {
@@ -1389,10 +1450,16 @@ window.addEventListener('DOMContentLoaded', () => {
     } else if (!ed || ed < sd) {
       be.value = bs.value;
     }
+    ['focus', 'click'].forEach(eventName => {
+      be.addEventListener(eventName, () => be.showPicker?.());
+    });
   }
+  handleBEquipChange(document.getElementById('b-equip'));
   bToggleOtherLocation();
   bUpdateEndMin();
 });
 </script>
 </body>
 </html>
+
+

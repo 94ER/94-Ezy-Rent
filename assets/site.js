@@ -1,17 +1,45 @@
 function setupNav() {
   const nav = document.querySelector('nav');
   const btn = document.querySelector('.nav-toggle');
-  if (!nav || !btn) return;
+  const navLinks = nav?.querySelector('.nav-links');
+  if (!nav || !btn || !(navLinks instanceof HTMLElement)) return;
   const supportsTransparentNav = Boolean(
     document.body?.hasAttribute('data-home') ||
     document.body?.hasAttribute('data-transparent-nav')
   );
   const hero = document.getElementById('hero');
+  const hoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+  let closeTimer = null;
+
+  let closeBtn = navLinks.querySelector('.nav-close');
+  if (!(closeBtn instanceof HTMLButtonElement)) {
+    closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'nav-close';
+    closeBtn.setAttribute('aria-label', 'Close menu');
+    closeBtn.textContent = '×';
+    navLinks.prepend(closeBtn);
+  }
+
+  const clearCloseTimer = () => {
+    if (closeTimer) {
+      window.clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+  };
 
   const setOpen = (open) => {
+    clearCloseTimer();
     nav.dataset.open = open ? 'true' : 'false';
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     updateScrolledState();
+  };
+
+  const scheduleClose = (delay = 120) => {
+    clearCloseTimer();
+    closeTimer = window.setTimeout(() => {
+      setOpen(false);
+    }, delay);
   };
 
   const updateScrolledState = () => {
@@ -35,6 +63,8 @@ function setupNav() {
     setOpen(open);
   });
 
+  closeBtn.addEventListener('click', () => setOpen(false));
+
   document.addEventListener('click', (e) => {
     if (!nav.dataset.open || nav.dataset.open !== 'true') return;
     const t = e.target;
@@ -42,8 +72,36 @@ function setupNav() {
     setOpen(false);
   });
 
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.dataset.open === 'true') {
+      setOpen(false);
+    }
+  });
+
   nav.querySelectorAll('a').forEach((a) => {
     a.addEventListener('click', () => setOpen(false));
+  });
+
+  const isHoverMode = () => hoverQuery.matches;
+
+  btn.addEventListener('mouseenter', () => {
+    if (!isHoverMode()) return;
+    setOpen(true);
+  });
+
+  btn.addEventListener('mouseleave', () => {
+    if (!isHoverMode() || nav.dataset.open !== 'true') return;
+    scheduleClose();
+  });
+
+  navLinks.addEventListener('mouseenter', () => {
+    if (!isHoverMode()) return;
+    clearCloseTimer();
+  });
+
+  navLinks.addEventListener('mouseleave', () => {
+    if (!isHoverMode() || nav.dataset.open !== 'true') return;
+    scheduleClose();
   });
 
   window.addEventListener('scroll', updateScrolledState, { passive: true });

@@ -1560,6 +1560,178 @@ footer {
 .footer-links a:hover { color: rgba(255,255,255,0.72); }
 .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.28); }
 
+.site-footer {
+  background: linear-gradient(180deg, #fbfaf7, #f3efe8);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: clamp(16px, 3vw, 24px) var(--gutter) 12px;
+}
+
+.site-footer .footer-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(14px, 2.4vw, 20px);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.05fr) minmax(0, 1.55fr);
+  gap: clamp(16px, 3vw, 28px);
+  align-items: start;
+}
+
+.footer-brand {
+  display: grid;
+  gap: 10px;
+}
+
+.footer-brand-mark {
+  width: min(150px, 48vw);
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.footer-brand-copy {
+  max-width: 20ch;
+  font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+  line-height: 1.55;
+  color: rgba(17,17,17,0.72);
+}
+
+.footer-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.6vw, 16px);
+}
+
+.footer-col {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.footer-col-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(0.84rem, 1.05vw, 0.96rem);
+  font-weight: 800;
+  color: #c79d22;
+  letter-spacing: 0.01em;
+}
+
+.footer-col-links {
+  display: grid;
+  gap: 4px;
+}
+
+.footer-col-links a {
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: rgba(17,17,17,0.72);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-col-links a:hover {
+  color: #111111;
+  transform: translateX(2px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(0,0,0,0.10);
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 14px;
+}
+
+.footer-bottom-line {
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: rgba(17,17,17,0.58);
+}
+
+.footer-bottom-line a {
+  color: #b18300;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-page {
+  padding-top: calc(var(--nav-h) + 24px);
+}
+
+.legal-hero {
+  padding: clamp(48px, 7vw, 88px) 0 18px;
+}
+
+.legal-shell {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(22,22,22,0.98), rgba(14,14,14,0.98));
+  box-shadow: 0 24px 64px rgba(0,0,0,0.24);
+  padding: clamp(24px, 4vw, 38px);
+}
+
+.legal-meta {
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 18px;
+}
+
+.legal-intro {
+  max-width: 70ch;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.72);
+}
+
+.legal-sections {
+  margin-top: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.legal-section {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 18px;
+}
+
+.legal-section h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.28rem, 2.2vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
+
+.legal-section p,
+.legal-section li {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.74);
+}
+
+.legal-section ul {
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.legal-note {
+  margin-top: 26px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(240,205,99,0.08);
+  border: 1px solid rgba(240,205,99,0.2);
+  color: rgba(255,255,255,0.78);
+  line-height: 1.7;
+}
+
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.in { opacity: 1; transform: translateY(0); }
 .reveal { transition-delay: var(--reveal-delay, 0ms); }
@@ -1628,6 +1800,21 @@ footer {
   .prod-card { grid-column: span 12; }
   .contact-card { grid-column: span 12; }
   .cat-grid, .contact-grid { gap: 12px; }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .footer-brand-copy {
+    max-width: none;
+  }
+  .footer-nav-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 18px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .creator-carousel {
     padding: 16px;
   }
@@ -2041,6 +2228,26 @@ nav[data-open="true"] .nav-logo {
 nav[data-open="true"] .nav-links {
   pointer-events: auto;
   transform: translateX(0);
+}
+
+.nav-close {
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.96);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.nav-close:hover {
+  background: rgba(255,255,255,0.12);
 }
 
 .nav-links li {
@@ -2749,38 +2956,20 @@ nav[data-open="true"] .nav-links {
   position: relative;
   min-height: clamp(390px, 48vw, 620px);
   overflow: hidden;
-}
-
-.branches-landmass {
-  position: absolute;
+  border-radius: 28px;
   background:
-    linear-gradient(180deg, #ef101f 0%, #bf0012 100%);
-  filter: drop-shadow(0 14px 30px rgba(0,0,0,0.18));
+    radial-gradient(circle at 18% 12%, rgba(255,255,255,0.16), transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
 }
 
-.branches-landmass::after {
-  content: '';
+.branches-map-image {
   position: absolute;
   inset: 0;
-  border: 2px solid rgba(255,255,255,0.10);
-  mix-blend-mode: screen;
-  pointer-events: none;
-}
-
-.branches-landmass-west {
-  left: 7%;
-  top: 9%;
-  width: 36%;
-  height: 72%;
-  clip-path: polygon(12% 4%, 28% 10%, 37% 18%, 53% 20%, 67% 33%, 75% 49%, 71% 63%, 77% 76%, 73% 88%, 63% 97%, 48% 95%, 36% 85%, 28% 72%, 16% 58%, 9% 39%, 7% 21%);
-}
-
-.branches-landmass-east {
-  right: 7%;
-  top: 15%;
-  width: 42%;
-  height: 52%;
-  clip-path: polygon(15% 38%, 22% 22%, 35% 11%, 53% 15%, 68% 26%, 86% 34%, 93% 48%, 85% 61%, 73% 67%, 63% 79%, 43% 86%, 26% 78%, 12% 61%);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  filter: drop-shadow(0 22px 40px rgba(0,0,0,0.26));
 }
 
 .branch-pin {
@@ -2850,14 +3039,14 @@ nav[data-open="true"] .nav-links {
   transform: skew(-10deg);
 }
 
-.branch-pin-penang { left: 4%; top: 25%; }
-.branch-pin-kl { left: 25%; top: 58%; }
-.branch-pin-melaka { left: 21%; top: 69%; }
-.branch-pin-jb { left: 34%; top: 82%; }
-.branch-pin-singapore { left: 27%; top: 91%; }
-.branch-pin-kk { right: 17%; top: 23%; }
-.branch-pin-semporna { right: 7%; top: 50%; }
-.branch-pin-taiwan { right: 2%; top: 6%; }
+.branch-pin-penang { left: 12.5%; top: 30%; }
+.branch-pin-kl { left: 28.5%; top: 60.5%; }
+.branch-pin-melaka { left: 24%; top: 71%; }
+.branch-pin-jb { left: 35%; top: 86%; }
+.branch-pin-singapore { left: 31%; top: 94%; }
+.branch-pin-kk { right: 21%; top: 29%; }
+.branch-pin-semporna { right: 9%; top: 56%; }
+.branch-pin-taiwan { right: 3.5%; top: 4.5%; }
 
 .branches-pickup-card {
   margin-top: 26px;
@@ -3237,20 +3426,7 @@ footer {
 
   .branches-map-stage {
     min-height: 430px;
-  }
-
-  .branches-landmass-west {
-    left: 2%;
-    top: 12%;
-    width: 45%;
-    height: 65%;
-  }
-
-  .branches-landmass-east {
-    right: 1%;
-    top: 17%;
-    width: 49%;
-    height: 42%;
+    border-radius: 22px;
   }
 
   .branch-pin {
@@ -3274,14 +3450,14 @@ footer {
     height: 12px;
   }
 
-  .branch-pin-penang { left: 0%; top: 28%; }
-  .branch-pin-kl { left: 23%; top: 57%; }
-  .branch-pin-melaka { left: 16%; top: 68%; }
-  .branch-pin-jb { left: 28%; top: 80%; }
-  .branch-pin-singapore { left: 20%; top: 89%; }
-  .branch-pin-kk { right: 12%; top: 24%; }
-  .branch-pin-semporna { right: 1%; top: 49%; }
-  .branch-pin-taiwan { right: -2%; top: 9%; }
+  .branch-pin-penang { left: 8%; top: 30%; }
+  .branch-pin-kl { left: 25%; top: 60%; }
+  .branch-pin-melaka { left: 19%; top: 69%; }
+  .branch-pin-jb { left: 30%; top: 82%; }
+  .branch-pin-singapore { left: 23%; top: 90%; }
+  .branch-pin-kk { right: 13%; top: 35%; }
+  .branch-pin-semporna { right: 5%; top: 55%; }
+  .branch-pin-taiwan { right: -1%; top: 8%; }
 
   .branches-ribbon {
     min-height: 56px;
@@ -3367,5 +3543,11 @@ footer {
   .booking-header {
     padding-left: 18px;
     padding-right: 18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-nav-grid {
+    grid-template-columns: 1fr;
   }
 }

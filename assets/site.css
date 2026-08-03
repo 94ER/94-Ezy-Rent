@@ -3535,8 +3535,11 @@ footer {
   }
 
   .model-tile-media {
-    min-height: 250px;
+    min-height: clamp(290px, 78vw, 360px);
     border-radius: 26px;
+    background-size: cover, contain, cover, cover;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: center center, center center, center center, center center;
   }
 
   .model-tile-overlay {

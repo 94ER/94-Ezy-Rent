@@ -766,6 +766,31 @@ h1.hero-title {
   overflow: hidden;
 }
 
+.xhs-guide-poster-photo {
+  padding: 0;
+  background: #111111;
+}
+
+.xhs-guide-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.xhs-guide-photo-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.42) 100%);
+}
+
 .xhs-guide-card:nth-child(2) .xhs-guide-poster {
   background:
     radial-gradient(circle at 80% 18%, rgba(255,255,255,0.55), transparent 26%),
@@ -3393,7 +3418,7 @@ footer {
   }
 
   .hero-video {
-    object-fit: contain;
+    object-fit: cover;
     object-position: center center;
     background: #0d0d0d;
     filter: none;

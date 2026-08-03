@@ -1848,8 +1848,16 @@ footer {
     flex-direction: column;
   }
   .creator-media {
-    aspect-ratio: 16 / 11;
+    aspect-ratio: 9 / 14;
     border-radius: 22px;
+    background:
+      radial-gradient(circle at 18% 20%, rgba(208,29,29,0.12), transparent 34%),
+      #050505;
+  }
+  .creator-video {
+    object-fit: contain;
+    object-position: center center;
+    background: #050505;
   }
   .creator-copy {
     padding: 0;

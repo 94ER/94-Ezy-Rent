@@ -1070,6 +1070,23 @@ h1.hero-title {
   color: transparent;
 }
 
+.review-facebook-mark {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1877f2;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: lowercase;
+  box-shadow: 0 10px 28px rgba(24,119,242,0.18);
+}
+
 .reviews-editorial .review-quote {
   margin-top: 18px;
   font-size: clamp(1.1rem, 2vw, 1.34rem);
@@ -1982,6 +1999,12 @@ footer {
   }
   .review-google-mark {
     font-size: 2.4rem;
+  }
+  .review-facebook-mark {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    font-size: 2rem;
   }
   .reviews-editorial .review-quote {
     margin-top: 14px;

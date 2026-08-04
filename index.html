@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -547,8 +547,8 @@ footer {
 .hero-ctas { animation: fadeUp 0.6s ease 0.45s both; }
 .hero-brands { animation: fadeUp 0.6s ease 0.6s both; }
 </style>
-<link rel="stylesheet" href="assets/site.css?v=20260803a5" />
-<script src="assets/site.js?v=20260803a4" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=20260803a6" />
+<script src="assets/site.js?v=20260803a5" defer></script>
 </head>
 <body data-home>
 
@@ -1121,36 +1121,31 @@ footer {
 
 <div class="divider"></div>
 
-<!-- CONTACT -->
+<!-- FACEBOOK REVIEWS -->
 <section class="page-section" id="contact">
-  <div class="container reveal">
-    <div class="sec-label">Get In Touch</div>
-    <h2 class="sec-title">Contact Us</h2>
-    <div class="contact-grid">
-    <a class="contact-card" href="https://wa.me/60174753794" target="_blank">
-      <span class="contact-platform">WhatsApp</span>
-      <div class="contact-name">WhatsApp</div>
-      <div class="contact-handle">Chat instantly with our team</div>
-      <div class="contact-action">Send a message</div>
-    </a>
-    <a class="contact-card" href="https://www.instagram.com/94ezyrent" target="_blank">
-      <span class="contact-platform">Instagram</span>
-      <div class="contact-name">Instagram</div>
-      <div class="contact-handle">@94ezyrent</div>
-      <div class="contact-action">See our work</div>
-    </a>
-    <a class="contact-card" href="https://xhslink.cn/m/9kJpMuZeTEn" target="_blank">
-      <span class="contact-platform">小红书 · RedNote</span>
-      <div class="contact-name">RedNote</div>
-      <div class="contact-handle">Follow us on 小红书</div>
-      <div class="contact-action">View our content</div>
-    </a>
-    <a class="contact-card" href="https://facebook.com/94ezyrent" target="_blank">
-      <span class="contact-platform">Facebook</span>
-      <div class="contact-name">Facebook</div>
-      <div class="contact-handle">94 EZY RENT Official</div>
-      <div class="contact-action">Like our page</div>
-    </a>
+  <div class="container">
+    <div class="reviews-shell reviews-editorial reveal" data-carousel="facebook-reviews" data-carousel-dot-label="facebook review" data-live-api="https://ezyrent-live-reviews.94renteasy.workers.dev" data-review-source="facebook">
+      <div class="reviews-heading">
+        <div class="reviews-sticker">
+          <span class="reviews-sticker-stars" aria-hidden="true">★★★★★</span>
+          <span class="reviews-sticker-copy">Facebook Reviews</span>
+        </div>
+        <h2 class="reviews-title-bar">What Facebook followers say</h2>
+        <p class="reviews-subtitle">Real reviews from our Facebook page.</p>
+      </div>
+
+      <div class="reviews-stage">
+        <button class="carousel-btn reviews-stage-btn" type="button" data-carousel-prev aria-label="Previous Facebook review">←</button>
+        <div class="carousel-track" id="facebook-reviews-track" aria-label="Facebook customer reviews"></div>
+        <button class="carousel-btn reviews-stage-btn" type="button" data-carousel-next aria-label="Next Facebook review">→</button>
+      </div>
+
+      <div class="carousel-dots" data-carousel-dots></div>
+      <div class="reviews-swipe-hint">← swipe for more →</div>
+
+      <div class="reviews-readall-wrap">
+        <a class="reviews-readall" href="https://facebook.com/94ezyrent/reviews" target="_blank" rel="noreferrer">Read All Reviews On Facebook</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1224,6 +1219,7 @@ let reviewHighlights = [
   { name:'Xuan Kang', meta:'5 reviews', stars:5, when:'Recently', text:'Rented the DJI Pocket 3 — unit was in really good condition and super easy to use. Everything worked perfectly. Smooth and hassle-free process. Would rent again for sure.' },
   { name:'小姐姐 JO', meta:'Local Guide · 23 reviews', stars:5, when:'Recently', text:'Second time renting and I came back again for a reason. Consistently good, friendly and professional service. Equipment was well maintained and gave me lots of confidence using it. Highly recommended.' }
 ];
+let facebookReviewHighlights = [];
 
 function escapeHtml(value) {
   return String(value || '').replace(/[&<>"']/g, (char) => ({
@@ -1240,14 +1236,16 @@ function initials(name) {
   return parts.slice(0, 2).map(p => p[0]?.toUpperCase()).join('') || 'R';
 }
 
-function renderReviewHighlights() {
-  const track = document.getElementById('reviews-track');
+function renderReviewsIntoTrack(trackId, items, platform = 'google') {
+  const track = document.getElementById(trackId);
   if (!track) return;
-  track.innerHTML = reviewHighlights.map(r => `
+  const markClass = platform === 'facebook' ? 'review-facebook-mark' : 'review-google-mark';
+  const markText = platform === 'facebook' ? 'f' : 'G';
+  track.innerHTML = items.map(r => `
     <article class="review-card editorial-review-card" role="group" aria-label="Review by ${escapeHtml(r.name)}">
       <div class="review-card-top">
         <div class="review-stars" aria-label="${Number(r.stars) || 0} out of 5 stars">${'★'.repeat(Math.max(0, Math.min(5, Number(r.stars) || 0)))}</div>
-        <div class="review-google-mark" aria-hidden="true">G</div>
+        <div class="${markClass}" aria-hidden="true">${markText}</div>
       </div>
       <div class="review-quote">“${escapeHtml(r.text)}”</div>
       <div class="review-bottom">
@@ -1262,6 +1260,14 @@ function renderReviewHighlights() {
     </article>
   `).join('');
   window.dispatchEvent(new Event('resize'));
+}
+
+function renderReviewHighlights() {
+  renderReviewsIntoTrack('reviews-track', reviewHighlights, 'google');
+}
+
+function renderFacebookReviewHighlights() {
+  renderReviewsIntoTrack('facebook-reviews-track', facebookReviewHighlights, 'facebook');
 }
 
 function handleBEquipChange(sel) {
@@ -1405,6 +1411,7 @@ function bSendToWhatsApp() {
 
 window.addEventListener('DOMContentLoaded', () => {
   renderReviewHighlights();
+  renderFacebookReviewHighlights();
   const bs = document.getElementById('b-start');
   const be = document.getElementById('b-end');
   const today = new Date();

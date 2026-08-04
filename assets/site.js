@@ -491,82 +491,116 @@ function setupHeroVideo() {
 }
 
 function setupLiveReviews() {
-  const root = document.querySelector('#reviews .reviews-shell[data-live-api]');
-  if (!(root instanceof HTMLElement)) return;
-  const api = String(root.dataset.liveApi || '').trim();
-  const subtitle = root.querySelector('.reviews-subtitle');
-  const stickerStars = root.querySelector('.reviews-sticker-stars');
-  const readAll = root.querySelector('.reviews-readall');
+  const roots = Array.from(document.querySelectorAll('.reviews-shell[data-live-api]'));
+  if (!roots.length) return;
 
-  if (!api) {
-    if (subtitle instanceof HTMLElement) {
-      subtitle.textContent = 'Live Google reviews are ready to connect once the review API URL is deployed.';
-    }
-    return;
-  }
+  roots.forEach((root) => {
+    if (!(root instanceof HTMLElement)) return;
 
-  const base = api.replace(/\/+$/, '');
+    const api = String(root.dataset.liveApi || '').trim();
+    const source = String(root.dataset.reviewSource || 'google').trim().toLowerCase();
+    const subtitle = root.querySelector('.reviews-subtitle');
+    const stickerStars = root.querySelector('.reviews-sticker-stars');
+    const readAll = root.querySelector('.reviews-readall');
 
-  const syncGoogleReviews = (block) => {
-    if (!block || typeof block !== 'object') return false;
-    if (block.error || block.disabled) return false;
-    const items = (Array.isArray(block.reviews) ? block.reviews : []).filter(
-      (r) => Math.round(Number(r?.rating) || 0) === 5
-    );
-    if (!items.length) return false;
-
-    reviewHighlights = items.slice(0, 7).map((r) => ({
-      name: String(r.name || 'Google user').trim() || 'Google user',
-      meta: String(r.meta || '').trim() || 'Google review',
-      stars: Math.max(0, Math.min(5, Math.round(Number(r.rating) || 0))),
-      when: String(r.meta || '').trim() || 'Recently',
-      text: String(r.text || '').trim()
-    })).filter((r) => r.text);
-
-    if (!reviewHighlights.length) return false;
-
-    renderReviewHighlights();
-
-    if (stickerStars instanceof HTMLElement) {
-      const rating = Math.max(0, Math.min(5, Math.round(Number(block.rating) || 5)));
-      stickerStars.textContent = '★'.repeat(rating || 5);
-    }
-
-    if (subtitle instanceof HTMLElement) {
-      const parts = [];
-      if (block.total) parts.push(`${Number(block.total).toLocaleString('en-MY')} ratings on Google`);
-      parts.push('Showing only live 5-star Google reviews');
-      subtitle.textContent = parts.join(' · ');
-    }
-
-    if (readAll instanceof HTMLAnchorElement) {
-      readAll.dataset.liveConnected = 'true';
-    }
-
-    return true;
-  };
-
-  const load = async () => {
-    if (subtitle instanceof HTMLElement) {
-      subtitle.textContent = 'Loading live Google reviews…';
-    }
-    try {
-      const res = await fetch(`${base}/reviews`, { cache: 'no-store' });
-      if (!res.ok) throw new Error(String(res.status));
-      const data = await res.json();
-      const ok = syncGoogleReviews(data?.google);
-      if (!ok && subtitle instanceof HTMLElement) {
-        const err = data?.google?.error ? `Live Google reviews error: ${data.google.error}` : 'No live Google reviews available yet.';
-        subtitle.textContent = err;
-      }
-    } catch (e) {
+    if (!api) {
       if (subtitle instanceof HTMLElement) {
-        subtitle.textContent = 'Unable to load live Google reviews right now.';
+        subtitle.textContent = source === 'facebook'
+          ? 'Facebook reviews are ready to connect once the page ratings API is enabled.'
+          : 'Live Google reviews are ready to connect once the review API URL is deployed.';
       }
+      return;
     }
-  };
 
-  load();
+    const base = api.replace(/\/+$/, '');
+
+    const syncPlatformReviews = (block) => {
+      if (!block || typeof block !== 'object') return false;
+      if (block.error || block.disabled) return false;
+
+      let items = Array.isArray(block.reviews) ? block.reviews : [];
+      if (source === 'google') {
+        items = items.filter((r) => Math.round(Number(r?.rating) || 0) === 5);
+      }
+      if (!items.length) return false;
+
+      const mapped = items.slice(0, 7).map((r) => ({
+        name: String(r.name || `${source === 'facebook' ? 'Facebook' : 'Google'} user`).trim() || `${source === 'facebook' ? 'Facebook' : 'Google'} user`,
+        meta: String(r.meta || '').trim() || `${source === 'facebook' ? 'Facebook' : 'Google'} review`,
+        stars: Math.max(0, Math.min(5, Math.round(Number(r.rating) || 0))),
+        when: String(r.meta || '').trim() || 'Recently',
+        text: String(r.text || '').trim()
+      })).filter((r) => r.text);
+
+      if (!mapped.length) return false;
+
+      if (source === 'facebook') {
+        facebookReviewHighlights = mapped;
+        renderFacebookReviewHighlights();
+      } else {
+        reviewHighlights = mapped;
+        renderReviewHighlights();
+      }
+
+      if (stickerStars instanceof HTMLElement) {
+        const rating = source === 'google'
+          ? Math.max(0, Math.min(5, Math.round(Number(block.rating) || 5)))
+          : Math.max(0, Math.min(5, Math.round(Number(mapped[0]?.stars) || 5)));
+        stickerStars.textContent = '★'.repeat(rating || 5);
+      }
+
+      if (subtitle instanceof HTMLElement) {
+        const parts = [];
+        if (source === 'google' && block.total) {
+          parts.push(`${Number(block.total).toLocaleString('en-MY')} ratings on Google`);
+          parts.push('Showing only live 5-star Google reviews');
+        } else {
+          parts.push('Auto-updated from our Facebook page reviews');
+        }
+        subtitle.textContent = parts.join(' · ');
+      }
+
+      if (readAll instanceof HTMLAnchorElement) {
+        readAll.dataset.liveConnected = 'true';
+      }
+
+      return true;
+    };
+
+    const load = async () => {
+      if (subtitle instanceof HTMLElement) {
+        subtitle.textContent = source === 'facebook'
+          ? 'Loading live Facebook reviews…'
+          : 'Loading live Google reviews…';
+      }
+      try {
+        const res = await fetch(`${base}/reviews`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(String(res.status));
+        const data = await res.json();
+        const block = source === 'facebook' ? data?.facebook : data?.google;
+        const ok = syncPlatformReviews(block);
+        if (!ok && subtitle instanceof HTMLElement) {
+          if (source === 'facebook') {
+            subtitle.textContent = block?.disabled
+              ? 'Facebook reviews will appear here once the Facebook page ratings connection is enabled.'
+              : 'No live Facebook reviews available yet.';
+          } else {
+            subtitle.textContent = block?.error
+              ? `Live Google reviews error: ${block.error}`
+              : 'No live Google reviews available yet.';
+          }
+        }
+      } catch (e) {
+        if (subtitle instanceof HTMLElement) {
+          subtitle.textContent = source === 'facebook'
+            ? 'Unable to load Facebook reviews right now.'
+            : 'Unable to load live Google reviews right now.';
+        }
+      }
+    };
+
+    load();
+  });
 }
 
 function setupMediaPreviews() {

@@ -3612,6 +3612,19 @@ footer {
 
 @media (max-width: 560px) {
   .footer-nav-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
+  .footer-col:nth-child(2) {
+    order: 1;
+  }
+  .footer-col:nth-child(3) {
+    order: 2;
+  }
+  .footer-col:nth-child(1) {
+    order: 3;
+  }
+  .footer-col:nth-child(4) {
+    order: 4;
   }
 }

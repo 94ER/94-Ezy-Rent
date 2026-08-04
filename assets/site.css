@@ -693,31 +693,14 @@ h1.hero-title {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  min-height: 58px;
-  padding: 0 22px;
-  border: 4px solid #111111;
-  background: #f4dc73;
-  box-shadow: 7px 7px 0 #111111;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(1rem, 1.8vw, 1.34rem);
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #111111;
 }
 
 .xhs-label-icon {
-  width: 40px;
-  height: 40px;
+  width: clamp(148px, 18vw, 210px);
+  height: auto;
   object-fit: contain;
   display: block;
   flex: 0 0 auto;
-}
-
-.xhs-label-text {
-  display: inline-flex;
-  align-items: center;
 }
 
 .xhs-feed-shell .sec-title {
@@ -1924,16 +1907,11 @@ footer {
     padding: 18px 16px 22px;
   }
   .xhs-label {
-    min-height: 50px;
-    padding: 0 16px;
-    box-shadow: 5px 5px 0 #111111;
-    font-size: 0.94rem;
+    width: 100%;
   }
   .xhs-label-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    font-size: 0.92rem;
+    width: min(62vw, 220px);
+    height: auto;
   }
   .xhs-guide-grid {
     gap: 16px;

@@ -40,19 +40,6 @@ const normalizeGoogle = (payload) => {
   };
 };
 
-const normalizeFacebook = (payload) => {
-  const data = Array.isArray(payload?.data) ? payload.data : [];
-  return {
-    name: 'Facebook',
-    reviews: data.slice(0, 6).map((r) => ({
-      name: r.reviewer?.name || 'Facebook user',
-      rating: r.rating || 0,
-      meta: r.created_time ? new Date(r.created_time).toLocaleDateString('en-MY') : '',
-      text: cleanText(r.review_text || r.recommendation_type || '')
-    })).filter((r) => r.text)
-  };
-};
-
 const fetchGoogle = async (env) => {
   if (!env.GOOGLE_API_KEY || !env.GOOGLE_PLACE_ID) {
     return { error: 'Missing GOOGLE_API_KEY or GOOGLE_PLACE_ID' };
@@ -82,18 +69,6 @@ const fetchGoogle = async (env) => {
   };
 };
 
-const fetchFacebook = async (env) => {
-  if (!env.FB_PAGE_ID || !env.FB_PAGE_TOKEN) {
-    return { error: 'Missing FB_PAGE_ID or FB_PAGE_TOKEN' };
-  }
-  const u = new URL(`https://graph.facebook.com/v20.0/${env.FB_PAGE_ID}/ratings`);
-  u.searchParams.set('fields', 'reviewer{name},rating,review_text,recommendation_type,created_time');
-  u.searchParams.set('access_token', env.FB_PAGE_TOKEN);
-  const res = await fetch(u.toString());
-  if (!res.ok) return { error: `Facebook API error ${res.status}` };
-  return normalizeFacebook(await res.json());
-};
-
 export default {
   async fetch(request, env, ctx) {
     const pre = ok(request);
@@ -112,14 +87,9 @@ export default {
     if (cached) return cached;
 
     const google = await fetchGoogle(env);
-    const facebook = (env.FB_PAGE_ID && env.FB_PAGE_TOKEN)
-      ? await fetchFacebook(env)
-      : { disabled: true };
-
     const body = {
       updatedAt: new Date().toISOString(),
-      google,
-      facebook
+      google
     };
 
     const resp = json(body, {

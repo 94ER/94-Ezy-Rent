@@ -1070,23 +1070,6 @@ h1.hero-title {
   color: transparent;
 }
 
-.review-facebook-mark {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #1877f2;
-  color: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2.2rem;
-  font-weight: 900;
-  line-height: 1;
-  text-transform: lowercase;
-  box-shadow: 0 10px 28px rgba(24,119,242,0.18);
-}
-
 .reviews-editorial .review-quote {
   margin-top: 18px;
   font-size: clamp(1.1rem, 2vw, 1.34rem);
@@ -1302,6 +1285,35 @@ h1.hero-title {
 .review-card.active {
   display: flex;
   animation: reviewFade 0.35s ease;
+}
+
+.social-proof-shot {
+  display: none;
+  min-height: 320px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    radial-gradient(900px 240px at 20% 0%, rgba(24,119,242,0.10), transparent 60%),
+    rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  padding: 16px;
+}
+
+.social-proof-shot.active {
+  display: flex;
+  animation: reviewFade 0.35s ease;
+}
+
+.social-proof-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(74vh, 920px);
+  object-fit: contain;
+  object-position: center top;
+  border-radius: calc(var(--radius) - 10px);
+  background: #111111;
 }
 .review-quote {
   font-size: clamp(1rem, 1.35vw, 1.15rem);
@@ -1993,18 +2005,20 @@ footer {
     padding: 16px 16px 0;
     box-shadow: 5px 5px 0 #111111;
   }
+  .social-proof-shot {
+    min-height: 0;
+    padding: 12px;
+    box-shadow: 5px 5px 0 #111111;
+  }
+  .social-proof-image {
+    max-height: none;
+  }
   .reviews-editorial .review-stars {
     font-size: 1.4rem;
     letter-spacing: 0.14em;
   }
   .review-google-mark {
     font-size: 2.4rem;
-  }
-  .review-facebook-mark {
-    width: 46px;
-    height: 46px;
-    border-radius: 14px;
-    font-size: 2rem;
   }
   .reviews-editorial .review-quote {
     margin-top: 14px;

@@ -708,19 +708,11 @@ h1.hero-title {
 }
 
 .xhs-label-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #ef2b2d;
-  color: #ffffff;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem;
-  font-weight: 900;
-  letter-spacing: 0;
-  line-height: 1;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+  flex: 0 0 auto;
 }
 
 .xhs-label-text {
@@ -969,9 +961,12 @@ h1.hero-title {
   color: #111111;
 }
 
-.reviews-sticker-stars {
-  color: #f3c300;
-  letter-spacing: 0.12em;
+.reviews-sticker-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  flex: 0 0 auto;
 }
 
 .reviews-title-bar {

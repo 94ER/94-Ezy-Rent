@@ -693,6 +693,7 @@ h1.hero-title {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
 }
 
 .xhs-label-icon {
@@ -701,6 +702,23 @@ h1.hero-title {
   object-fit: contain;
   display: block;
   flex: 0 0 auto;
+}
+
+.xhs-label-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(40px, 4.6vw, 52px);
+  padding: 0 16px;
+  border: 3px solid #111111;
+  background: #f4dc73;
+  box-shadow: 5px 5px 0 #111111;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.28rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111111;
 }
 
 .xhs-feed-shell .sec-title {
@@ -1908,10 +1926,17 @@ footer {
   }
   .xhs-label {
     width: 100%;
+    gap: 10px;
   }
   .xhs-label-icon {
     width: min(18vw, 64px);
     height: auto;
+  }
+  .xhs-label-text {
+    min-height: 42px;
+    padding: 0 14px;
+    box-shadow: 4px 4px 0 #111111;
+    font-size: 0.96rem;
   }
   .xhs-guide-grid {
     gap: 16px;

@@ -696,7 +696,7 @@ h1.hero-title {
 }
 
 .xhs-label-icon {
-  width: clamp(31px, 3.8vw, 43px);
+  width: clamp(46px, 5.7vw, 64px);
   height: auto;
   object-fit: contain;
   display: block;
@@ -1910,7 +1910,7 @@ footer {
     width: 100%;
   }
   .xhs-label-icon {
-    width: min(12vw, 43px);
+    width: min(18vw, 64px);
     height: auto;
   }
   .xhs-guide-grid {

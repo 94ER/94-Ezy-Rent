@@ -490,6 +490,46 @@ function setupHeroVideo() {
   }
 }
 
+function setupHeroVideoControls() {
+  const video = document.getElementById('hero-video');
+  const playButton = document.getElementById('hero-video-toggle');
+  const audioButton = document.getElementById('hero-audio-toggle');
+  if (!(video instanceof HTMLVideoElement)) return;
+
+  const syncPlayButton = () => {
+    if (!(playButton instanceof HTMLButtonElement)) return;
+    const paused = video.paused;
+    playButton.setAttribute('aria-pressed', paused ? 'true' : 'false');
+    playButton.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
+    playButton.querySelector('span').textContent = paused ? '▶' : '❚❚';
+  };
+
+  const syncAudioButton = () => {
+    if (!(audioButton instanceof HTMLButtonElement)) return;
+    const soundOn = !video.muted;
+    audioButton.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+    audioButton.setAttribute('aria-label', soundOn ? 'Mute video sound' : 'Turn video sound on');
+    audioButton.querySelector('span').textContent = soundOn ? 'Sound on' : 'Sound off';
+  };
+
+  playButton?.addEventListener('click', () => {
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  });
+
+  audioButton?.addEventListener('click', () => {
+    video.muted = !video.muted;
+    syncAudioButton();
+    if (video.paused) video.play().catch(() => {});
+  });
+
+  video.addEventListener('play', syncPlayButton);
+  video.addEventListener('pause', syncPlayButton);
+  video.addEventListener('volumechange', syncAudioButton);
+  syncPlayButton();
+  syncAudioButton();
+}
+
 function setupLiveReviews() {
   const root = document.querySelector('#reviews .reviews-shell[data-live-api]');
   if (!(root instanceof HTMLElement)) return;
@@ -612,6 +652,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSplash();
   document.body.dataset.anim = 'on';
   setupHeroVideo();
+  setupHeroVideoControls();
   setupMediaPreviews();
   setupNav();
   setupReveal();

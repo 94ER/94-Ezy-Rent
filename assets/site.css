@@ -3549,17 +3549,29 @@ footer {
   }
 
   .branch-pin-penang { left: 7%; top: 29%; }
-  .branch-pin-kl { left: 26%; top: 58%; }
-  .branch-pin-melaka { left: 18%; top: 68.5%; }
-  .branch-pin-jb { left: 29%; top: 79%; }
+  .branch-pin-kl { left: 30%; top: 59%; }
+  .branch-pin-melaka {
+    left: 0;
+    top: 68%;
+    flex-direction: row-reverse;
+  }
+  .branch-pin-jb { left: 36%; top: 77.5%; }
   .branch-pin-singapore {
-    left: 22%;
-    top: 89.5%;
+    left: 19%;
+    top: 88.5%;
     flex-direction: row-reverse;
   }
   .branch-pin-kk { right: 11%; top: 32%; }
-  .branch-pin-semporna { right: 3%; top: 55%; }
-  .branch-pin-taiwan { right: 1%; top: 4%; }
+  .branch-pin-semporna {
+    right: 10%;
+    top: 48.5%;
+    flex-direction: row-reverse;
+  }
+  .branch-pin-taiwan {
+    right: 4%;
+    top: 5%;
+    flex-direction: row-reverse;
+  }
 
   .branches-ribbon {
     min-height: 56px;

@@ -3521,19 +3521,21 @@ footer {
   }
 
   .branches-map-stage {
-    min-height: 430px;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 1 / 1;
     border-radius: 22px;
   }
 
   .branch-pin {
-    gap: 8px;
+    gap: 6px;
   }
 
   .branch-pin-label {
-    min-height: 32px;
-    padding: 0 10px;
-    font-size: 0.76rem;
-    box-shadow: 5px 5px 0 rgba(0,0,0,0.78);
+    min-height: 29px;
+    padding: 0 8px;
+    font-size: clamp(0.62rem, 2.8vw, 0.7rem);
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.78);
   }
 
   .branch-pin-dot {
@@ -3546,14 +3548,18 @@ footer {
     height: 12px;
   }
 
-  .branch-pin-penang { left: 8%; top: 30%; }
-  .branch-pin-kl { left: 25%; top: 60%; }
-  .branch-pin-melaka { left: 19%; top: 69%; }
-  .branch-pin-jb { left: 30%; top: 82%; }
-  .branch-pin-singapore { left: 23%; top: 90%; }
-  .branch-pin-kk { right: 13%; top: 35%; }
-  .branch-pin-semporna { right: 5%; top: 55%; }
-  .branch-pin-taiwan { right: -1%; top: 8%; }
+  .branch-pin-penang { left: 7%; top: 29%; }
+  .branch-pin-kl { left: 26%; top: 58%; }
+  .branch-pin-melaka { left: 18%; top: 68.5%; }
+  .branch-pin-jb { left: 29%; top: 79%; }
+  .branch-pin-singapore {
+    left: 22%;
+    top: 89.5%;
+    flex-direction: row-reverse;
+  }
+  .branch-pin-kk { right: 11%; top: 32%; }
+  .branch-pin-semporna { right: 3%; top: 55%; }
+  .branch-pin-taiwan { right: 1%; top: 4%; }
 
   .branches-ribbon {
     min-height: 56px;

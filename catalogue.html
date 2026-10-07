@@ -124,12 +124,15 @@ h1.hero-title {
 .prod-card {
   background: var(--gray); padding: 0; transition: background 0.2s;
   display: flex; flex-direction: column; position: relative; overflow: hidden;
+  color: inherit; text-decoration: none;
 }
 .prod-card:hover { background: #1E1E1E; }
 .prod-img-area {
   height: 160px; background: #111; display: flex; align-items: center; justify-content: center;
   font-size: 4rem; border-bottom: 1px solid #1E1E1E; position: relative; overflow: hidden;
 }
+.prod-gear-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
+.prod-card:hover .prod-gear-image { transform: scale(1.035); }
 .prod-badge {
   position: absolute; top: 10px; left: 10px;
   font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
@@ -173,9 +176,9 @@ footer {
 .footer-links a:hover { color: #aaa; }
 .footer-copy { font-size: 0.72rem; color: #333; }
 </style>
-<link rel="stylesheet" href="assets/site.css?v=20261007b1" />
+<link rel="stylesheet" href="assets/site.css?v=20261007c1" />
 <script src="assets/site.js?v=20260804a3" defer></script>
-<script src="assets/i18n.js?v=20261007b1" defer></script>
+<script src="assets/i18n.js?v=20261007c1" defer></script>
 </head>
 <body data-transparent-nav>
 <nav>
@@ -207,7 +210,7 @@ footer {
     <h1 class="hero-title">
       Our <span class="outline">Gear</span>
     </h1>
-    <p class="hero-sub">Tap “More Enquiry” to jump to the booking form with the gear pre-selected.</p>
+    <p class="hero-sub">Browse the full collection and select any item to view details, included kit, and booking options.</p>
     <div class="hero-ctas">
       <a href="index.html#booking" class="btn-primary">Booking Enquiry</a>
       <a href="tutorials.html" class="btn-outline">Watch Tutorials</a>
@@ -295,40 +298,21 @@ footer {
   </div>
 </footer>
 
+<script src="assets/products.js?v=20261007c1"></script>
 <script>
-const products = [
-  { id:1,  cat:'drone',  icon:'🚁', badge:'Popular', name:'DJI Mini 4 Pro',       desc:'Lightweight 4K/60fps drone with obstacle avoidance. Perfect for travel and events.',          price:'from RM150/day' },
-  { id:2,  cat:'drone',  icon:'🚁', badge:'',        name:'DJI Air 3',             desc:'Dual-camera system with 4K/60fps and 10km transmission range for pro results.',              price:'from RM200/day' },
-  { id:3,  cat:'drone',  icon:'🚁', badge:'',        name:'DJI Mavic 3 Classic',   desc:'Hasselblad sensor, 5.1K video. The filmmaker\'s choice for cinematic aerials.',             price:'from RM250/day' },
-  { id:4,  cat:'drone',  icon:'🚁', badge:'FPV',     name:'DJI Avata 2',           desc:'Immersive FPV drone for fast, cinematic shots and creative perspectives.',                   price:'from RM180/day' },
-  { id:5,  cat:'action', icon:'🎥', badge:'New',     name:'DJI Osmo Action 5 Pro', desc:'4K/120fps, 10-bit D-Log M, RockSteady stabilization. Best action cam we stock.',           price:'from RM80/day'  },
-  { id:6,  cat:'action', icon:'🎬', badge:'',        name:'DJI Pocket 3',          desc:'3-axis gimbal camera with 1\" CMOS sensor. Vlog-ready out of the box.',                      price:'from RM90/day'  },
-  { id:7,  cat:'360',    icon:'🌐', badge:'Popular', name:'Insta360 X4',           desc:'8K 360° video, invisible selfie stick compatible. For truly unique content.',                price:'from RM100/day' },
-  { id:8,  cat:'360',    icon:'🌐', badge:'',        name:'Insta360 ONE RS 1-Inch',desc:'360° and wide-angle modes. Leica lens. Beautiful stills and video.',                        price:'from RM90/day'  },
-  { id:9,  cat:'digital',icon:'📷', badge:'',        name:'Fujifilm X-T5',         desc:'40MP APS-C sensor with iconic film simulations. For photographers who love the look.',      price:'from RM120/day' },
-  { id:10, cat:'digital',icon:'📷', badge:'',        name:'Canon EOS R6 Mark II',  desc:'Full-frame mirrorless, 40fps burst, dual-pixel AF. For stills and video.',                 price:'from RM150/day' },
-  { id:11, cat:'digital',icon:'📷', badge:'',        name:'Olympus OM-D E-M5 III', desc:'Compact weather-sealed mirrorless with 5-axis IBIS. Great for outdoor shoots.',            price:'from RM80/day'  },
-  { id:12, cat:'digital',icon:'📷', badge:'',        name:'RICOH GR IIIx',         desc:'28mm equiv. pocket street camera. Cult favourite for travel and street photography.',      price:'from RM70/day'  },
-  { id:13, cat:'acc',    icon:'🔋', badge:'',        name:'Extra Batteries Pack',  desc:'Spare batteries for DJI drones and cameras. Never miss a shot.',                           price:'from RM20/day'  },
-  { id:14, cat:'acc',    icon:'💾', badge:'',        name:'Memory Card Bundle',    desc:'High-speed SD cards (128GB–256GB). Compatible with all our rental gear.',                  price:'from RM15/day'  },
-  { id:15, cat:'acc',    icon:'🎙️', badge:'',       name:'DJI Mic 2',             desc:'Wireless lavalier mic system. Perfect for interviews and vlogs.',                          price:'from RM50/day'  }
-];
+const products = window.GEAR_PRODUCTS;
 
 function catLabel(c) {
   return { drone:'Drone', action:'Action Camera', '360':'Insta360 & 360°', digital:'Digital Camera', acc:'Accessory' }[c] || c;
-}
-
-function bookingHref(name) {
-  return `index.html?device=${encodeURIComponent(name)}#booking`;
 }
 
 function renderProducts(filter) {
   const grid = document.getElementById('cat-grid');
   const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
   grid.innerHTML = filtered.map(p => `
-    <div class="prod-card" data-cat="${p.cat}">
+    <a class="prod-card" data-cat="${p.cat}" href="product.html?gear=${encodeURIComponent(p.slug)}" aria-label="View ${p.name} details">
       <div class="prod-img-area">
-        <span style="font-size:3.5rem">${p.icon}</span>
+        ${p.image ? `<img class="prod-gear-image" src="${p.image}" alt="${p.name}" />` : `<span style="font-size:3.5rem">${p.icon}</span>`}
         ${p.badge ? `<span class="prod-badge${p.badge==='New'?' new':''}">${p.badge}</span>` : ''}
       </div>
       <div class="prod-body">
@@ -336,9 +320,9 @@ function renderProducts(filter) {
         <div class="prod-name">${p.name}</div>
         <p class="prod-desc">${p.desc}</p>
         <div class="prod-price"><span>${p.price}</span></div>
-        <a class="prod-enquire" href="${bookingHref(p.name)}">More Enquiry →</a>
+        <span class="prod-enquire">View Details →</span>
       </div>
-    </div>
+    </a>
   `).join('');
 }
 
@@ -348,7 +332,10 @@ function filterCat(cat, btn) {
   renderProducts(cat);
 }
 
-renderProducts('all');
+const requestedDevice = new URLSearchParams(window.location.search).get('device');
+const requestedProduct = requestedDevice && products.find((product) => product.name.toLowerCase() === requestedDevice.toLowerCase());
+if (requestedProduct) window.location.replace(`product.html?gear=${encodeURIComponent(requestedProduct.slug)}`);
+else renderProducts('all');
 </script>
 </body>
 </html>

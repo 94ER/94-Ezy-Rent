@@ -4139,3 +4139,53 @@ body[data-language="zh-TW"] .sec-title {
     letter-spacing: 0;
   }
 }
+
+/* Consistent brand header across every page */
+.nav-logo,
+body[data-home] .nav-logo {
+  width: 168px;
+  height: 58px;
+  top: 50%;
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.94);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  backdrop-filter: blur(10px);
+}
+
+.nav-logo-img,
+body[data-home] .nav-logo-img {
+  transform: scale(1.58);
+}
+
+.language-switcher {
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.language-switcher select {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  text-align: center;
+  text-align-last: center;
+}
+
+@media (max-width: 720px) {
+  .nav-logo,
+  body[data-home] .nav-logo {
+    width: 136px;
+    height: 50px;
+  }
+
+  .language-switcher {
+    width: 90px;
+    min-width: 90px;
+    padding: 0;
+  }
+
+  .language-switcher select {
+    padding: 0 6px;
+  }
+}

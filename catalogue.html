@@ -176,11 +176,134 @@ footer {
 .footer-links a:hover { color: #aaa; }
 .footer-copy { font-size: 0.72rem; color: #333; }
 </style>
-<link rel="stylesheet" href="assets/site.css?v=20261008d1" />
+<link rel="stylesheet" href="assets/site.css?v=20261008e1" />
+<style>
+/* Page-specific rules load after the shared system to keep this catalogue dark. */
+body.catalogue-page { background: #080808; color: #fff; }
+
+.catalogue-page #hero.catalogue-hero {
+  min-height: 560px;
+  padding: var(--nav-h) 0 0;
+  align-items: center;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(208,29,29,.2), transparent 32%),
+    radial-gradient(circle at 12% 70%, rgba(255,255,255,.06), transparent 26%),
+    linear-gradient(145deg, #171717 0%, #090909 58%, #040404 100%);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.catalogue-page #hero.catalogue-hero::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,.46));
+}
+.catalogue-page .catalogue-hero .hero-grid {
+  display: block; opacity: .05; background-size: 64px 64px;
+  background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+.catalogue-page .catalogue-hero .hero-glow { opacity: .72; }
+.catalogue-page #hero.catalogue-hero > .container {
+  width: min(100% - 32px, 920px); min-height: 480px; margin: 0 auto; padding: 72px 0 64px;
+  justify-content: center; align-items: center; text-align: center;
+}
+.catalogue-page .catalogue-hero .hero-eyebrow { justify-content: center; margin-bottom: 18px; color: rgba(255,255,255,.72); }
+.catalogue-page .catalogue-hero .hero-eyebrow::after { content: ''; width: 28px; height: 2px; background: var(--red); }
+.catalogue-page .catalogue-hero .hero-title {
+  max-width: none; margin: 0; font-size: clamp(4rem, 10vw, 7.5rem); line-height: .86; color: #fff;
+  text-shadow: 0 18px 50px rgba(0,0,0,.46);
+}
+.catalogue-page .catalogue-hero .hero-title .outline { color: var(--red); -webkit-text-stroke: 0; }
+.catalogue-page .catalogue-hero .hero-sub {
+  max-width: 610px; margin: 22px auto 0; color: rgba(255,255,255,.72); font-size: 1rem; line-height: 1.7;
+}
+.catalogue-page .catalogue-hero .hero-ctas,
+.catalogue-page .catalogue-hero .chip-row { justify-content: center; }
+.catalogue-page .catalogue-hero .hero-ctas { margin-top: 28px; }
+.catalogue-page .catalogue-hero .chip-row { margin-top: 24px; }
+
+.catalogue-page .catalogue-section {
+  max-width: none; margin: 0; padding: clamp(64px, 8vw, 104px) 0; background: #0b0b0b;
+  scroll-margin-top: var(--nav-h);
+}
+.catalogue-page .catalogue-section > .container { width: min(100% - 40px, 1240px); margin: 0 auto; }
+.catalogue-page .catalogue-heading {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 28px; margin-bottom: 30px;
+}
+.catalogue-page .catalogue-heading .sec-label { margin-bottom: 10px; }
+.catalogue-page .catalogue-heading .sec-title { margin: 0 0 14px; color: #fff; }
+.catalogue-page .catalogue-intro { max-width: 600px; color: rgba(255,255,255,.58); font-size: .96rem; line-height: 1.65; }
+.catalogue-page .catalogue-summary {
+  display: flex; align-items: center; gap: 10px; padding: 11px 15px; border: 1px solid rgba(255,255,255,.1);
+  border-radius: 999px; color: rgba(255,255,255,.64); white-space: nowrap; font-size: .78rem; letter-spacing: .04em;
+}
+.catalogue-page .catalogue-summary strong { color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; }
+.catalogue-page .cat-filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 30px; }
+.catalogue-page .cat-filter {
+  min-height: 42px; padding: 0 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
+  background: #131313; color: rgba(255,255,255,.62); letter-spacing: .08em;
+}
+.catalogue-page .cat-filter:hover,
+.catalogue-page .cat-filter.active { border-color: var(--red); background: var(--red); color: #fff; }
+.catalogue-page .cat-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; border: 0; border-radius: 0;
+  background: transparent; overflow: visible; opacity: 1; transform: none;
+}
+.catalogue-page .prod-card {
+  grid-column: auto; min-height: 100%; border: 1px solid rgba(255,255,255,.09); border-radius: 18px; background: #141414;
+  box-shadow: 0 18px 50px rgba(0,0,0,.18); transition: transform .22s ease, border-color .22s ease, background .22s ease;
+}
+.catalogue-page .prod-card:hover { transform: translateY(-4px); border-color: rgba(208,29,29,.58); background: #181818; }
+.catalogue-page .prod-img-area {
+  height: 230px; border-bottom: 1px solid rgba(255,255,255,.07);
+  background: radial-gradient(circle at 50% 42%, rgba(208,29,29,.18), transparent 42%), linear-gradient(145deg, #1c1c1c, #0b0b0b);
+}
+.catalogue-page .prod-img-area > span:not(.prod-badge) {
+  display: grid; width: 112px; height: 112px; place-items: center; border: 1px solid rgba(255,255,255,.1);
+  border-radius: 50%; background: rgba(255,255,255,.035); filter: grayscale(.16);
+}
+.catalogue-page .prod-gear-image { object-fit: cover; }
+.catalogue-page .prod-badge { top: 15px; left: 15px; border-radius: 999px; padding: 6px 10px; }
+.catalogue-page .prod-body { padding: 20px; gap: 8px; }
+.catalogue-page .prod-name { font-size: 1.5rem; }
+.catalogue-page .prod-desc { color: rgba(255,255,255,.55); font-size: .88rem; line-height: 1.6; }
+.catalogue-page .prod-price { padding-top: 16px; font-size: 1.05rem; }
+.catalogue-page .prod-enquire {
+  display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding: 12px 14px;
+  border-color: rgba(208,29,29,.5); border-radius: 9px; color: #fff; background: rgba(208,29,29,.1); text-align: left;
+}
+.catalogue-page .prod-card:hover .prod-enquire { background: var(--red); }
+
+@media (max-width: 900px) { .catalogue-page .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) {
+  .catalogue-page #hero.catalogue-hero { min-height: 610px; }
+  .catalogue-page #hero.catalogue-hero > .container {
+    min-height: 530px; width: min(100% - 40px, 520px); padding: 94px 0 46px;
+  }
+  .catalogue-page .catalogue-hero .hero-title { font-size: clamp(3.75rem, 20vw, 5.25rem); }
+  .catalogue-page .catalogue-hero .hero-sub { font-size: .94rem; }
+  .catalogue-page .catalogue-hero .hero-ctas { width: 100%; gap: 10px; }
+  .catalogue-page .catalogue-hero .hero-ctas .btn-primary,
+  .catalogue-page .catalogue-hero .hero-ctas .btn-outline { width: 100%; }
+  .catalogue-page .catalogue-hero .chip-row { gap: 8px; }
+  .catalogue-page .catalogue-hero .chip { padding: 8px 10px; font-size: .62rem; }
+  .catalogue-page .catalogue-section > .container { width: min(100% - 28px, 520px); }
+  .catalogue-page .catalogue-heading { grid-template-columns: 1fr; gap: 18px; }
+  .catalogue-page .catalogue-summary { width: max-content; }
+  .catalogue-page .cat-filters {
+    flex-wrap: nowrap; width: calc(100% + 14px); margin-right: -14px; padding-right: 14px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .catalogue-page .cat-filters::-webkit-scrollbar { display: none; }
+  .catalogue-page .cat-filter { flex: 0 0 auto; }
+  .catalogue-page .cat-grid { grid-template-columns: 1fr; gap: 14px; }
+  .catalogue-page .prod-card { border-radius: 16px; }
+  .catalogue-page .prod-img-area { height: 210px; }
+}
+</style>
 <script src="assets/site.js?v=20260804a3" defer></script>
-<script src="assets/i18n.js?v=20261008d1" defer></script>
+<script src="assets/i18n.js?v=20261008e1" defer></script>
 </head>
-<body data-transparent-nav>
+<body class="catalogue-page" data-transparent-nav>
 <nav>
   <div class="nav-inner container">
     <a class="nav-logo" href="index.html">
@@ -202,7 +325,7 @@ footer {
   </div>
 </nav>
 
-<div id="hero">
+<div id="hero" class="catalogue-hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="container">
@@ -225,10 +348,16 @@ footer {
 
 <div class="divider"></div>
 
-<section class="page-section" id="catalogue">
+<section class="page-section catalogue-section" id="catalogue">
   <div class="container">
-    <div class="sec-label">Catalogue</div>
-    <h2 class="sec-title">All Equipment</h2>
+    <div class="catalogue-heading">
+      <div>
+        <div class="sec-label">Catalogue</div>
+        <h2 class="sec-title">All Equipment</h2>
+        <p class="catalogue-intro">Explore every camera, drone and creator accessory currently listed by 94 EZY RENT. Select a device to see its details and book directly through WhatsApp.</p>
+      </div>
+      <div class="catalogue-summary"><strong id="catalogue-count">18</strong> devices available</div>
+    </div>
     <div class="cat-filters reveal">
       <button class="cat-filter active" onclick="filterCat('all', this)">All</button>
       <button class="cat-filter" onclick="filterCat('drone', this)">Drones</button>
@@ -237,7 +366,7 @@ footer {
       <button class="cat-filter" onclick="filterCat('digital', this)">Digital Cameras</button>
       <button class="cat-filter" onclick="filterCat('acc', this)">Accessories</button>
     </div>
-    <div class="cat-grid reveal" id="cat-grid"></div>
+    <div class="cat-grid" id="cat-grid"></div>
   </div>
 </section>
 
@@ -298,7 +427,7 @@ footer {
   </div>
 </footer>
 
-<script src="assets/products.js?v=20261008d1"></script>
+<script src="assets/products.js?v=20261008e1"></script>
 <script>
 const products = window.GEAR_PRODUCTS;
 
@@ -309,6 +438,7 @@ function catLabel(c) {
 function renderProducts(filter) {
   const grid = document.getElementById('cat-grid');
   const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
+  document.getElementById('catalogue-count').textContent = filtered.length;
   grid.innerHTML = filtered.map(p => `
     <a class="prod-card" data-cat="${p.cat}" href="product.html?gear=${encodeURIComponent(p.slug)}" aria-label="View ${p.name} details">
       <div class="prod-img-area">

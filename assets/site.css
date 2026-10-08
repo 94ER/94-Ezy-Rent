@@ -4072,6 +4072,10 @@ body[data-home] .model-tile-media {
 }
 
 /* Persistent site language selector */
+.language-switcher-icon {
+  display: none !important;
+}
+
 .language-switcher {
   position: absolute;
   top: 50%;

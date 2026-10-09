@@ -65,6 +65,41 @@
     'Privacy Policy':'Polisi Privasi','Shipping Policy':'Polisi Penghantaran','Terms & Conditions':'Terma & Syarat','Last updated: August 2026':'Kemas kini terakhir: Ogos 2026','Information We May Collect':'Maklumat Yang Mungkin Dikumpul','How We Use Information':'Cara Kami Menggunakan Maklumat','Sharing And Disclosure':'Perkongsian Dan Pendedahan','Data Retention And Security':'Penyimpanan Dan Keselamatan Data','Cookies And Analytics':'Kuki Dan Analitik','Coverage And Delivery Method':'Liputan Dan Kaedah Penghantaran','Processing And Scheduling':'Pemprosesan Dan Penjadualan','Delivery Fees':'Caj Penghantaran','Customer Responsibilities':'Tanggungjawab Pelanggan','Failed Delivery Or Changes':'Penghantaran Gagal Atau Perubahan','Returns':'Pemulangan','Bookings And Availability':'Tempahan Dan Ketersediaan','Customer Information':'Maklumat Pelanggan','Payment And Deposit':'Bayaran Dan Deposit','Use Of Equipment':'Penggunaan Peralatan','Returns, Late Return, Damage, Or Loss':'Pemulangan, Kelewatan, Kerosakan Atau Kehilangan','Cancellations And Changes':'Pembatalan Dan Perubahan','Limitation Of Liability':'Had Liabiliti','Sound off':'Bunyi dimatikan','Sound on':'Bunyi dihidupkan'
   };
 
+  Object.assign(zhCN, {
+    'Camera & Drone Rental Tutorials':'相机与无人机租赁教程',
+    'Explore camera rental equipment available across Malaysia, including mirrorless cameras, drones, action cameras, 360 cameras and creator accessories. Select a device to view details and book directly through WhatsApp.':'浏览马来西亚可租赁的相机设备，包括无反相机、无人机、运动相机、360 相机及创作者配件。选择设备即可查看详情并通过 WhatsApp 直接预订。',
+    'Camera Rental Malaysia':'马来西亚相机租赁',
+    'Camera Rental in Malaysia, KL & Penang':'马来西亚、吉隆坡与槟城相机租赁',
+    '94 Ezy Rent provides checked, shoot-ready cameras, lenses, drones, action cameras and 360 cameras for creators, travellers, events and commercial productions. Book through WhatsApp and confirm the most convenient pickup or delivery option for your location.':'94 Ezy Rent 为创作者、旅客、活动及商业拍摄提供经过检查、随取随拍的相机、镜头、无人机、运动相机和 360 相机。通过 WhatsApp 预订并确认最方便的取件或配送方式。',
+    'Camera & Lens Rental':'相机与镜头租赁',
+    'Choose mirrorless cameras, compact creator cameras and useful accessories for portraits, events, travel videos and everyday content.':'选择适合人像、活动、旅行视频及日常内容的无反相机、便携创作者相机和实用配件。',
+    'Drone & 360 Camera Rental':'无人机与 360 相机租赁',
+    'Capture aerial footage, immersive scenes and action content with DJI drones, Insta360 cameras and stabilised creator gear.':'使用 DJI 无人机、Insta360 相机及稳定拍摄设备，记录航拍、沉浸式场景和动作内容。',
+    'Local Pickup & Delivery':'本地取件与配送',
+    'Pickup support is available in Penang, Kuala Lumpur, Johor Bahru, Melaka, Kota Kinabalu, Semporna and Singapore, subject to confirmation.':'槟城、吉隆坡、新山、马六甲、亚庇、仙本那及新加坡均可安排取件，具体以确认为准。',
+    'Camera rental Penang':'槟城相机租赁','Camera rental Kuala Lumpur':'吉隆坡相机租赁','Camera rental Johor Bahru':'新山相机租赁','Browse all rental equipment':'浏览全部租赁设备'
+  });
+  Object.assign(zhTW, {
+    'Camera & Drone Rental Tutorials':'相機與無人機租賃教學',
+    'Explore camera rental equipment available across Malaysia, including mirrorless cameras, drones, action cameras, 360 cameras and creator accessories. Select a device to view details and book directly through WhatsApp.':'瀏覽馬來西亞可租賃的相機器材，包括無反相機、無人機、運動相機、360 相機及創作者配件。選擇器材即可查看詳情並透過 WhatsApp 直接預訂。',
+    'Camera Rental Malaysia':'馬來西亞相機租賃','Camera Rental in Malaysia, KL & Penang':'馬來西亞、吉隆坡與檳城相機租賃',
+    '94 Ezy Rent provides checked, shoot-ready cameras, lenses, drones, action cameras and 360 cameras for creators, travellers, events and commercial productions. Book through WhatsApp and confirm the most convenient pickup or delivery option for your location.':'94 Ezy Rent 為創作者、旅客、活動及商業拍攝提供經過檢查、可即時拍攝的相機、鏡頭、無人機、運動相機和 360 相機。透過 WhatsApp 預訂並確認最方便的取件或配送方式。',
+    'Camera & Lens Rental':'相機與鏡頭租賃','Choose mirrorless cameras, compact creator cameras and useful accessories for portraits, events, travel videos and everyday content.':'選擇適合人像、活動、旅行影片及日常內容的無反相機、便攜創作者相機和實用配件。',
+    'Drone & 360 Camera Rental':'無人機與 360 相機租賃','Capture aerial footage, immersive scenes and action content with DJI drones, Insta360 cameras and stabilised creator gear.':'使用 DJI 無人機、Insta360 相機及穩定拍攝器材，記錄航拍、沉浸式場景和動作內容。',
+    'Local Pickup & Delivery':'本地取件與配送','Pickup support is available in Penang, Kuala Lumpur, Johor Bahru, Melaka, Kota Kinabalu, Semporna and Singapore, subject to confirmation.':'檳城、吉隆坡、新山、馬六甲、亞庇、仙本那及新加坡均可安排取件，具體以確認為準。',
+    'Camera rental Penang':'檳城相機租賃','Camera rental Kuala Lumpur':'吉隆坡相機租賃','Camera rental Johor Bahru':'新山相機租賃','Browse all rental equipment':'瀏覽全部租賃器材'
+  });
+  Object.assign(ms, {
+    'Camera & Drone Rental Tutorials':'Panduan Sewaan Kamera & Dron',
+    'Explore camera rental equipment available across Malaysia, including mirrorless cameras, drones, action cameras, 360 cameras and creator accessories. Select a device to view details and book directly through WhatsApp.':'Terokai peralatan kamera untuk disewa di Malaysia termasuk kamera tanpa cermin, dron, kamera aksi, kamera 360 dan aksesori kreator. Pilih peralatan untuk melihat butiran dan tempah terus melalui WhatsApp.',
+    'Camera Rental Malaysia':'Sewaan Kamera Malaysia','Camera Rental in Malaysia, KL & Penang':'Sewaan Kamera di Malaysia, KL & Pulau Pinang',
+    '94 Ezy Rent provides checked, shoot-ready cameras, lenses, drones, action cameras and 360 cameras for creators, travellers, events and commercial productions. Book through WhatsApp and confirm the most convenient pickup or delivery option for your location.':'94 Ezy Rent menyediakan kamera, lensa, dron, kamera aksi dan kamera 360 yang diperiksa dan sedia digunakan untuk kreator, pengembara, acara serta produksi komersial. Tempah melalui WhatsApp dan sahkan pilihan pengambilan atau penghantaran yang paling sesuai.',
+    'Camera & Lens Rental':'Sewaan Kamera & Lensa','Choose mirrorless cameras, compact creator cameras and useful accessories for portraits, events, travel videos and everyday content.':'Pilih kamera tanpa cermin, kamera kreator kompak dan aksesori untuk potret, acara, video perjalanan dan kandungan harian.',
+    'Drone & 360 Camera Rental':'Sewaan Dron & Kamera 360','Capture aerial footage, immersive scenes and action content with DJI drones, Insta360 cameras and stabilised creator gear.':'Rakam visual udara, adegan imersif dan kandungan aksi dengan dron DJI, kamera Insta360 dan peralatan kreator yang stabil.',
+    'Local Pickup & Delivery':'Pengambilan & Penghantaran Tempatan','Pickup support is available in Penang, Kuala Lumpur, Johor Bahru, Melaka, Kota Kinabalu, Semporna and Singapore, subject to confirmation.':'Pengambilan tersedia di Pulau Pinang, Kuala Lumpur, Johor Bahru, Melaka, Kota Kinabalu, Semporna dan Singapura, tertakluk pada pengesahan.',
+    'Camera rental Penang':'Sewaan kamera Pulau Pinang','Camera rental Kuala Lumpur':'Sewaan kamera Kuala Lumpur','Camera rental Johor Bahru':'Sewaan kamera Johor Bahru','Browse all rental equipment':'Lihat semua peralatan sewaan'
+  });
+
   const dictionaries = {'zh-CN': zhCN, 'zh-TW': zhTW, ms};
   const skippedTags = new Set(['SCRIPT','STYLE','NOSCRIPT','CODE','PRE','TEXTAREA']);
   let currentLanguage = DEFAULT_LANGUAGE;

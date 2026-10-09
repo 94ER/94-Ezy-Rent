@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://94er.github.io/94-Ezy-Rent/sitemap.xml
+

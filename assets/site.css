@@ -3148,13 +3148,13 @@ nav[data-open="true"] .nav-links {
   white-space: nowrap;
 }
 
-.branch-pin-penang { left: 9%; top: 34%; }
-.branch-pin-kl { left: 24%; top: 59%; }
-.branch-pin-melaka { left: 20%; top: 73%; }
-.branch-pin-jb { left: 38%; top: 84%; }
-.branch-pin-singapore { left: 43%; top: 95%; }
-.branch-pin-kk { left: 58%; top: 35%; }
-.branch-pin-semporna { left: 88%; top: 53%; }
+.branch-pin-penang { left: 7.8%; top: 40.5%; }
+.branch-pin-kl { left: 15.5%; top: 50%; }
+.branch-pin-melaka { left: 24.5%; top: 64%; }
+.branch-pin-jb { left: 46.5%; top: 77.5%; }
+.branch-pin-singapore { left: 47.5%; top: 81.5%; }
+.branch-pin-kk { left: 63.5%; top: 31.5%; }
+.branch-pin-semporna { left: 87.5%; top: 52%; }
 .branch-pin-singapore .branch-pin-label,
 .branch-pin-semporna .branch-pin-label {
   left: auto;
@@ -3568,13 +3568,13 @@ footer {
     height: 12px;
   }
 
-  .branch-pin-penang { left: 9%; top: 34%; }
-  .branch-pin-kl { left: 24%; top: 59%; }
-  .branch-pin-melaka { left: 20%; top: 73%; }
-  .branch-pin-jb { left: 38%; top: 84%; }
-  .branch-pin-singapore { left: 43%; top: 95%; }
-  .branch-pin-kk { left: 58%; top: 35%; }
-  .branch-pin-semporna { left: 88%; top: 53%; }
+  .branch-pin-penang { left: 7.8%; top: 40.5%; }
+  .branch-pin-kl { left: 15.5%; top: 50%; }
+  .branch-pin-melaka { left: 24.5%; top: 64%; }
+  .branch-pin-jb { left: 46.5%; top: 77.5%; }
+  .branch-pin-singapore { left: 47.5%; top: 81.5%; }
+  .branch-pin-kk { left: 63.5%; top: 31.5%; }
+  .branch-pin-semporna { left: 87.5%; top: 52%; }
   .branch-pin-singapore .branch-pin-label,
   .branch-pin-semporna .branch-pin-label {
     left: auto;

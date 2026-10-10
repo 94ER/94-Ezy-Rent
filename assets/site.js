@@ -408,7 +408,7 @@ function setupHeroVideo() {
 
   const revealFrame = () => {
     hero.dataset.ready = 'true';
-    video.style.opacity = '0.78';
+    video.style.removeProperty('opacity');
   };
 
   const attemptPlay = () => {
@@ -425,14 +425,14 @@ function setupHeroVideo() {
 
   const setSource = (src) => {
     hero.dataset.ready = 'false';
-    video.style.opacity = '0.22';
+    video.style.opacity = '0';
     window.clearTimeout(retryTimer);
     while (video.firstChild) video.removeChild(video.firstChild);
     const source = document.createElement('source');
     source.src = src;
     const lower = src.toLowerCase();
-    if (lower.endsWith('.mp4')) source.type = 'video/mp4';
-    if (lower.endsWith('.webm')) source.type = 'video/webm';
+    if (lower.includes('.mp4')) source.type = 'video/mp4';
+    if (lower.includes('.webm')) source.type = 'video/webm';
     video.appendChild(source);
     video.load();
     attemptPlay();

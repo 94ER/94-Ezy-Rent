@@ -226,6 +226,7 @@ nav {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  background: #0d0d0d url('hero-poster.jpg?v=20261010c1') center center / cover no-repeat;
 }
 .hero-video {
   position: absolute;
@@ -238,7 +239,12 @@ nav {
   opacity: 0.98;
   transition: opacity 0.35s ease;
 }
-.hero-media[data-ready="false"] .hero-video { opacity: 0.84; }
+.hero-media[data-ready="false"] .hero-video { opacity: 0; }
+@media (max-width: 720px) {
+  .hero-media {
+    background-image: url('hero-poster-mobile.jpg?v=20261010c1');
+  }
+}
 .hero-media::after {
   content: '';
   position: absolute;

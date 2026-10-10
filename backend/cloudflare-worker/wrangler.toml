@@ -5,3 +5,8 @@ compatibility_date = "2026-05-01"
 [vars]
 CACHE_TTL_SECONDS = "604800"
 GOOGLE_PLACE_ID = "ChIJbYYrdQDJSjARNd9ALh1qvpg"
+ALLOWED_ORIGINS = "https://94er.github.io,http://127.0.0.1:4173,http://localhost:4173"
+
+[[r2_buckets]]
+binding = "PRODUCT_BUCKET"
+bucket_name = "ezyrent-products"

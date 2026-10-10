@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="Camera, drone and creator gear rental details from 94 Ezy Rent." />
 <meta name="twitter:image" content="https://94er.github.io/94-Ezy-Rent/assets/dji-pocket-4-pro.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/site.css?v=20261009c1" />
+<link rel="stylesheet" href="assets/site.css?v=20261010a1" />
 <style>
   body.product-page { background:#080808; color:#fff; min-height:100vh; }
   .product-detail-main { padding:132px var(--gutter) 82px; }
@@ -63,7 +63,7 @@
   }
 </style>
 <script src="assets/site.js?v=20260804a3" defer></script>
-<script src="assets/i18n.js?v=20261009c1" defer></script>
+<script src="assets/i18n.js?v=20261010a1" defer></script>
 <script src="assets/seo.js?v=20261009a1" defer></script>
 </head>
 <body class="product-page" data-transparent-nav>
@@ -72,7 +72,7 @@
     <a class="nav-logo" href="index.html"><img class="nav-logo-img" src="assets/logo.png?v=20260729d" alt="94 Ezy Rent" /></a>
     <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
     <ul class="nav-links">
-      <li><a href="index.html">Main Page</a></li><li><a href="catalogue.html">Gear</a></li><li><a href="tutorials.html">Tutorial</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="index.html#branches">Branches</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="faq.html">FAQ</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li>
+      <li><a href="index.html">Main Page</a></li><li><a href="catalogue.html">Gear</a></li><li><a href="tutorials.html">Tutorial</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="index.html#branches">Branches</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="faq.html">FAQ</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a class="staff-login-link" href="staff.html">Staff Login</a></li>
     </ul>
   </div>
 </nav>
@@ -98,11 +98,11 @@
   </div>
 </footer>
 
-<script src="assets/products.js?v=20261008d1"></script>
+<script src="assets/products.js?v=20261010a1"></script>
 <script>
-  (function () {
+  (async function () {
     const slug = new URLSearchParams(window.location.search).get('gear');
-    const product = window.getGearProduct(slug);
+    const product = await window.getGearProductAsync(slug);
     const target = document.getElementById('product-detail');
     if (!product) {
       target.innerHTML = '<div class="product-not-found"><h1>Gear not found</h1><p>Please return to the catalogue and choose an available item.</p></div>';

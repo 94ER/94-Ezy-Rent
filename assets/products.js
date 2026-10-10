@@ -1,4 +1,5 @@
 (function () {
+  const PRODUCT_API = 'https://ezyrent-live-reviews.94renteasy.workers.dev';
   const products = [
     {slug:'dji-pocket-4-pro',cat:'action',icon:'🎬',badge:'Featured',name:'DJI Pocket 4 Pro',image:'assets/dji-pocket-4-pro.jpg',price:'Contact for rate',desc:'A compact handheld creator camera built for smooth travel videos, daily vlogs and quick social content.',features:['Compact handheld setup','Stabilised creator footage','Travel and vlog friendly'],included:['Camera unit','Protective case','Charging cable']},
     {slug:'insta360-luna-ultra',cat:'360',icon:'🌐',badge:'Featured',name:'Insta360 Luna Ultra',image:'assets/insta360-luna-ultra.jpg',price:'Contact for rate',desc:'An immersive 360 camera option for creative reframing, travel scenes and dynamic social content.',features:['Immersive 360 capture','Flexible reframing workflow','Creator-ready compact setup'],included:['Camera unit','Protective case','Charging cable']},
@@ -21,7 +22,26 @@
   ];
 
   window.GEAR_PRODUCTS = products;
+  window.GEAR_PRODUCT_API = PRODUCT_API;
+  window.loadGearProducts = async function () {
+    try {
+      const response = await fetch(`${PRODUCT_API}/products`, { headers: { accept: 'application/json' }, cache: 'no-store' });
+      if (!response.ok) throw new Error(`Product API ${response.status}`);
+      const payload = await response.json();
+      const staffProducts = Array.isArray(payload.products) ? payload.products : [];
+      const known = new Set(staffProducts.map((product) => product.slug));
+      window.GEAR_PRODUCTS = [...staffProducts, ...products.filter((product) => !known.has(product.slug))];
+    } catch (_) {
+      window.GEAR_PRODUCTS = products;
+    }
+    window.dispatchEvent(new CustomEvent('gear-products-loaded', { detail: window.GEAR_PRODUCTS }));
+    return window.GEAR_PRODUCTS;
+  };
   window.getGearProduct = function (slug) {
-    return products.find((product) => product.slug === slug) || null;
+    return window.GEAR_PRODUCTS.find((product) => product.slug === slug) || null;
+  };
+  window.getGearProductAsync = async function (slug) {
+    await window.loadGearProducts();
+    return window.getGearProduct(slug);
   };
 })();

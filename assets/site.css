@@ -2376,6 +2376,13 @@ nav[data-open="true"] .nav-links {
     0 14px 30px rgba(208,29,29,0.24);
 }
 
+.nav-links .staff-login-link {
+  margin-top: 8px;
+  border-color: rgba(208,29,29,0.48);
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(208,29,29,0.30), rgba(208,29,29,0.12));
+}
+
 .nav-cta {
   margin-top: 10px;
   text-align: center !important;

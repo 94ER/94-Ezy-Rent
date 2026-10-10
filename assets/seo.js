@@ -114,13 +114,15 @@
     graph.push(breadcrumb(document.querySelector('h1')?.textContent.trim() || document.title, canonical));
   }
 
-  if (pageFile === 'catalogue.html' && Array.isArray(window.GEAR_PRODUCTS)) {
+  function addCatalogueList(products) {
+    const existingIndex = graph.findIndex((item) => item['@type'] === 'ItemList');
+    if (existingIndex >= 0) graph.splice(existingIndex, 1);
     graph.push({
       '@type': 'ItemList',
       '@id': `${canonical}#gear-list`,
       name: 'Camera rental equipment available from 94 Ezy Rent',
-      numberOfItems: window.GEAR_PRODUCTS.length,
-      itemListElement: window.GEAR_PRODUCTS.map((product, index) => ({
+      numberOfItems: products.length,
+      itemListElement: products.map((product, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         url: absoluteUrl(`product.html?gear=${encodeURIComponent(product.slug)}`),
@@ -131,6 +133,8 @@
     });
   }
 
+  if (pageFile === 'catalogue.html' && Array.isArray(window.GEAR_PRODUCTS)) addCatalogueList(window.GEAR_PRODUCTS);
+
   if (pageFile === 'faq.html') {
     const faqItems = [...document.querySelectorAll('.faq-card')].map((card) => {
       const question = card.querySelector('.faq-title')?.textContent.trim();
@@ -140,9 +144,7 @@
     if (faqItems.length) graph[0].mainEntity = faqItems;
   }
 
-  if (pageFile === 'product.html' && typeof window.getGearProduct === 'function') {
-    const slug = new URLSearchParams(window.location.search).get('gear');
-    const product = window.getGearProduct(slug);
+  function applyProductSeo(product) {
     if (product) {
       const productUrl = absoluteUrl(`product.html?gear=${encodeURIComponent(product.slug)}`);
       const productTitle = `Rent ${product.name} in Malaysia | 94 Ezy Rent`;
@@ -195,9 +197,24 @@
     }
   }
 
+  if (pageFile === 'product.html' && typeof window.getGearProduct === 'function') {
+    const slug = new URLSearchParams(window.location.search).get('gear');
+    applyProductSeo(window.getGearProduct(slug));
+  }
+
   const structuredData = document.createElement('script');
   structuredData.type = 'application/ld+json';
   structuredData.id = 'site-structured-data';
   structuredData.textContent = JSON.stringify({'@context': 'https://schema.org', '@graph': graph});
   document.head.appendChild(structuredData);
+
+  window.addEventListener('gear-products-loaded', (event) => {
+    const loadedProducts = Array.isArray(event.detail) ? event.detail : [];
+    if (pageFile === 'catalogue.html') addCatalogueList(loadedProducts);
+    if (pageFile === 'product.html') {
+      const slug = new URLSearchParams(window.location.search).get('gear');
+      applyProductSeo(loadedProducts.find((product) => product.slug === slug));
+    }
+    structuredData.textContent = JSON.stringify({'@context': 'https://schema.org', '@graph': graph});
+  });
 })();

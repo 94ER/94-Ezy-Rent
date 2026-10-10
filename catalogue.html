@@ -193,7 +193,7 @@ footer {
 .footer-links a:hover { color: #aaa; }
 .footer-copy { font-size: 0.72rem; color: #333; }
 </style>
-<link rel="stylesheet" href="assets/site.css?v=20261010a1" />
+<link rel="stylesheet" href="assets/site.css?v=20261010b1" />
 <style>
 /* Page-specific rules load after the shared system to keep this catalogue dark. */
 body.catalogue-page { background: #080808; color: #fff; }
@@ -289,6 +289,13 @@ body.catalogue-page { background: #080808; color: #fff; }
   border-color: rgba(208,29,29,.5); border-radius: 9px; color: #fff; background: rgba(208,29,29,.1); text-align: left;
 }
 .catalogue-page .prod-card:hover .prod-enquire { background: var(--red); }
+.catalogue-empty {
+  grid-column: 1 / -1; min-height: 280px; display: grid; place-items: center; padding: 48px 24px;
+  border: 1px dashed rgba(255,255,255,.16); border-radius: 20px; text-align: center; background: #111;
+}
+.catalogue-empty h3 { margin-bottom: 10px; font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; text-transform: uppercase; }
+.catalogue-empty p { max-width: 520px; margin: 0 auto 22px; color: rgba(255,255,255,.56); line-height: 1.65; }
+.catalogue-empty .btn-primary { width: min(100%, 280px); }
 
 @media (max-width: 900px) { .catalogue-page .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 620px) {
@@ -318,8 +325,8 @@ body.catalogue-page { background: #080808; color: #fff; }
 }
 </style>
 <script src="assets/site.js?v=20260804a3" defer></script>
-<script src="assets/i18n.js?v=20261010a1" defer></script>
-<script src="assets/seo.js?v=20261009a1" defer></script>
+<script src="assets/i18n.js?v=20261010b1" defer></script>
+<script src="assets/seo.js?v=20261010b1" defer></script>
 </head>
 <body class="catalogue-page" data-transparent-nav>
 <nav>
@@ -376,7 +383,7 @@ body.catalogue-page { background: #080808; color: #fff; }
         <h2 class="sec-title">All Equipment</h2>
         <p class="catalogue-intro">Explore camera rental equipment available across Malaysia, including mirrorless cameras, drones, action cameras, 360 cameras and creator accessories. Select a device to view details and book directly through WhatsApp.</p>
       </div>
-      <div class="catalogue-summary"><strong id="catalogue-count">18</strong> devices available</div>
+      <div class="catalogue-summary"><strong id="catalogue-count">0</strong> <span id="catalogue-count-label">devices available</span></div>
     </div>
     <div class="cat-filters reveal">
       <button class="cat-filter active" onclick="filterCat('all', this)">All</button>
@@ -449,7 +456,7 @@ body.catalogue-page { background: #080808; color: #fff; }
   </div>
 </footer>
 
-<script src="assets/products.js?v=20261010a1"></script>
+<script src="assets/products.js?v=20261010b1"></script>
 <script>
 let products = window.GEAR_PRODUCTS;
 
@@ -461,6 +468,10 @@ function renderProducts(filter) {
   const grid = document.getElementById('cat-grid');
   const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
   document.getElementById('catalogue-count').textContent = filtered.length;
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="catalogue-empty"><div><h3>${products.length ? 'No gear in this category yet' : 'New catalogue coming soon'}</h3><p>${products.length ? 'Choose another category to see the equipment currently available.' : 'Our team is preparing the latest rental collection. Contact us for a recommendation or availability check.'}</p><a class="btn-primary" href="contact.html">Contact Our Team</a></div></div>`;
+    return;
+  }
   grid.innerHTML = filtered.map(p => `
     <a class="prod-card" data-cat="${p.cat}" href="product.html?gear=${encodeURIComponent(p.slug)}" aria-label="View ${p.name} details">
       <div class="prod-img-area">

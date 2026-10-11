@@ -4498,6 +4498,24 @@ body[data-language="zh-TW"] .sec-title {
   letter-spacing: -0.02em;
 }
 
+body[data-home] .hero-title-line {
+  display: block;
+}
+
+body[data-home][data-language="zh-CN"] .hero-title,
+body[data-home][data-language="zh-TW"] .hero-title {
+  width: fit-content;
+  max-width: none;
+  font-size: clamp(4.4rem, 7vw, 7rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+body[data-home][data-language="zh-CN"] .hero-title-line,
+body[data-home][data-language="zh-TW"] .hero-title-line {
+  white-space: nowrap;
+}
+
 @media (max-width: 720px) {
   .language-switcher {
     right: 8px;
@@ -4510,6 +4528,12 @@ body[data-language="zh-TW"] .sec-title {
   .language-switcher select {
     font-size: 0.64rem;
     letter-spacing: 0;
+  }
+
+  body[data-home][data-language="zh-CN"] .hero-title,
+  body[data-home][data-language="zh-TW"] .hero-title {
+    max-width: 100%;
+    font-size: clamp(3rem, 15vw, 4rem);
   }
 }
 

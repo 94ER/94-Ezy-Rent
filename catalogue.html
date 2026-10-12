@@ -320,10 +320,41 @@ body.catalogue-page { background: #080808; color: #fff; }
   .catalogue-page .cat-filters::-webkit-scrollbar { display: none; }
   .catalogue-page .cat-filter { flex: 0 0 auto; }
   .catalogue-page .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
-  .catalogue-page .prod-card { min-height: 0; border: 0; border-radius: 2px; box-shadow: none; }
+  .catalogue-page .prod-card { min-height: 0; border: 0; border-radius: 2px; background: #111; box-shadow: none; }
   .catalogue-page .prod-img-area { width: 100%; height: auto; aspect-ratio: 4 / 5; border: 0; }
   .catalogue-page .prod-badge,
-  .catalogue-page .prod-body { display: none; }
+  .catalogue-page .prod-category,
+  .catalogue-page .prod-desc,
+  .catalogue-page .prod-enquire { display: none; }
+  .catalogue-page .prod-body {
+    min-height: 70px;
+    padding: 9px 7px 10px;
+    gap: 5px;
+  }
+  .catalogue-page .prod-name {
+    min-height: 2.25em;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: .78rem;
+    line-height: 1.12;
+    letter-spacing: .01em;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .catalogue-page .prod-price {
+    overflow: hidden;
+    margin-top: auto;
+    padding: 0;
+    color: rgba(255,255,255,.66);
+    font-size: .62rem;
+    line-height: 1.1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .catalogue-page .prod-price span {
+    color: #ef2929;
+    font-size: .7rem;
+  }
 }
 </style>
 <script src="assets/site.js?v=20260804a3" defer></script>

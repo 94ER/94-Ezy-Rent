@@ -245,6 +245,7 @@ nav {
     background-image: url('hero-poster-mobile.jpg?v=20261010c1');
   }
 }
+
 .hero-media::after {
   content: '';
   position: absolute;
@@ -4584,5 +4585,107 @@ body[data-home] .nav-logo-img {
 
   .language-switcher select {
     padding: 0 6px;
+  }
+}
+
+/* Staff-uploaded product artwork uses the same uncropped 4:5 presentation as Instagram posts. */
+body[data-home] .home-product-card {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 18px;
+  background: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+body[data-home] .home-product-card:hover,
+body[data-home] .home-product-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.17);
+  outline: none;
+}
+
+body[data-home] .home-product-artwork {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #0d0d0d;
+}
+
+body[data-home] .home-product-artwork img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+body[data-home] .home-product-info {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+body[data-home] .home-product-info > span:first-child {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+body[data-home] .home-product-info small {
+  color: rgba(255,255,255,0.54);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body[data-home] .home-product-info strong {
+  overflow: hidden;
+  font: 900 1.25rem/1.05 'Barlow Condensed', sans-serif;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body[data-home] .home-product-arrow {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 50%;
+  font-size: 1.15rem;
+}
+
+@media (max-width: 720px) {
+  body[data-home] .model-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3px;
+    margin-top: 24px;
+  }
+
+  body[data-home] .model-tile {
+    min-width: 0;
+  }
+
+  body[data-home] .home-product-card {
+    border: 0;
+    border-radius: 2px;
+    box-shadow: none;
+  }
+
+  body[data-home] .home-product-info {
+    display: none;
   }
 }

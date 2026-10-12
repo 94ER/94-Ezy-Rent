@@ -153,7 +153,7 @@ const handleProductUpload = async (request, env, url) => {
 
   await env.PRODUCT_BUCKET.put(imageKey, file.stream(), {
     httpMetadata: { contentType: file.type, cacheControl: 'public, max-age=31536000, immutable' },
-    customMetadata: { widthGuide: '1600', heightGuide: '1200', uploadedBy: 'staff' }
+    customMetadata: { widthGuide: '1080', heightGuide: '1350', aspectRatio: '4:5', uploadedBy: 'staff' }
   });
   products.unshift(product);
   await saveProducts(env, products);

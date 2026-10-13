@@ -22,7 +22,7 @@ const allowedOrigin = (request, env) => {
 
 const corsHeaders = (request, env) => ({
   'access-control-allow-origin': allowedOrigin(request, env),
-  'access-control-allow-methods': 'GET,POST,DELETE,OPTIONS',
+  'access-control-allow-methods': 'GET,POST,PUT,DELETE,OPTIONS',
   'access-control-allow-headers': 'authorization,content-type',
   'access-control-max-age': '86400',
   vary: 'Origin'
@@ -160,6 +160,47 @@ const handleProductUpload = async (request, env, url) => {
   return json(request, env, { ok: true, product }, { status: 201 });
 };
 
+const handleProductUpdate = async (request, env, url, slug) => {
+  if (!env.PRODUCT_BUCKET) return json(request, env, { error: 'Product storage is not configured.' }, { status: 503 });
+  const products = await getProducts(env);
+  const index = products.findIndex((item) => item.slug === slug);
+  if (index === -1) return json(request, env, { error: 'Product not found.' }, { status: 404 });
+
+  const existing = products[index];
+  const form = await request.formData();
+  const file = form.get('image');
+  const hasReplacement = file instanceof File && file.size > 0;
+  let imageKey = existing.imageKey || '';
+  let imageUrl = existing.image || '';
+
+  if (hasReplacement) {
+    const extension = imageExtension(file.type);
+    if (!extension) return json(request, env, { error: 'Use a JPG, PNG or WebP image.' }, { status: 400 });
+    if (file.size > MAX_IMAGE_BYTES) return json(request, env, { error: 'The image must be 5 MB or smaller.' }, { status: 400 });
+    imageKey = `product-images/${existing.slug}-${crypto.randomUUID()}.${extension}`;
+    imageUrl = `${url.origin}/${imageKey}`;
+  }
+
+  form.set('slug', existing.slug);
+  const product = productPayload(form, imageUrl, imageKey);
+  const error = validateProduct(product);
+  if (error) return json(request, env, { error }, { status: 400 });
+
+  if (hasReplacement) {
+    await env.PRODUCT_BUCKET.put(imageKey, file.stream(), {
+      httpMetadata: { contentType: file.type, cacheControl: 'public, max-age=31536000, immutable' },
+      customMetadata: { widthGuide: '1080', heightGuide: '1350', aspectRatio: '4:5', uploadedBy: 'staff' }
+    });
+  }
+
+  products[index] = product;
+  await saveProducts(env, products);
+  if (hasReplacement && existing.imageKey && existing.imageKey !== imageKey) {
+    await env.PRODUCT_BUCKET.delete(existing.imageKey);
+  }
+  return json(request, env, { ok: true, product });
+};
+
 const handleProductDelete = async (request, env, slug) => {
   const products = await getProducts(env);
   const product = products.find((item) => item.slug === slug);
@@ -238,6 +279,7 @@ export default {
       if (denied) return denied;
       if (request.method === 'GET' && url.pathname === '/admin/products') return json(request, env, { products: await getProducts(env) });
       if (request.method === 'POST' && url.pathname === '/admin/products') return handleProductUpload(request, env, url);
+      if (request.method === 'PUT' && url.pathname.startsWith('/admin/products/')) return handleProductUpdate(request, env, url, decodeURIComponent(url.pathname.slice('/admin/products/'.length)));
       if (request.method === 'DELETE' && url.pathname.startsWith('/admin/products/')) return handleProductDelete(request, env, decodeURIComponent(url.pathname.slice('/admin/products/'.length)));
     }
 

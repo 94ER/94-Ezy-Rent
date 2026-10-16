@@ -1528,6 +1528,7 @@ h1.hero-title {
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 14px;
   overflow: hidden;
+  scroll-margin-top: calc(var(--nav-h) + 18px);
 }
 .booking-header {
   background: rgba(208,29,29,0.92);

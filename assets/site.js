@@ -384,6 +384,23 @@ function setupBookingAutofill() {
   if (typeof window.handleBEquipChange === 'function') window.handleBEquipChange(equipSel);
 }
 
+function setupEnquiryDeepLink() {
+  if (window.location.hash !== '#rental-enquiry-form') return;
+
+  const placeFormBelowNav = () => {
+    const form = document.getElementById('rental-enquiry-form');
+    if (!(form instanceof HTMLElement)) return;
+    const nav = document.querySelector('nav');
+    const navHeight = nav instanceof HTMLElement ? nav.offsetHeight : 0;
+    const top = window.scrollY + form.getBoundingClientRect().top - navHeight - 18;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+  };
+
+  window.requestAnimationFrame(() => window.requestAnimationFrame(placeFormBelowNav));
+  window.addEventListener('load', placeFormBelowNav, { once: true });
+  [250, 900, 1800].forEach((delay) => window.setTimeout(placeFormBelowNav, delay));
+}
+
 function setupHeroVideo() {
   const hero = document.querySelector('#hero .hero-media');
   const video = document.getElementById('hero-video');
@@ -659,6 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupBranchesShowcase();
   setupCarousels();
   setupBookingAutofill();
+  setupEnquiryDeepLink();
   setupTutorialFilters();
   setupLiveReviews();
 });

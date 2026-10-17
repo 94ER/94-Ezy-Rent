@@ -23,7 +23,15 @@
     url('assets/how-it-works-handover-background.png?v=20261017a1') center center / cover no-repeat,
     #0b0b0b;
 }
-#hero.how-hero > .container { padding-right: min(48vw, 680px); }
+#hero.how-hero > .container {
+  width: min(100% - 48px, 720px);
+  padding: var(--nav-h) 24px 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.how-hero .sec-label { justify-content: center; color: rgba(255,255,255,.68); }
+.how-hero .lead { max-width: 620px; margin-left: auto; margin-right: auto; }
 @media (max-width: 720px) {
   #hero.how-hero {
     min-height: 560px;
@@ -34,10 +42,9 @@
   }
   #hero.how-hero > .container {
     min-height: 560px;
-    justify-content: flex-start;
-    padding-top: calc(var(--nav-h) + 64px);
-    padding-right: 0;
-    padding-bottom: 180px;
+    width: min(100% - 32px, 520px);
+    justify-content: center;
+    padding: calc(var(--nav-h) + 24px) 16px 180px;
   }
 }
 </style>

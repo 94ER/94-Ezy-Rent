@@ -83,17 +83,17 @@ nav {
 }
 #hero.tutorial-hero > .container { padding-right: min(48vw, 680px); }
 @media (max-width: 720px) {
-  #hero.tutorial-hero {
-    min-height: 580px;
+  body #hero.tutorial-hero {
+    min-height: 470px;
     background:
       linear-gradient(180deg, rgba(0,0,0,0.12) 0%, #0B0B0B 58%, rgba(0,0,0,0.12) 100%),
       url('assets/tutorials-learning-background-v2.png?v=20261017a1') center bottom / 100% auto no-repeat,
       #0B0B0B;
   }
-  #hero.tutorial-hero > .container {
-    min-height: 580px;
-    padding-right: 0;
-    padding-bottom: 170px;
+  body #hero.tutorial-hero > .container {
+    min-height: 470px;
+    justify-content: flex-start;
+    padding: calc(var(--nav-h) + 4px) 0 115px;
   }
 }
 .tut-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }

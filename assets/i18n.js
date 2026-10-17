@@ -77,7 +77,7 @@
     'Capture aerial footage, immersive scenes and action content with DJI drones, Insta360 cameras and stabilised creator gear.':'使用 DJI 无人机、Insta360 相机及稳定拍摄设备，记录航拍、沉浸式场景和动作内容。',
     'Local Pickup & Delivery':'本地取件与配送',
     'Pickup support is available in Penang, Ipoh, Kuala Lumpur, Johor Bahru, Kota Kinabalu, Semporna and Singapore, subject to confirmation.':'槟城、怡保、吉隆坡、新山、亚庇、仙本那及新加坡均可安排取件，具体以确认为准。',
-    'Camera rental Penang':'槟城相机租赁','Camera rental Kuala Lumpur':'吉隆坡相机租赁','Camera rental Johor Bahru':'新山相机租赁','Browse all rental equipment':'浏览全部租赁设备'
+    'Camera rental Penang':'槟城相机租赁','Camera rental Kuala Lumpur':'吉隆坡相机租赁','Camera rental Johor Bahru':'新山相机租赁','Browse all rental equipment':'浏览全部租赁设备','Check Your Branch':'查看取件地点'
   });
   Object.assign(zhTW, {
     'Camera & Drone Rental Tutorials':'相機與無人機租賃教學',
@@ -87,7 +87,7 @@
     'Camera & Lens Rental':'相機與鏡頭租賃','Choose mirrorless cameras, compact creator cameras and useful accessories for portraits, events, travel videos and everyday content.':'選擇適合人像、活動、旅行影片及日常內容的無反相機、便攜創作者相機和實用配件。',
     'Drone & 360 Camera Rental':'無人機與 360 相機租賃','Capture aerial footage, immersive scenes and action content with DJI drones, Insta360 cameras and stabilised creator gear.':'使用 DJI 無人機、Insta360 相機及穩定拍攝器材，記錄航拍、沉浸式場景和動作內容。',
     'Local Pickup & Delivery':'本地取件與配送','Pickup support is available in Penang, Ipoh, Kuala Lumpur, Johor Bahru, Kota Kinabalu, Semporna and Singapore, subject to confirmation.':'檳城、怡保、吉隆坡、新山、亞庇、仙本那及新加坡均可安排取件，具體以確認為準。',
-    'Camera rental Penang':'檳城相機租賃','Camera rental Kuala Lumpur':'吉隆坡相機租賃','Camera rental Johor Bahru':'新山相機租賃','Browse all rental equipment':'瀏覽全部租賃器材'
+    'Camera rental Penang':'檳城相機租賃','Camera rental Kuala Lumpur':'吉隆坡相機租賃','Camera rental Johor Bahru':'新山相機租賃','Browse all rental equipment':'瀏覽全部租賃器材','Check Your Branch':'查看取件地點'
   });
   Object.assign(ms, {
     'Camera & Drone Rental Tutorials':'Panduan Sewaan Kamera & Dron',
@@ -97,7 +97,7 @@
     'Camera & Lens Rental':'Sewaan Kamera & Lensa','Choose mirrorless cameras, compact creator cameras and useful accessories for portraits, events, travel videos and everyday content.':'Pilih kamera tanpa cermin, kamera kreator kompak dan aksesori untuk potret, acara, video perjalanan dan kandungan harian.',
     'Drone & 360 Camera Rental':'Sewaan Dron & Kamera 360','Capture aerial footage, immersive scenes and action content with DJI drones, Insta360 cameras and stabilised creator gear.':'Rakam visual udara, adegan imersif dan kandungan aksi dengan dron DJI, kamera Insta360 dan peralatan kreator yang stabil.',
     'Local Pickup & Delivery':'Pengambilan & Penghantaran Tempatan','Pickup support is available in Penang, Ipoh, Kuala Lumpur, Johor Bahru, Kota Kinabalu, Semporna and Singapore, subject to confirmation.':'Pengambilan tersedia di Pulau Pinang, Ipoh, Kuala Lumpur, Johor Bahru, Kota Kinabalu, Semporna dan Singapura, tertakluk pada pengesahan.',
-    'Camera rental Penang':'Sewaan kamera Pulau Pinang','Camera rental Kuala Lumpur':'Sewaan kamera Kuala Lumpur','Camera rental Johor Bahru':'Sewaan kamera Johor Bahru','Browse all rental equipment':'Lihat semua peralatan sewaan'
+    'Camera rental Penang':'Sewaan kamera Pulau Pinang','Camera rental Kuala Lumpur':'Sewaan kamera Kuala Lumpur','Camera rental Johor Bahru':'Sewaan kamera Johor Bahru','Browse all rental equipment':'Lihat semua peralatan sewaan','Check Your Branch':'Semak Cawangan Anda'
   });
 
   Object.assign(zhCN, {

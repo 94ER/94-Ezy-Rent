@@ -8,8 +8,6 @@ function setupNav() {
     document.body?.hasAttribute('data-transparent-nav')
   );
   const hero = document.getElementById('hero');
-  const hoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
-  let closeTimer = null;
 
   let closeBtn = navLinks.querySelector('.nav-close');
   if (!(closeBtn instanceof HTMLButtonElement)) {
@@ -21,25 +19,17 @@ function setupNav() {
     navLinks.prepend(closeBtn);
   }
 
-  const clearCloseTimer = () => {
-    if (closeTimer) {
-      window.clearTimeout(closeTimer);
-      closeTimer = null;
-    }
-  };
+  navLinks.querySelectorAll('a[href]').forEach((link) => {
+    const url = new URL(link.getAttribute('href'), window.location.href);
+    const sameDocument = url.pathname === window.location.pathname && !url.hash;
+    if (sameDocument) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
 
   const setOpen = (open) => {
-    clearCloseTimer();
     nav.dataset.open = open ? 'true' : 'false';
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     updateScrolledState();
-  };
-
-  const scheduleClose = (delay = 120) => {
-    clearCloseTimer();
-    closeTimer = window.setTimeout(() => {
-      setOpen(false);
-    }, delay);
   };
 
   const updateScrolledState = () => {
@@ -80,28 +70,6 @@ function setupNav() {
 
   nav.querySelectorAll('a').forEach((a) => {
     a.addEventListener('click', () => setOpen(false));
-  });
-
-  const isHoverMode = () => hoverQuery.matches;
-
-  btn.addEventListener('mouseenter', () => {
-    if (!isHoverMode()) return;
-    setOpen(true);
-  });
-
-  btn.addEventListener('mouseleave', () => {
-    if (!isHoverMode() || nav.dataset.open !== 'true') return;
-    scheduleClose();
-  });
-
-  navLinks.addEventListener('mouseenter', () => {
-    if (!isHoverMode()) return;
-    clearCloseTimer();
-  });
-
-  navLinks.addEventListener('mouseleave', () => {
-    if (!isHoverMode() || nav.dataset.open !== 'true') return;
-    scheduleClose();
   });
 
   window.addEventListener('scroll', updateScrolledState, { passive: true });

@@ -564,7 +564,7 @@ footer {
 .hero-ctas { animation: fadeUp 0.6s ease 0.45s both; }
 .hero-brands { animation: fadeUp 0.6s ease 0.6s both; }
 </style>
-<link rel="stylesheet" href="assets/site.css?v=20261016a1" />
+<link rel="stylesheet" href="assets/site.css?v=20261017c1" />
 <script src="assets/site.js?v=20261016a2" defer></script>
 <script src="assets/i18n.js?v=20261010b1" defer></script>
 <script src="assets/seo.js?v=20261010b1" defer></script>
@@ -703,7 +703,9 @@ footer {
     <div class="sec-label">Latest Collection</div>
     <h2 class="sec-title">Recently Added Gear</h2>
     <p class="lead">Products added by our staff appear here automatically, using the same approved details and images shown in the full catalogue.</p>
-    <div class="model-gallery" id="home-product-gallery"></div>
+    <div class="model-gallery" id="home-product-gallery" aria-live="polite" aria-busy="true">
+      <div class="home-products-loading" role="status"><span></span><p>Loading latest gear…</p></div>
+    </div>
   </div>
 </section>
 
@@ -1187,13 +1189,14 @@ async function loadHomepageProducts() {
       gallery.innerHTML = '<div class="home-products-empty"><h3>New collection being prepared</h3><p>Our staff will add the latest available equipment here. Contact us if you need a recommendation in the meantime.</p><a class="btn-primary" href="contact.html">Contact Our Team</a></div>';
     } else {
       gallery.innerHTML = products.slice(0, 6).map((product) => `
-        <article class="model-tile reveal visible">
+        <article class="model-tile reveal in">
           <a class="home-product-card" href="product.html?gear=${encodeURIComponent(product.slug)}" aria-label="Open ${escapeHtml(product.name)}">
             <span class="home-product-artwork"><img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" /></span>
             <span class="home-product-info"><span><small>${escapeHtml(categoryLabel(product.cat))}</small><strong>${escapeHtml(product.name)}</strong></span><span class="home-product-arrow" aria-hidden="true">&gt;</span></span>
           </a>
         </article>`).join('');
     }
+    gallery.setAttribute('aria-busy', 'false');
   }
 
   const select = document.getElementById('b-equip');

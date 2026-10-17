@@ -4619,6 +4619,36 @@ body[data-home] .home-product-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+body[data-home] .home-products-loading {
+  grid-column: 1 / -1;
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  color: rgba(0,0,0,0.52);
+  text-align: center;
+}
+
+body[data-home] .home-products-loading span {
+  width: 34px;
+  height: 34px;
+  border: 3px solid rgba(0,0,0,0.12);
+  border-top-color: #d71920;
+  border-radius: 50%;
+  animation: home-products-spin 0.8s linear infinite;
+}
+
+body[data-home] .home-products-loading p {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes home-products-spin { to { transform: rotate(360deg); } }
+
 body[data-home] .home-product-card:hover,
 body[data-home] .home-product-card:focus-visible {
   transform: translateY(-4px);

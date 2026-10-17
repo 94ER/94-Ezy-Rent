@@ -791,15 +791,41 @@ h1.hero-title {
 .xhs-guide-poster-photo {
   padding: 0;
   background: #111111;
+  aspect-ratio: 3 / 4;
+  min-height: 0;
 }
 
 .xhs-guide-photo {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 320px;
+  min-height: 0;
   object-fit: cover;
   object-position: center center;
+}
+
+.xhs-guide-poster-link {
+  justify-content: flex-end;
+  background:
+    radial-gradient(circle at 76% 18%, rgba(255,255,255,0.22), transparent 27%),
+    linear-gradient(145deg, #e9333f 0%, #c61022 58%, #8d0713 100%) !important;
+}
+
+.xhs-guide-link-logo {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 4px 4px 0 #111111;
+}
+
+.xhs-guide-poster-link .xhs-guide-display {
+  color: #ffffff;
+  text-shadow: 2px 2px 0 #111111;
 }
 
 .xhs-guide-photo-overlay {
@@ -1962,6 +1988,11 @@ footer {
   .xhs-guide-card:nth-child(5) .xhs-guide-poster {
     min-height: 228px;
     padding: 14px;
+  }
+  .xhs-guide-poster-photo {
+    min-height: 0 !important;
+    padding: 0 !important;
+    aspect-ratio: 3 / 4;
   }
   .xhs-guide-display {
     max-width: none;

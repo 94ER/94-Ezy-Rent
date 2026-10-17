@@ -4920,6 +4920,13 @@ nav::after {
   backdrop-filter: blur(3px);
 }
 
+/* A backdrop-filter creates a containing block for fixed descendants.
+   Disable it while open so the drawer spans the viewport on subpages. */
+nav[data-open='true'] {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
 .nav-links {
   gap: 0;
   padding: 82px 24px 26px;

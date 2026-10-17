@@ -10,6 +10,7 @@ function setupNav() {
   const hero = document.getElementById('hero');
   const hoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
   let hoverCloseTimer = null;
+  let clickLockedOpen = false;
 
   let closeBtn = navLinks.querySelector('.nav-close');
   if (!(closeBtn instanceof HTMLButtonElement)) {
@@ -40,7 +41,7 @@ function setupNav() {
   };
 
   const scheduleHoverClose = () => {
-    if (!hoverQuery.matches) return;
+    if (!hoverQuery.matches || clickLockedOpen) return;
     if (hoverCloseTimer) window.clearTimeout(hoverCloseTimer);
     hoverCloseTimer = window.setTimeout(() => setOpen(false), 260);
   };
@@ -63,6 +64,12 @@ function setupNav() {
 
   btn.addEventListener('click', () => {
     if (hoverQuery.matches) {
+      if (clickLockedOpen && nav.dataset.open === 'true') {
+        clickLockedOpen = false;
+        setOpen(false);
+        return;
+      }
+      clickLockedOpen = true;
       setOpen(true);
       return;
     }
@@ -84,23 +91,31 @@ function setupNav() {
 
   navLinks.addEventListener('mouseleave', scheduleHoverClose);
 
-  closeBtn.addEventListener('click', () => setOpen(false));
+  closeBtn.addEventListener('click', () => {
+    clickLockedOpen = false;
+    setOpen(false);
+  });
 
   document.addEventListener('click', (e) => {
     if (!nav.dataset.open || nav.dataset.open !== 'true') return;
     const t = e.target;
     if (t instanceof Element && (t.closest('nav') || t === btn)) return;
+    clickLockedOpen = false;
     setOpen(false);
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav.dataset.open === 'true') {
+      clickLockedOpen = false;
       setOpen(false);
     }
   });
 
   nav.querySelectorAll('a').forEach((a) => {
-    a.addEventListener('click', () => setOpen(false));
+    a.addEventListener('click', () => {
+      clickLockedOpen = false;
+      setOpen(false);
+    });
   });
 
   window.addEventListener('scroll', updateScrolledState, { passive: true });

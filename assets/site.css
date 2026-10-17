@@ -804,30 +804,6 @@ h1.hero-title {
   object-position: center center;
 }
 
-.xhs-guide-poster-link {
-  justify-content: flex-end;
-  background:
-    radial-gradient(circle at 76% 18%, rgba(255,255,255,0.22), transparent 27%),
-    linear-gradient(145deg, #e9333f 0%, #c61022 58%, #8d0713 100%) !important;
-}
-
-.xhs-guide-link-logo {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
-  border-radius: 14px;
-  background: #ffffff;
-  box-shadow: 4px 4px 0 #111111;
-}
-
-.xhs-guide-poster-link .xhs-guide-display {
-  color: #ffffff;
-  text-shadow: 2px 2px 0 #111111;
-}
-
 .xhs-guide-photo-overlay {
   position: absolute;
   inset: 0;
@@ -1849,6 +1825,10 @@ footer {
   .xhs-guide-card,
   .xhs-guide-card-large { grid-column: span 6; }
 
+  .xhs-guide-grid > .xhs-guide-card:last-child:nth-child(odd) {
+    grid-column: 4 / span 6;
+  }
+
   .creator-slide.active {
     grid-template-columns: 1fr;
   }
@@ -1981,6 +1961,9 @@ footer {
     grid-column: span 12;
     padding: 8px;
     box-shadow: 5px 5px 0 #111111;
+  }
+  .xhs-guide-grid > .xhs-guide-card:last-child:nth-child(odd) {
+    grid-column: span 12;
   }
   .xhs-guide-poster,
   .xhs-guide-card:nth-child(3) .xhs-guide-poster,

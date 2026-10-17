@@ -3141,6 +3141,17 @@ nav[data-open="true"] .nav-links {
   height: 100%;
   aspect-ratio: 1361 / 1279;
   max-width: 100%;
+  isolation: isolate;
+}
+
+.branches-map-canvas::before {
+  content: '';
+  position: absolute;
+  inset: 9% 5% 7%;
+  z-index: -1;
+  border-radius: 44%;
+  background: radial-gradient(ellipse at center, rgba(213,0,0,0.16), rgba(213,0,0,0.05) 48%, transparent 72%);
+  filter: blur(24px);
 }
 
 .branches-map-image {
@@ -3150,7 +3161,9 @@ nav[data-open="true"] .nav-links {
   height: 100%;
   object-fit: contain;
   object-position: center center;
-  filter: drop-shadow(0 22px 40px rgba(0,0,0,0.26));
+  filter:
+    drop-shadow(0 22px 40px rgba(0,0,0,0.34))
+    drop-shadow(0 0 16px rgba(213,0,0,0.12));
 }
 
 .branch-pin {
@@ -3226,11 +3239,16 @@ nav[data-open="true"] .nav-links {
 
 .branch-pin-penang { left: 7.8%; top: 40.5%; }
 .branch-pin-kl { left: 15.5%; top: 50%; }
-.branch-pin-melaka { left: 24.5%; top: 64%; }
+.branch-pin-ipoh { left: 12.2%; top: 44%; }
 .branch-pin-jb { left: 46.5%; top: 77.5%; }
 .branch-pin-singapore { left: 47.5%; top: 81.5%; }
 .branch-pin-kk { left: 63.5%; top: 31.5%; }
 .branch-pin-semporna { left: 87.5%; top: 52%; }
+.branch-pin-ipoh .branch-pin-label {
+  left: auto;
+  right: 16px;
+  top: 2px;
+}
 .branch-pin-singapore .branch-pin-label,
 .branch-pin-semporna .branch-pin-label {
   left: auto;
@@ -3646,11 +3664,16 @@ footer {
 
   .branch-pin-penang { left: 7.8%; top: 40.5%; }
   .branch-pin-kl { left: 15.5%; top: 50%; }
-  .branch-pin-melaka { left: 24.5%; top: 64%; }
+  .branch-pin-ipoh { left: 12.2%; top: 44%; }
   .branch-pin-jb { left: 46.5%; top: 77.5%; }
   .branch-pin-singapore { left: 47.5%; top: 81.5%; }
   .branch-pin-kk { left: 63.5%; top: 31.5%; }
   .branch-pin-semporna { left: 87.5%; top: 52%; }
+  .branch-pin-ipoh .branch-pin-label {
+    left: auto;
+    right: -6px;
+    top: 0;
+  }
   .branch-pin-singapore .branch-pin-label,
   .branch-pin-semporna .branch-pin-label {
     left: auto;

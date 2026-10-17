@@ -91,7 +91,7 @@
       name: 'Camera and creator equipment rental in Malaysia',
       serviceType: ['Camera rental', 'Camera lens rental', 'Drone rental', '360 camera rental', 'Creator equipment rental'],
       provider: {'@id': ORG_ID},
-      areaServed: ['Malaysia', 'Kuala Lumpur', 'Penang', 'Johor Bahru', 'Melaka', 'Kota Kinabalu', 'Semporna', 'Singapore'],
+      areaServed: ['Malaysia', 'Kuala Lumpur', 'Penang', 'Ipoh', 'Johor Bahru', 'Kota Kinabalu', 'Semporna', 'Singapore'],
       availableChannel: {
         '@type': 'ServiceChannel',
         serviceUrl: absoluteUrl('index.html#booking'),

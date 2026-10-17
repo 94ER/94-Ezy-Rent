@@ -9,7 +9,6 @@ function setupNav() {
   );
   const hero = document.getElementById('hero');
   const hoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
-  let hoverCloseTimer = null;
   let clickLockedOpen = false;
 
   let closeBtn = navLinks.querySelector('.nav-close');
@@ -30,20 +29,10 @@ function setupNav() {
   });
 
   const setOpen = (open) => {
-    if (hoverCloseTimer) {
-      window.clearTimeout(hoverCloseTimer);
-      hoverCloseTimer = null;
-    }
     nav.dataset.open = open ? 'true' : 'false';
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     updateScrolledState();
-  };
-
-  const scheduleHoverClose = () => {
-    if (!hoverQuery.matches || clickLockedOpen) return;
-    if (hoverCloseTimer) window.clearTimeout(hoverCloseTimer);
-    hoverCloseTimer = window.setTimeout(() => setOpen(false), 260);
   };
 
   const updateScrolledState = () => {
@@ -80,16 +69,6 @@ function setupNav() {
   btn.addEventListener('mouseenter', () => {
     if (hoverQuery.matches) setOpen(true);
   });
-
-  btn.addEventListener('mouseleave', scheduleHoverClose);
-
-  navLinks.addEventListener('mouseenter', () => {
-    if (!hoverQuery.matches || !hoverCloseTimer) return;
-    window.clearTimeout(hoverCloseTimer);
-    hoverCloseTimer = null;
-  });
-
-  navLinks.addEventListener('mouseleave', scheduleHoverClose);
 
   closeBtn.addEventListener('click', () => {
     clickLockedOpen = false;

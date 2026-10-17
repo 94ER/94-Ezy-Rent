@@ -4,7 +4,9 @@ const DEFAULT_ORIGINS = [
   'http://localhost:4173'
 ];
 const PRODUCT_INDEX_KEY = 'catalog/products.json';
+const GALLERY_INDEX_KEY = 'gallery/items.json';
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+const MAX_GALLERY_IMAGE_BYTES = 8 * 1024 * 1024;
 const SESSION_SECONDS = 8 * 60 * 60;
 
 const cleanText = (value, max = 400) => String(value || '').replace(/\s+/g, ' ').trim().slice(0, max);
@@ -88,6 +90,24 @@ const getProducts = async (env) => {
 
 const saveProducts = async (env, products) => {
   await env.PRODUCT_BUCKET.put(PRODUCT_INDEX_KEY, JSON.stringify(products), {
+    httpMetadata: { contentType: 'application/json; charset=utf-8', cacheControl: 'no-store' }
+  });
+};
+
+const getGalleryItems = async (env) => {
+  if (!env.PRODUCT_BUCKET) return [];
+  const object = await env.PRODUCT_BUCKET.get(GALLERY_INDEX_KEY);
+  if (!object) return [];
+  try {
+    const items = JSON.parse(await object.text());
+    return Array.isArray(items) ? items : [];
+  } catch (_) {
+    return [];
+  }
+};
+
+const saveGalleryItems = async (env, items) => {
+  await env.PRODUCT_BUCKET.put(GALLERY_INDEX_KEY, JSON.stringify(items), {
     httpMetadata: { contentType: 'application/json; charset=utf-8', cacheControl: 'no-store' }
   });
 };
@@ -210,6 +230,103 @@ const handleProductDelete = async (request, env, slug) => {
   return json(request, env, { ok: true });
 };
 
+const galleryPayload = (form, imageUrl, imageKey, existing = {}) => ({
+  id: existing.id || crypto.randomUUID(),
+  title: cleanText(form.get('title'), 100),
+  client: cleanText(form.get('client'), 80),
+  location: cleanText(form.get('location'), 80),
+  gear: cleanText(form.get('gear'), 100),
+  caption: cleanText(form.get('caption'), 500),
+  image: imageUrl,
+  imageKey,
+  source: 'staff',
+  createdAt: existing.createdAt || new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+});
+
+const validateGalleryItem = (item, form) => {
+  if (!item.title) return 'Add a short title for this client photo.';
+  if (String(form.get('consent') || '') !== 'yes') return 'Confirm that the client gave permission to publish this photo.';
+  return '';
+};
+
+const validateGalleryFile = (file) => {
+  if (!(file instanceof File) || !file.size) return 'A client photo is required.';
+  if (!imageExtension(file.type)) return 'Use a JPG, PNG or WebP image.';
+  if (file.size > MAX_GALLERY_IMAGE_BYTES) return 'The client photo must be 8 MB or smaller.';
+  return '';
+};
+
+const handleGalleryUpload = async (request, env, url) => {
+  if (!env.PRODUCT_BUCKET) return json(request, env, { error: 'Gallery storage is not configured.' }, { status: 503 });
+  const form = await request.formData();
+  const file = form.get('image');
+  const fileError = validateGalleryFile(file);
+  if (fileError) return json(request, env, { error: fileError }, { status: 400 });
+
+  const extension = imageExtension(file.type);
+  const imageKey = `gallery-images/${Date.now()}-${crypto.randomUUID()}.${extension}`;
+  const imageUrl = `${url.origin}/${imageKey}`;
+  const item = galleryPayload(form, imageUrl, imageKey);
+  const error = validateGalleryItem(item, form);
+  if (error) return json(request, env, { error }, { status: 400 });
+
+  await env.PRODUCT_BUCKET.put(imageKey, file.stream(), {
+    httpMetadata: { contentType: file.type, cacheControl: 'public, max-age=31536000, immutable' },
+    customMetadata: { contentType: 'client-gallery', uploadedBy: 'staff', permissionConfirmed: 'yes' }
+  });
+  const items = await getGalleryItems(env);
+  items.unshift(item);
+  await saveGalleryItems(env, items);
+  return json(request, env, { ok: true, item }, { status: 201 });
+};
+
+const handleGalleryUpdate = async (request, env, url, id) => {
+  if (!env.PRODUCT_BUCKET) return json(request, env, { error: 'Gallery storage is not configured.' }, { status: 503 });
+  const items = await getGalleryItems(env);
+  const index = items.findIndex((item) => item.id === id);
+  if (index === -1) return json(request, env, { error: 'Gallery photo not found.' }, { status: 404 });
+
+  const existing = items[index];
+  const form = await request.formData();
+  const file = form.get('image');
+  const hasReplacement = file instanceof File && file.size > 0;
+  let imageKey = existing.imageKey || '';
+  let imageUrl = existing.image || '';
+
+  if (hasReplacement) {
+    const fileError = validateGalleryFile(file);
+    if (fileError) return json(request, env, { error: fileError }, { status: 400 });
+    imageKey = `gallery-images/${Date.now()}-${crypto.randomUUID()}.${imageExtension(file.type)}`;
+    imageUrl = `${url.origin}/${imageKey}`;
+  }
+
+  const item = galleryPayload(form, imageUrl, imageKey, existing);
+  const error = validateGalleryItem(item, form);
+  if (error) return json(request, env, { error }, { status: 400 });
+
+  if (hasReplacement) {
+    await env.PRODUCT_BUCKET.put(imageKey, file.stream(), {
+      httpMetadata: { contentType: file.type, cacheControl: 'public, max-age=31536000, immutable' },
+      customMetadata: { contentType: 'client-gallery', uploadedBy: 'staff', permissionConfirmed: 'yes' }
+    });
+  }
+
+  items[index] = item;
+  await saveGalleryItems(env, items);
+  if (hasReplacement && existing.imageKey && existing.imageKey !== imageKey) await env.PRODUCT_BUCKET.delete(existing.imageKey);
+  return json(request, env, { ok: true, item });
+};
+
+const handleGalleryDelete = async (request, env, id) => {
+  const items = await getGalleryItems(env);
+  const item = items.find((entry) => entry.id === id);
+  if (!item) return json(request, env, { error: 'Gallery photo not found.' }, { status: 404 });
+  if (item.imageKey) await env.PRODUCT_BUCKET.delete(item.imageKey);
+  await saveGalleryItems(env, items.filter((entry) => entry.id !== id));
+  return json(request, env, { ok: true });
+};
+
 const serveProductImage = async (request, env, pathname) => {
   if (!env.PRODUCT_BUCKET) return new Response('Not found', { status: 404 });
   const key = pathname.replace(/^\//, '');
@@ -271,7 +388,8 @@ export default {
     if (request.method === 'GET' && (url.pathname === '/' || url.pathname === '/health')) return json(request, env, { ok: true, products: Boolean(env.PRODUCT_BUCKET) });
     if (request.method === 'GET' && url.pathname === '/reviews') return handleReviews(request, env, ctx, url);
     if (request.method === 'GET' && url.pathname === '/products') return json(request, env, { products: await getProducts(env) }, { headers: { 'cache-control': 'no-store' } });
-    if (request.method === 'GET' && url.pathname.startsWith('/product-images/')) return serveProductImage(request, env, url.pathname);
+    if (request.method === 'GET' && url.pathname === '/gallery') return json(request, env, { items: await getGalleryItems(env) }, { headers: { 'cache-control': 'no-store' } });
+    if (request.method === 'GET' && (url.pathname.startsWith('/product-images/') || url.pathname.startsWith('/gallery-images/'))) return serveProductImage(request, env, url.pathname);
     if (request.method === 'POST' && url.pathname === '/admin/login') return handleLogin(request, env);
 
     if (url.pathname.startsWith('/admin/')) {
@@ -281,6 +399,10 @@ export default {
       if (request.method === 'POST' && url.pathname === '/admin/products') return handleProductUpload(request, env, url);
       if (request.method === 'PUT' && url.pathname.startsWith('/admin/products/')) return handleProductUpdate(request, env, url, decodeURIComponent(url.pathname.slice('/admin/products/'.length)));
       if (request.method === 'DELETE' && url.pathname.startsWith('/admin/products/')) return handleProductDelete(request, env, decodeURIComponent(url.pathname.slice('/admin/products/'.length)));
+      if (request.method === 'GET' && url.pathname === '/admin/gallery') return json(request, env, { items: await getGalleryItems(env) });
+      if (request.method === 'POST' && url.pathname === '/admin/gallery') return handleGalleryUpload(request, env, url);
+      if (request.method === 'PUT' && url.pathname.startsWith('/admin/gallery/')) return handleGalleryUpdate(request, env, url, decodeURIComponent(url.pathname.slice('/admin/gallery/'.length)));
+      if (request.method === 'DELETE' && url.pathname.startsWith('/admin/gallery/')) return handleGalleryDelete(request, env, decodeURIComponent(url.pathname.slice('/admin/gallery/'.length)));
     }
 
     return json(request, env, { error: 'Not found' }, { status: 404 });

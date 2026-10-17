@@ -15,10 +15,11 @@
 <meta property="og:image" content="https://94er.github.io/94-Ezy-Rent/assets/dji-pocket-4-pro.jpg" />
 <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Camera Rental Customer Gallery Malaysia" /><meta name="twitter:description" content="See real photos and videos made with 94 Ezy Rent gear." /><meta name="twitter:image" content="https://94er.github.io/94-Ezy-Rent/assets/dji-pocket-4-pro.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/site.css?v=20261010b1" />
+<link rel="stylesheet" href="assets/site.css?v=20261017b1" />
 <script src="assets/site.js?v=20260804a3" defer></script>
-<script src="assets/i18n.js?v=20261010b1" defer></script>
+<script src="assets/i18n.js?v=20261017b1" defer></script>
 <script src="assets/seo.js?v=20261010b1" defer></script>
+<script src="assets/gallery.js?v=20261017a1" defer></script>
 </head>
 <body data-transparent-nav>
 <nav>
@@ -54,46 +55,30 @@
 
 <section class="page-section">
   <div class="container">
-    <div class="gallery-grid reveal">
-      <article class="gallery-card">
-        <div class="gallery-media"></div>
-        <div class="gallery-copy">
-          <span class="gallery-tag">Client Video</span>
-          <h2 class="gallery-title">Travel Reel Highlight</h2>
-          <p class="gallery-text">Use this block for a client reel, drone showcase, or short highlight video from a completed rental project.</p>
-          <div class="gallery-meta">Replace with client reel embed</div>
-        </div>
-      </article>
-      <article class="gallery-card">
-        <div class="gallery-media"></div>
-        <div class="gallery-copy">
-          <span class="gallery-tag">Client Video</span>
-          <h2 class="gallery-title">Event Coverage Clip</h2>
-          <p class="gallery-text">Show wedding footage, event behind-the-scenes content, or commercial BTS captured with rented cameras and drones.</p>
-          <div class="gallery-meta">Replace with client reel embed</div>
-        </div>
-      </article>
-      <article class="gallery-card">
-        <div class="gallery-media"></div>
-        <div class="gallery-copy">
-          <span class="gallery-tag">Photo Snap</span>
-          <h2 class="gallery-title">Client Photo Snapshot</h2>
-          <p class="gallery-text">Use this card for customer still images, travel shots, product content, or campaign visuals captured using rented gear.</p>
-          <div class="gallery-meta">Replace with delivered client photo</div>
-        </div>
-      </article>
-      <article class="gallery-card">
-        <div class="gallery-media"></div>
-        <div class="gallery-copy">
-          <span class="gallery-tag">Photo Snap</span>
-          <h2 class="gallery-title">Creator Shoot Result</h2>
-          <p class="gallery-text">Display final output from influencers, creators, or production teams to show the quality clients can expect.</p>
-          <div class="gallery-meta">Replace with delivered client photo</div>
-        </div>
-      </article>
+    <div class="client-gallery-head reveal">
+      <div>
+        <div class="sec-label">Shot With 94 Ezy Rent Gear</div>
+        <h2 class="sec-title">Real Frames From Our Clients</h2>
+      </div>
+      <p class="lead">Travel memories, events and creator work shared by clients who rented with us. Every published image is displayed with permission.</p>
+    </div>
+    <div class="client-gallery-grid reveal" id="client-gallery-grid" aria-live="polite">
+      <div class="client-gallery-empty">
+        <strong>Client gallery coming soon</strong>
+        <span>Our team is preparing the first collection of customer photos.</span>
+      </div>
     </div>
   </div>
 </section>
+
+<dialog class="gallery-lightbox" id="gallery-lightbox" aria-label="Client photo preview">
+  <button class="gallery-lightbox-close" type="button" aria-label="Close photo preview">×</button>
+  <img id="gallery-lightbox-image" alt="" />
+  <div class="gallery-lightbox-copy">
+    <strong id="gallery-lightbox-title"></strong>
+    <span id="gallery-lightbox-meta"></span>
+  </div>
+</dialog>
 
 <footer class="site-footer">
   <div class="footer-inner">

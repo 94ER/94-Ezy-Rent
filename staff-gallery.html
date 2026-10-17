@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Staff Client Gallery Manager | 94 Ezy Rent</title>
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<link rel="icon" href="assets/logo.png" type="image/png" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css?v=20261017b1" />
+<style>
+  body.staff-page{min-height:100vh;background:#0a0a0a;color:#fff}.staff-header{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 clamp(18px,4vw,52px);border-bottom:1px solid rgba(255,255,255,.1);background:#0d0d0d}.staff-logo{position:relative;width:145px;height:48px;display:grid;place-items:center;overflow:hidden;border-radius:12px;background:#fff}.staff-logo img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center}.staff-header-links{display:flex;align-items:center;gap:20px}.staff-back{color:rgba(255,255,255,.65);font-size:.75rem;font-weight:800;letter-spacing:.08em;text-decoration:none;text-transform:uppercase}.staff-main{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:clamp(48px,7vw,90px) 0}.staff-dashboard-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}.staff-kicker{color:#e12a2a;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.staff-title{margin:10px 0 14px;font:900 clamp(2.8rem,7vw,5.4rem)/.92 'Barlow Condensed',sans-serif;text-transform:uppercase}.staff-intro{max-width:680px;color:rgba(255,255,255,.6);line-height:1.7}.staff-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.staff-nav-link,.staff-logout{display:inline-flex;min-height:42px;align-items:center;justify-content:center;border-radius:999px;padding:0 19px;font-size:.76rem;font-weight:800;letter-spacing:.06em;text-decoration:none;text-transform:uppercase;cursor:pointer}.staff-nav-link{background:#d01d1d;color:#fff}.staff-nav-link:hover{background:#ac1515}.staff-logout{border:1px solid rgba(255,255,255,.16);background:transparent;color:#fff}.staff-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);gap:18px;align-items:start}.staff-panel{padding:clamp(24px,4vw,38px);border:1px solid rgba(255,255,255,.11);border-radius:22px;background:#131313}.staff-panel h2{font:900 2rem/1 'Barlow Condensed',sans-serif;text-transform:uppercase}.gallery-upload-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}.staff-field{display:grid;gap:8px}.staff-field.full{grid-column:1/-1}.staff-field label{color:rgba(255,255,255,.7);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.staff-field input,.staff-field textarea{width:100%;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:#111;color:#fff;padding:14px 15px;font:500 .95rem/1.4 'Barlow',sans-serif;outline:0}.staff-field textarea{min-height:112px;resize:vertical}.staff-field input:focus,.staff-field textarea:focus{border-color:#d01d1d;box-shadow:0 0 0 3px rgba(208,29,29,.14)}.photo-upload{grid-column:1/-1;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;padding:20px;border:1px dashed rgba(255,255,255,.2);border-radius:16px;background:#0e0e0e}.photo-preview{width:200px;min-height:230px;max-height:300px;display:grid;place-items:center;overflow:hidden;border-radius:12px;background:#1b1b1b;color:rgba(255,255,255,.3);font-weight:800}.photo-preview img{width:100%;height:100%;object-fit:contain}.photo-guidance{color:rgba(255,255,255,.56);font-size:.85rem;line-height:1.65}.photo-guidance strong{display:block;color:#fff;margin-bottom:4px}.staff-consent{grid-column:1/-1;display:flex;align-items:flex-start;gap:11px;padding:14px 15px;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:#0d0d0d;color:rgba(255,255,255,.68);font-size:.84rem;line-height:1.5}.staff-consent input{flex:0 0 auto;width:18px;height:18px;margin-top:1px;accent-color:#d01d1d}.staff-form-actions{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px}.staff-button{min-height:50px;border:0;border-radius:8px;background:#d01d1d;color:#fff;padding:0 24px;font:900 .9rem/1 'Barlow Condensed',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.staff-button:hover{background:#ac1515}.staff-button:disabled{opacity:.5;cursor:wait}.staff-button-secondary{border:1px solid rgba(255,255,255,.18);background:transparent}.staff-message{min-height:20px;margin-top:14px;color:#ff7676;font-size:.86rem;line-height:1.5}.staff-list{display:grid;gap:11px;margin-top:24px}.staff-gallery-item{display:grid;grid-template-columns:74px minmax(0,1fr) auto;gap:13px;align-items:center;padding:10px;border:1px solid rgba(255,255,255,.09);border-radius:12px}.staff-gallery-item img{width:74px;height:74px;object-fit:cover;border-radius:8px;background:#222}.staff-gallery-item strong{display:block;font-size:.9rem}.staff-gallery-item span{display:block;margin-top:4px;color:rgba(255,255,255,.46);font-size:.74rem}.staff-gallery-item.is-editing{border-color:rgba(208,29,29,.7);box-shadow:0 0 0 2px rgba(208,29,29,.12)}.staff-item-actions{display:flex;align-items:center;gap:10px}.staff-edit,.staff-delete{border:0;background:transparent;font-weight:800;cursor:pointer}.staff-edit{color:#fff}.staff-delete{color:#ff6b6b}.staff-empty{padding:24px;border:1px dashed rgba(255,255,255,.14);border-radius:12px;color:rgba(255,255,255,.48);text-align:center}.staff-public-note{margin-top:18px;color:rgba(255,255,255,.4);font-size:.78rem;line-height:1.6}.staff-public-note a{color:#fff}
+  @media(max-width:850px){.staff-dashboard-head{align-items:flex-start;flex-direction:column}.staff-layout{grid-template-columns:1fr}.gallery-upload-form{grid-template-columns:1fr}.staff-field.full,.photo-upload,.staff-consent,.staff-form-actions{grid-column:auto}}
+  @media(max-width:560px){.staff-header{height:68px}.staff-logo{width:122px;height:43px}.staff-header-links .public-link{display:none}.staff-main{width:min(100% - 24px,520px)}.photo-upload{grid-template-columns:1fr}.photo-preview{width:min(100%,280px);margin:0 auto}.staff-panel{padding:22px 18px}.staff-form-actions{grid-template-columns:1fr}.staff-gallery-item{grid-template-columns:62px minmax(0,1fr)}.staff-gallery-item img{width:62px;height:62px}.staff-item-actions{grid-column:1/-1;justify-content:flex-end}}
+</style>
+<script src="assets/products.js?v=20261010b1"></script>
+</head>
+<body class="staff-page">
+<header class="staff-header"><a class="staff-logo" href="index.html"><img src="assets/logo.png?v=20260729d" alt="94 Ezy Rent" /></a><div class="staff-header-links"><a class="staff-back public-link" href="gallery.html">View public gallery</a><a class="staff-back" href="staff.html">← Products</a></div></header>
+<main class="staff-main">
+  <div class="staff-dashboard-head"><div><div class="staff-kicker">Client gallery manager</div><h1 class="staff-title">Client Photos</h1><p class="staff-intro">Publish photos shared by clients without mixing them into product management. Every photo requires confirmed client permission.</p></div><div class="staff-actions"><a class="staff-nav-link" href="staff.html">Manage Products</a><button class="staff-logout" id="staff-logout" type="button">Log out</button></div></div>
+  <div class="staff-layout">
+    <section class="staff-panel"><h2 id="gallery-form-title">Photo Details</h2><form class="gallery-upload-form" id="gallery-form">
+      <div class="staff-field"><label for="gallery-title">Photo title</label><input id="gallery-title" name="title" maxlength="100" placeholder="Penang travel portrait" required /></div>
+      <div class="staff-field"><label for="gallery-client">Client credit (optional)</label><input id="gallery-client" name="client" maxlength="80" placeholder="@creatorname or Client name" /></div>
+      <div class="staff-field"><label for="gallery-location">Location (optional)</label><input id="gallery-location" name="location" maxlength="80" placeholder="Penang, Malaysia" /></div>
+      <div class="staff-field"><label for="gallery-gear">Gear used (optional)</label><input id="gallery-gear" name="gear" maxlength="100" placeholder="DJI Pocket 4" /></div>
+      <div class="staff-field full"><label for="gallery-caption">Short caption (optional)</label><textarea id="gallery-caption" name="caption" maxlength="500" placeholder="A short description of the shoot or result."></textarea></div>
+      <div class="photo-upload"><div class="photo-preview" id="gallery-preview">Photo preview</div><div><div class="staff-field"><label for="gallery-image">Client photo</label><input id="gallery-image" name="image" type="file" accept="image/jpeg,image/png,image/webp" required /></div><p class="photo-guidance" id="gallery-guidance"><strong>Recommended: high-resolution JPG or WebP</strong>Portrait or landscape accepted · maximum 8 MB. The public gallery preserves the complete photo shape.</p></div></div>
+      <label class="staff-consent"><input id="gallery-consent" name="consent" type="checkbox" value="yes" required /><span>I confirm that the client gave 94 Ezy Rent permission to publish this photo on the website.</span></label>
+      <div class="staff-form-actions"><button class="staff-button" id="gallery-submit" type="submit">Publish To Gallery</button><button class="staff-button staff-button-secondary" id="gallery-cancel" type="button" hidden>Cancel Edit</button></div>
+    </form><p class="staff-message" id="gallery-message" aria-live="polite"></p></section>
+    <aside class="staff-panel"><h2>Published Client Photos</h2><div class="staff-list" id="staff-gallery-list"><div class="staff-empty">Loading client photos…</div></div><p class="staff-public-note">Published photos appear automatically on the <a href="gallery.html" target="_blank" rel="noopener">public client gallery</a>.</p></aside>
+  </div>
+</main>
+<script>
+(() => {
+  const api = window.GEAR_PRODUCT_API;
+  const tokenKey = '94ezy-staff-session';
+  let token = sessionStorage.getItem(tokenKey) || '';
+  if (!token) { location.replace('staff.html?next=gallery'); return; }
+
+  const form = document.getElementById('gallery-form');
+  const message = document.getElementById('gallery-message');
+  const imageInput = document.getElementById('gallery-image');
+  const preview = document.getElementById('gallery-preview');
+  const guidance = document.getElementById('gallery-guidance');
+  const formTitle = document.getElementById('gallery-form-title');
+  const submitButton = document.getElementById('gallery-submit');
+  const cancelButton = document.getElementById('gallery-cancel');
+  const list = document.getElementById('staff-gallery-list');
+  let items = [];
+  let editingId = '';
+  const defaultGuidance = '<strong>Recommended: high-resolution JPG or WebP</strong>Portrait or landscape accepted · maximum 8 MB. The public gallery preserves the complete photo shape.';
+  const escapeHtml = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+
+  const leaveSession = () => { sessionStorage.removeItem(tokenKey); token = ''; location.replace('staff.html?next=gallery'); };
+  const request = async (path, options = {}) => {
+    const headers = new Headers(options.headers || {}); headers.set('authorization', `Bearer ${token}`);
+    const response = await fetch(`${api}${path}`, { ...options, headers });
+    let payload = {}; try { payload = await response.json(); } catch (_) {}
+    if (response.status === 401) { leaveSession(); throw new Error('Your session expired.'); }
+    if (!response.ok) throw new Error(payload.error || `Request failed (${response.status})`);
+    return payload;
+  };
+
+  const resetForm = () => {
+    editingId = ''; form.reset(); imageInput.required = true; imageInput.setCustomValidity(''); preview.textContent = 'Photo preview'; guidance.innerHTML = defaultGuidance; guidance.style.color = ''; formTitle.textContent = 'Photo Details'; submitButton.textContent = 'Publish To Gallery'; cancelButton.hidden = true; document.querySelectorAll('.staff-gallery-item').forEach((card) => card.classList.remove('is-editing'));
+  };
+  const beginEdit = (item) => {
+    editingId = item.id; form.elements.title.value = item.title || ''; form.elements.client.value = item.client || ''; form.elements.location.value = item.location || ''; form.elements.gear.value = item.gear || ''; form.elements.caption.value = item.caption || ''; form.elements.consent.checked = true; imageInput.value = ''; imageInput.required = false; imageInput.setCustomValidity(''); preview.innerHTML = item.image ? `<img src="${escapeHtml(item.image)}" alt="Current ${escapeHtml(item.title)} photo">` : 'No current photo'; guidance.innerHTML = '<strong>Current photo will be kept</strong>Choose a new file only if you want to replace the image.'; guidance.style.color = '#76d891'; formTitle.textContent = 'Edit Client Photo'; submitButton.textContent = 'Save Photo Changes'; cancelButton.hidden = false; document.querySelectorAll('.staff-gallery-item').forEach((card) => card.classList.toggle('is-editing', card.dataset.gallery === item.id)); form.scrollIntoView({ behavior:'smooth', block:'start' });
+  };
+  const refresh = async () => {
+    try {
+      const payload = await request('/admin/gallery'); items = Array.isArray(payload.items) ? payload.items : [];
+      if (!items.length) { list.innerHTML = '<div class="staff-empty">No client photos published yet.</div>'; return; }
+      list.innerHTML = items.map((item) => { const meta = [item.client,item.location,item.gear].filter(Boolean).join(' · '); return `<article class="staff-gallery-item${editingId === item.id ? ' is-editing' : ''}" data-gallery="${escapeHtml(item.id)}"><img src="${escapeHtml(item.image)}" alt=""><div><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(meta || 'Client gallery')}</span></div><div class="staff-item-actions"><button class="staff-edit" type="button" data-edit="${encodeURIComponent(item.id)}">Edit</button><button class="staff-delete" type="button" data-delete="${encodeURIComponent(item.id)}">Delete</button></div></article>`; }).join('');
+    } catch (error) { message.textContent = error.message; }
+  };
+
+  imageInput.addEventListener('change', () => {
+    const file = imageInput.files[0]; preview.textContent = 'Photo preview'; guidance.style.color = ''; imageInput.setCustomValidity(''); if (!file) return;
+    if (file.size > 8 * 1024 * 1024) { imageInput.setCustomValidity('Please choose an image below 8 MB.'); guidance.textContent = 'This photo is larger than 8 MB. Please resize it before uploading.'; guidance.style.color = '#ff7676'; return; }
+    const image = new Image(); image.onload = () => { preview.innerHTML = `<img src="${image.src}" alt="Client photo preview">`; guidance.innerHTML = `<strong>${image.naturalWidth} × ${image.naturalHeight} px</strong>Ready to upload. The gallery will preserve this photo's natural shape.`; guidance.style.color = '#76d891'; }; image.onerror = () => { imageInput.setCustomValidity('Please choose a valid JPG, PNG or WebP image.'); guidance.textContent = 'This image could not be previewed.'; guidance.style.color = '#ff7676'; }; image.src = URL.createObjectURL(file);
+  });
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault(); submitButton.disabled = true; message.style.color = '#ff7676'; message.textContent = editingId ? 'Saving gallery changes…' : 'Uploading client photo…'; const activeId = editingId;
+    try { await request(activeId ? `/admin/gallery/${encodeURIComponent(activeId)}` : '/admin/gallery', { method:activeId ? 'PUT' : 'POST', body:new FormData(form) }); resetForm(); message.style.color = '#76d891'; message.textContent = activeId ? 'Client photo updated successfully.' : 'Client photo published successfully.'; await refresh(); } catch (error) { message.textContent = error.message; } finally { submitButton.disabled = false; }
+  });
+  list.addEventListener('click', async (event) => {
+    const editButton = event.target.closest('[data-edit]'); if (editButton) { const item = items.find((entry) => entry.id === decodeURIComponent(editButton.dataset.edit)); if (item) beginEdit(item); return; }
+    const deleteButton = event.target.closest('[data-delete]'); if (!deleteButton || !confirm('Remove this client photo from the public gallery?')) return; deleteButton.disabled = true;
+    try { const id = decodeURIComponent(deleteButton.dataset.delete); await request(`/admin/gallery/${deleteButton.dataset.delete}`, { method:'DELETE' }); if (editingId === id) resetForm(); message.style.color = '#76d891'; message.textContent = 'Client photo removed.'; await refresh(); } catch (error) { message.style.color = '#ff7676'; message.textContent = error.message; deleteButton.disabled = false; }
+  });
+  cancelButton.addEventListener('click', () => { resetForm(); message.textContent = 'Gallery edit cancelled.'; });
+  document.getElementById('staff-logout').addEventListener('click', () => { sessionStorage.removeItem(tokenKey); location.replace('staff.html'); });
+  refresh();
+})();
+</script>
+</body>
+</html>

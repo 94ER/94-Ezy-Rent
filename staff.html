@@ -25,22 +25,9 @@
     object-fit: cover;
     object-position: center;
   }
-  .staff-section-divider { margin: 54px 0 22px; border: 0; border-top: 1px solid rgba(255,255,255,.1); }
-  .staff-gallery-heading { margin-bottom: 22px; }
-  .staff-gallery-heading h2 { margin: 8px 0 6px; font: 900 clamp(2rem,5vw,3.4rem)/1 'Barlow Condensed',sans-serif; text-transform: uppercase; }
-  .staff-gallery-heading p { color: rgba(255,255,255,.55); line-height: 1.6; }
-  .gallery-upload-form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin-top: 28px; }
-  .gallery-photo-preview { width: 200px; min-height: 230px; max-height: 300px; }
-  .gallery-photo-preview img { object-fit: contain; }
-  .staff-consent { grid-column: 1/-1; display: flex; align-items: flex-start; gap: 11px; padding: 14px 15px; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; background: #0d0d0d; color: rgba(255,255,255,.68); font-size: .84rem; line-height: 1.5; }
-  .staff-consent input { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 1px; accent-color: #d01d1d; }
-  .staff-gallery-item { display: grid; grid-template-columns: 74px minmax(0,1fr) auto; gap: 13px; align-items: center; padding: 10px; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; }
-  .staff-gallery-item img { width: 74px; height: 74px; object-fit: cover; border-radius: 8px; background: #222; }
-  .staff-gallery-item strong { display: block; font-size: .9rem; }
-  .staff-gallery-item span { display: block; margin-top: 4px; color: rgba(255,255,255,.46); font-size: .74rem; }
-  .staff-gallery-item.is-editing { border-color: rgba(208,29,29,.7); box-shadow: 0 0 0 2px rgba(208,29,29,.12); }
-  @media(max-width:850px){.gallery-upload-form{grid-template-columns:1fr}.staff-consent{grid-column:auto}}
-  @media(max-width:560px){.staff-gallery-item{grid-template-columns:62px minmax(0,1fr)}.staff-gallery-item img{width:62px;height:62px}.staff-gallery-item .staff-product-actions{grid-column:1/-1}}
+  .staff-dashboard-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .staff-nav-link { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; border-radius: 999px; background: #d01d1d; color: #fff; padding: 0 19px; font-size: .76rem; font-weight: 800; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+  .staff-nav-link:hover { background: #ac1515; }
 </style>
 <script src="assets/products.js?v=20261010b1"></script>
 </head>
@@ -53,7 +40,7 @@
   </section>
 
   <section class="staff-dashboard" id="staff-dashboard" hidden>
-    <div class="staff-dashboard-head"><div><div class="staff-kicker">Staff dashboard</div><h1 class="staff-title" id="dashboard-title">Add New Gear</h1><p class="staff-intro" id="dashboard-intro">Complete every field so the catalogue and product detail page remain consistent.</p></div><button class="staff-logout" id="staff-logout" type="button">Log out</button></div>
+    <div class="staff-dashboard-head"><div><div class="staff-kicker">Product manager</div><h1 class="staff-title" id="dashboard-title">Add New Gear</h1><p class="staff-intro" id="dashboard-intro">Complete every field so the catalogue and product detail page remain consistent.</p></div><div class="staff-dashboard-actions"><a class="staff-nav-link" href="staff-gallery.html">Manage Client Photos →</a><button class="staff-logout" id="staff-logout" type="button">Log out</button></div></div>
     <div class="staff-layout">
       <div class="staff-panel"><h2 id="product-form-title">Product Details</h2><form class="product-form" id="product-form">
         <div class="staff-field"><label for="product-name">Model name</label><input id="product-name" name="name" maxlength="100" placeholder="DJI Osmo Action 6" required /></div>
@@ -67,22 +54,6 @@
         <div class="staff-form-actions"><button class="staff-button" id="product-submit" type="submit">Publish Product</button><button class="staff-button staff-button-secondary" id="product-cancel" type="button" hidden>Cancel Edit</button></div>
       </form><p class="staff-message" id="product-message" aria-live="polite"></p></div>
       <aside class="staff-panel"><h2>Staff-added Products</h2><div class="staff-list" id="staff-product-list"><div class="staff-empty">No staff-added products yet.</div></div></aside>
-    </div>
-
-    <hr class="staff-section-divider" />
-    <div class="staff-gallery-heading"><div class="staff-kicker">Client gallery</div><h2>Publish Client Photos</h2><p>Upload photos that clients have sent to 94 Ezy Rent. Only publish images after the client has given permission.</p></div>
-    <div class="staff-layout">
-      <div class="staff-panel"><h2 id="gallery-form-title">Photo Details</h2><form class="gallery-upload-form" id="gallery-form">
-        <div class="staff-field"><label for="gallery-title">Photo title</label><input id="gallery-title" name="title" maxlength="100" placeholder="Penang travel portrait" required /></div>
-        <div class="staff-field"><label for="gallery-client">Client credit (optional)</label><input id="gallery-client" name="client" maxlength="80" placeholder="@creatorname or Client name" /></div>
-        <div class="staff-field"><label for="gallery-location">Location (optional)</label><input id="gallery-location" name="location" maxlength="80" placeholder="Penang, Malaysia" /></div>
-        <div class="staff-field"><label for="gallery-gear">Gear used (optional)</label><input id="gallery-gear" name="gear" maxlength="100" placeholder="DJI Pocket 4" /></div>
-        <div class="staff-field full"><label for="gallery-caption">Short caption (optional)</label><textarea id="gallery-caption" name="caption" maxlength="500" placeholder="A short description of the shoot or result."></textarea></div>
-        <div class="photo-upload"><div class="photo-preview gallery-photo-preview" id="gallery-preview">Photo preview</div><div><div class="staff-field"><label for="gallery-image">Client photo</label><input id="gallery-image" name="image" type="file" accept="image/jpeg,image/png,image/webp" required /></div><p class="photo-guidance" id="gallery-guidance"><strong>Recommended: high-resolution JPG or WebP</strong>Portrait or landscape accepted · maximum 8 MB. The public gallery preserves the complete photo shape.</p></div></div>
-        <label class="staff-consent"><input id="gallery-consent" name="consent" type="checkbox" value="yes" required /><span>I confirm that the client gave 94 Ezy Rent permission to publish this photo on the website.</span></label>
-        <div class="staff-form-actions"><button class="staff-button" id="gallery-submit" type="submit">Publish To Gallery</button><button class="staff-button staff-button-secondary" id="gallery-cancel" type="button" hidden>Cancel Edit</button></div>
-      </form><p class="staff-message" id="gallery-message" aria-live="polite"></p></div>
-      <aside class="staff-panel"><h2>Published Client Photos</h2><div class="staff-list" id="staff-gallery-list"><div class="staff-empty">No client photos published yet.</div></div></aside>
     </div>
   </section>
 </main>
@@ -104,22 +75,12 @@
   const formTitle = document.getElementById('product-form-title');
   const submitButton = document.getElementById('product-submit');
   const cancelButton = document.getElementById('product-cancel');
-  const galleryForm = document.getElementById('gallery-form');
-  const galleryMessage = document.getElementById('gallery-message');
-  const galleryImageInput = document.getElementById('gallery-image');
-  const galleryPreview = document.getElementById('gallery-preview');
-  const galleryGuidance = document.getElementById('gallery-guidance');
-  const galleryFormTitle = document.getElementById('gallery-form-title');
-  const gallerySubmitButton = document.getElementById('gallery-submit');
-  const galleryCancelButton = document.getElementById('gallery-cancel');
+  const nextPage = new URLSearchParams(location.search).get('next');
   let token = sessionStorage.getItem(tokenKey) || '';
   let products = [];
-  let galleryItems = [];
   let editingSlug = '';
-  let editingGalleryId = '';
 
   const defaultGuidance = '<strong>Recommended: 1080 × 1350 px</strong>4:5 portrait · minimum 400 × 500 px · JPG or WebP · maximum 5 MB. The complete artwork will remain visible without cropping.';
-  const defaultGalleryGuidance = '<strong>Recommended: high-resolution JPG or WebP</strong>Portrait or landscape accepted · maximum 8 MB. The public gallery preserves the complete photo shape.';
 
   const escapeHtml = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const request = async (path, options = {}) => {
@@ -172,43 +133,8 @@
     productForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const resetGalleryForm = () => {
-    editingGalleryId = '';
-    galleryForm.reset();
-    galleryImageInput.required = true;
-    galleryImageInput.setCustomValidity('');
-    galleryPreview.textContent = 'Photo preview';
-    galleryGuidance.innerHTML = defaultGalleryGuidance;
-    galleryGuidance.style.color = '';
-    galleryFormTitle.textContent = 'Photo Details';
-    gallerySubmitButton.textContent = 'Publish To Gallery';
-    galleryCancelButton.hidden = true;
-    document.querySelectorAll('.staff-gallery-item').forEach((card) => card.classList.remove('is-editing'));
-  };
-
-  const beginGalleryEdit = (item) => {
-    editingGalleryId = item.id;
-    galleryForm.elements.title.value = item.title || '';
-    galleryForm.elements.client.value = item.client || '';
-    galleryForm.elements.location.value = item.location || '';
-    galleryForm.elements.gear.value = item.gear || '';
-    galleryForm.elements.caption.value = item.caption || '';
-    galleryForm.elements.consent.checked = true;
-    galleryImageInput.value = '';
-    galleryImageInput.required = false;
-    galleryImageInput.setCustomValidity('');
-    galleryPreview.innerHTML = item.image ? `<img src="${escapeHtml(item.image)}" alt="Current ${escapeHtml(item.title)} photo">` : 'No current photo';
-    galleryGuidance.innerHTML = '<strong>Current photo will be kept</strong>Choose a new file only if you want to replace the image.';
-    galleryGuidance.style.color = '#76d891';
-    galleryFormTitle.textContent = 'Edit Client Photo';
-    gallerySubmitButton.textContent = 'Save Photo Changes';
-    galleryCancelButton.hidden = false;
-    document.querySelectorAll('.staff-gallery-item').forEach((card) => card.classList.toggle('is-editing', card.dataset.gallery === item.id));
-    galleryForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  const showLogin = (message = '') => { resetFormMode(); resetGalleryForm(); token = ''; sessionStorage.removeItem(tokenKey); dashboard.hidden = true; loginSection.hidden = false; loginMessage.textContent = message; };
-  const showDashboard = async () => { loginSection.hidden = true; dashboard.hidden = false; await Promise.all([refreshProducts(), refreshGallery()]); };
+  const showLogin = (message = '') => { resetFormMode(); token = ''; sessionStorage.removeItem(tokenKey); dashboard.hidden = true; loginSection.hidden = false; loginMessage.textContent = message; };
+  const showDashboard = async () => { if (nextPage === 'gallery') { location.replace('staff-gallery.html'); return; } loginSection.hidden = true; dashboard.hidden = false; await refreshProducts(); };
   const refreshProducts = async () => {
     try {
       const payload = await request('/admin/products');
@@ -217,19 +143,6 @@
       if (!products.length) { list.innerHTML = '<div class="staff-empty">No staff-added products yet.</div>'; return; }
       list.innerHTML = products.map((product) => `<article class="staff-product${editingSlug === product.slug ? ' is-editing' : ''}" data-product="${escapeHtml(product.slug)}"><img src="${escapeHtml(product.image)}" alt=""><div><strong>${escapeHtml(product.name)}</strong><span>${escapeHtml(product.price)}</span></div><div class="staff-product-actions"><button class="staff-edit" type="button" data-edit="${encodeURIComponent(product.slug)}" aria-label="Edit ${escapeHtml(product.name)}">Edit</button><button class="staff-delete" type="button" data-delete="${encodeURIComponent(product.slug)}" aria-label="Delete ${escapeHtml(product.name)}">Delete</button></div></article>`).join('');
     } catch (error) { if (/session|expired|401/i.test(error.message)) showLogin('Your session expired. Please log in again.'); else productMessage.textContent = error.message; }
-  };
-
-  const refreshGallery = async () => {
-    try {
-      const payload = await request('/admin/gallery');
-      const list = document.getElementById('staff-gallery-list');
-      galleryItems = Array.isArray(payload.items) ? payload.items : [];
-      if (!galleryItems.length) { list.innerHTML = '<div class="staff-empty">No client photos published yet.</div>'; return; }
-      list.innerHTML = galleryItems.map((item) => {
-        const meta = [item.client, item.location, item.gear].filter(Boolean).join(' · ');
-        return `<article class="staff-gallery-item${editingGalleryId === item.id ? ' is-editing' : ''}" data-gallery="${escapeHtml(item.id)}"><img src="${escapeHtml(item.image)}" alt=""><div><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(meta || 'Client gallery')}</span></div><div class="staff-product-actions"><button class="staff-edit" type="button" data-gallery-edit="${encodeURIComponent(item.id)}" aria-label="Edit ${escapeHtml(item.title)}">Edit</button><button class="staff-delete" type="button" data-gallery-delete="${encodeURIComponent(item.id)}" aria-label="Delete ${escapeHtml(item.title)}">Delete</button></div></article>`;
-      }).join('');
-    } catch (error) { if (/session|expired|401/i.test(error.message)) showLogin('Your session expired. Please log in again.'); else galleryMessage.textContent = error.message; }
   };
 
   loginForm.addEventListener('submit', async (event) => {
@@ -248,29 +161,12 @@
     image.src = URL.createObjectURL(file);
   });
 
-  galleryImageInput.addEventListener('change', () => {
-    const file = galleryImageInput.files[0]; galleryPreview.textContent = 'Photo preview'; galleryGuidance.style.color = ''; galleryImageInput.setCustomValidity('');
-    if (!file) return;
-    if (file.size > 8 * 1024 * 1024) { galleryImageInput.setCustomValidity('Please choose an image below 8 MB.'); galleryGuidance.textContent = 'This photo is larger than 8 MB. Please resize it before uploading.'; galleryGuidance.style.color = '#ff7676'; return; }
-    const image = new Image(); image.onload = () => { galleryPreview.innerHTML = `<img src="${image.src}" alt="Client photo preview">`; galleryGuidance.innerHTML = `<strong>${image.naturalWidth} × ${image.naturalHeight} px</strong>Ready to upload. The gallery will preserve this photo's natural shape.`; galleryGuidance.style.color = '#76d891'; };
-    image.onerror = () => { galleryImageInput.setCustomValidity('Please choose a valid JPG, PNG or WebP image.'); galleryGuidance.textContent = 'This image could not be previewed. Please choose another file.'; galleryGuidance.style.color = '#ff7676'; };
-    image.src = URL.createObjectURL(file);
-  });
-
   productForm.addEventListener('submit', async (event) => {
     event.preventDefault(); const button = productForm.querySelector('button[type="submit"]'); button.disabled = true; productMessage.textContent = editingSlug ? 'Saving product changes…' : 'Uploading and publishing…';
     const activeSlug = editingSlug;
     try { const formData = new FormData(productForm); if (activeSlug) formData.set('slug', activeSlug); await request(activeSlug ? `/admin/products/${encodeURIComponent(activeSlug)}` : '/admin/products', { method:activeSlug ? 'PUT' : 'POST', body:formData }); resetFormMode(); productMessage.style.color = '#76d891'; productMessage.textContent = activeSlug ? 'Product updated successfully.' : 'Product published successfully.'; await refreshProducts(); }
     catch (error) { productMessage.style.color = '#ff7676'; productMessage.textContent = error.message; }
     finally { button.disabled = false; }
-  });
-
-  galleryForm.addEventListener('submit', async (event) => {
-    event.preventDefault(); gallerySubmitButton.disabled = true; galleryMessage.textContent = editingGalleryId ? 'Saving gallery changes…' : 'Uploading client photo…';
-    const activeId = editingGalleryId;
-    try { const formData = new FormData(galleryForm); await request(activeId ? `/admin/gallery/${encodeURIComponent(activeId)}` : '/admin/gallery', { method:activeId ? 'PUT' : 'POST', body:formData }); resetGalleryForm(); galleryMessage.style.color = '#76d891'; galleryMessage.textContent = activeId ? 'Client photo updated successfully.' : 'Client photo published successfully.'; await refreshGallery(); }
-    catch (error) { galleryMessage.style.color = '#ff7676'; galleryMessage.textContent = error.message; }
-    finally { gallerySubmitButton.disabled = false; }
   });
 
   document.getElementById('staff-product-list').addEventListener('click', async (event) => {
@@ -285,20 +181,7 @@
     try { const deletingSlug = decodeURIComponent(button.dataset.delete); await request(`/admin/products/${button.dataset.delete}`, { method:'DELETE' }); if (editingSlug === deletingSlug) resetFormMode(); await refreshProducts(); }
     catch (error) { productMessage.textContent = error.message; button.disabled = false; }
   });
-  document.getElementById('staff-gallery-list').addEventListener('click', async (event) => {
-    const editButton = event.target.closest('[data-gallery-edit]');
-    if (editButton) {
-      const item = galleryItems.find((entry) => entry.id === decodeURIComponent(editButton.dataset.galleryEdit));
-      if (item) beginGalleryEdit(item);
-      return;
-    }
-    const button = event.target.closest('[data-gallery-delete]'); if (!button || !confirm('Remove this client photo from the public gallery?')) return;
-    button.disabled = true;
-    try { const deletingId = decodeURIComponent(button.dataset.galleryDelete); await request(`/admin/gallery/${button.dataset.galleryDelete}`, { method:'DELETE' }); if (editingGalleryId === deletingId) resetGalleryForm(); await refreshGallery(); }
-    catch (error) { galleryMessage.textContent = error.message; button.disabled = false; }
-  });
   cancelButton.addEventListener('click', () => { resetFormMode(); productMessage.textContent = 'Edit cancelled.'; });
-  galleryCancelButton.addEventListener('click', () => { resetGalleryForm(); galleryMessage.textContent = 'Gallery edit cancelled.'; });
   document.getElementById('staff-logout').addEventListener('click', () => showLogin('You have logged out.'));
   if (token) showDashboard();
 })();

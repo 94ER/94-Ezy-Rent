@@ -75,10 +75,26 @@ nav {
 
 .tutorial-hero {
   padding: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(208,29,29,0.18) 0%, transparent 55%),
-              radial-gradient(circle at 80% 40%, rgba(208,29,29,0.08) 0%, transparent 60%),
-              #0B0B0B;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.22) 48%, rgba(0,0,0,0.08) 100%),
+    url('assets/tutorials-learning-background-v2.png?v=20261017a1') center center / cover no-repeat,
+    #0B0B0B;
   border-bottom: 0;
+}
+#hero.tutorial-hero > .container { padding-right: min(48vw, 680px); }
+@media (max-width: 720px) {
+  #hero.tutorial-hero {
+    min-height: 580px;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.12) 0%, #0B0B0B 58%, rgba(0,0,0,0.12) 100%),
+      url('assets/tutorials-learning-background-v2.png?v=20261017a1') center bottom / 100% auto no-repeat,
+      #0B0B0B;
+  }
+  #hero.tutorial-hero > .container {
+    min-height: 580px;
+    padding-right: 0;
+    padding-bottom: 170px;
+  }
 }
 .tut-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
 .tut-card {

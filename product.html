@@ -109,7 +109,7 @@
       return;
     }
     document.title = `${product.name} | 94 Ezy Rent`;
-    const category = {drone:'Drone',action:'Action Camera','360':'360 Camera',digital:'Digital Camera',smartphone:'Smartphone','ai-glasses':'AI Glasses',acc:'Accessory'}[product.cat] || product.cat;
+    const category = {drone:'Drone',action:'Action Camera','360':'360 Camera',digital:'Digital Camera',instax:'Instax',smartphone:'Smartphone','ai-glasses':'AI Glasses',acc:'Accessory'}[product.cat] || product.cat;
     target.innerHTML = `
       <article class="product-detail-grid">
         <div class="product-detail-media">${product.image ? `<img src="${product.image}" alt="${product.name}" />` : `<span class="product-detail-icon" aria-hidden="true">${product.icon}</span>`}</div>

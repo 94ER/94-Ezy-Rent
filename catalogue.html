@@ -467,6 +467,7 @@ body.catalogue-page { background: #080808; color: #fff; }
       <button class="cat-filter" onclick="filterCat('action', this)">Action Cameras</button>
       <button class="cat-filter" onclick="filterCat('360', this)">Insta360</button>
       <button class="cat-filter" onclick="filterCat('digital', this)">Digital Cameras</button>
+      <button class="cat-filter" onclick="filterCat('instax', this)">Instax</button>
       <button class="cat-filter" onclick="filterCat('smartphone', this)">Smartphones</button>
       <button class="cat-filter" onclick="filterCat('ai-glasses', this)">AI Glasses</button>
       <button class="cat-filter" onclick="filterCat('acc', this)">Accessories</button>
@@ -539,7 +540,7 @@ body.catalogue-page { background: #080808; color: #fff; }
 let products = window.GEAR_PRODUCTS;
 
 function catLabel(c) {
-  return { drone:'Drone', action:'Action Camera', '360':'Insta360 & 360°', digital:'Digital Camera', smartphone:'Smartphone', 'ai-glasses':'AI Glasses', acc:'Accessory' }[c] || c;
+  return { drone:'Drone', action:'Action Camera', '360':'Insta360 & 360°', digital:'Digital Camera', instax:'Instax', smartphone:'Smartphone', 'ai-glasses':'AI Glasses', acc:'Accessory' }[c] || c;
 }
 
 function renderProducts(filter) {

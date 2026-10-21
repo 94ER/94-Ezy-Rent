@@ -135,7 +135,7 @@ const productPayload = (form, imageUrl, imageKey) => {
 };
 
 const validateProduct = (product) => {
-  const categories = new Set(['drone', 'action', '360', 'digital', 'smartphone', 'ai-glasses', 'acc']);
+  const categories = new Set(['drone', 'action', '360', 'digital', 'instax', 'smartphone', 'ai-glasses', 'acc']);
   if (!product.name || !product.slug || !product.desc) return 'Model name and description are required.';
   if (!categories.has(product.cat)) return 'Choose a valid category.';
   if (!product.features.length || !product.included.length) return 'Add at least one highlight and one included item.';

@@ -34,17 +34,43 @@
 .how-hero .lead { max-width: 620px; margin-left: auto; margin-right: auto; }
 @media (max-width: 720px) {
   #hero.how-hero {
-    min-height: 480px;
+    min-height: 500px;
+    padding-top: 0;
     background:
-      linear-gradient(180deg, rgba(0,0,0,.14) 0%, #0b0b0b 58%, rgba(0,0,0,.12) 100%),
+      linear-gradient(180deg, #0b0b0b 0%, rgba(11,11,11,.97) 42%, rgba(11,11,11,.18) 72%, rgba(0,0,0,.08) 100%),
       url('assets/how-it-works-handover-background.png?v=20261017a1') center bottom / 100% auto no-repeat,
       #0b0b0b;
   }
   #hero.how-hero > .container {
-    min-height: 480px;
+    min-height: 500px;
     width: min(100% - 32px, 520px);
     justify-content: flex-start;
-    padding: calc(var(--nav-h) + 20px) 16px 135px;
+    padding: calc(var(--nav-h) + 42px) 8px 190px;
+  }
+  .how-hero .sec-label {
+    margin-bottom: 18px;
+  }
+  .how-hero .sec-title {
+    margin-bottom: 14px;
+    font-size: clamp(2rem, 9.6vw, 2.65rem);
+    line-height: .98;
+  }
+  .how-hero .lead {
+    max-width: 31rem;
+    margin-bottom: 0;
+    font-size: .98rem;
+    line-height: 1.7;
+  }
+  .how-steps-section {
+    padding-top: 48px;
+    padding-bottom: 64px;
+  }
+  .how-steps-section .steps-grid {
+    gap: 16px;
+  }
+  .how-steps-section .step-card {
+    padding: 24px 22px;
+    border-radius: 22px;
   }
 }
 </style>
@@ -84,7 +110,7 @@
   </div>
 </section>
 
-<section class="page-section">
+<section class="page-section how-steps-section">
   <div class="container">
     <div class="steps-grid reveal">
       <a class="step-card step-card-link" href="catalogue.html" aria-label="Browse gear page">

@@ -18,12 +18,18 @@
 <link rel="stylesheet" href="assets/site.css?v=20261017d8" />
 <style>
 .how-hero {
+  --how-hero-h: clamp(360px, 40vw, 793px);
+  min-height: var(--how-hero-h) !important;
+  height: var(--how-hero-h);
+  padding-top: 0 !important;
   background:
     linear-gradient(90deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.1) 48%, rgba(0,0,0,.2) 100%),
     url('assets/how-it-works-handover-background.png?v=20261017a1') center center / cover no-repeat,
     #0b0b0b;
 }
 #hero.how-hero > .container {
+  min-height: 100%;
+  height: 100%;
   width: min(100% - 48px, 720px);
   padding: var(--nav-h) 24px 0;
   justify-content: center;
@@ -34,15 +40,9 @@
 .how-hero .lead { max-width: 620px; margin-left: auto; margin-right: auto; }
 @media (max-width: 720px) {
   #hero.how-hero {
-    min-height: 620px;
-    padding-top: 0;
-    background:
-      linear-gradient(180deg, rgba(5,5,5,.34) 0%, rgba(5,5,5,.18) 44%, rgba(5,5,5,.06) 72%, rgba(0,0,0,.12) 100%),
-      url('assets/how-it-works-mobile-1080x1920.webp?v=20261026a1') center center / cover no-repeat,
-      #0b0b0b;
+    --how-hero-h: clamp(500px, 72vw, 560px);
   }
   #hero.how-hero > .container {
-    min-height: 620px;
     width: min(100% - 32px, 520px);
     justify-content: flex-start;
     padding: calc(var(--nav-h) + 42px) 8px 190px;
@@ -71,6 +71,15 @@
   .how-steps-section .step-card {
     padding: 24px 22px;
     border-radius: 22px;
+  }
+}
+@media (max-width: 520px) {
+  #hero.how-hero {
+    --how-hero-h: clamp(620px, 177.78vw, 760px);
+    background:
+      linear-gradient(180deg, rgba(5,5,5,.34) 0%, rgba(5,5,5,.18) 44%, rgba(5,5,5,.06) 72%, rgba(0,0,0,.12) 100%),
+      url('assets/how-it-works-mobile-1080x1920.webp?v=20261026a1') center center / cover no-repeat,
+      #0b0b0b;
   }
 }
 </style>

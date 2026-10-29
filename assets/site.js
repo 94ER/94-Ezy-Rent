@@ -150,6 +150,15 @@ function setupBranchesShowcase() {
   const showcase = section?.querySelector('.branches-showcase');
   if (!(section instanceof HTMLElement) || !(showcase instanceof HTMLElement)) return;
 
+  const correctBranchAnchor = () => {
+    if (window.location.hash !== '#branches') return;
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        section.scrollIntoView({ block: 'start', behavior: 'auto' });
+      });
+    });
+  };
+
   const trigger = () => {
     showcase.classList.remove('is-active');
     void showcase.offsetWidth;
@@ -172,9 +181,14 @@ function setupBranchesShowcase() {
 
   window.addEventListener('hashchange', () => {
     if (window.location.hash === '#branches') {
+      correctBranchAnchor();
       window.setTimeout(trigger, 120);
     }
   });
+
+  document.addEventListener('homepageproductsready', correctBranchAnchor);
+  window.addEventListener('load', correctBranchAnchor, { once: true });
+  correctBranchAnchor();
 }
 
 function setupCarousels() {

@@ -565,7 +565,7 @@ footer {
 .hero-brands { animation: fadeUp 0.6s ease 0.6s both; }
 </style>
 <link rel="stylesheet" href="assets/site.css?v=20261021b1" />
-<script src="assets/site.js?v=20261017d9" defer></script>
+<script src="assets/site.js?v=20261029a1" defer></script>
 <script src="assets/i18n.js?v=20261021a1" defer></script>
 <script src="assets/seo.js?v=20261017b2" defer></script>
 </head>
@@ -1215,6 +1215,7 @@ async function loadHomepageProducts() {
       handleBEquipChange(select);
     }
   }
+  document.dispatchEvent(new CustomEvent('homepageproductsready'));
 }
 
 function initials(name) {

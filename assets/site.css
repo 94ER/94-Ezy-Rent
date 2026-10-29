@@ -2709,8 +2709,10 @@ nav[data-open="true"] .nav-links {
 
 .faq-hero {
   background:
-    radial-gradient(circle at 20% 18%, rgba(208,29,29,0.18), transparent 42%),
-    linear-gradient(135deg, #131313 0%, #080808 100%);
+    linear-gradient(90deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.42) 48%, rgba(0,0,0,0.52) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.44) 100%),
+    url('client-gallery-hero-concept.png?v=20261029b1') center center / cover no-repeat,
+    #0b0b0b;
 }
 
 .hero-media[data-ready="true"] .hero-video {

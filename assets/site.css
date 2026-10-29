@@ -2709,11 +2709,19 @@ nav[data-open="true"] .nav-links {
 
 .faq-hero {
   background:
-    linear-gradient(90deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.42) 48%, rgba(0,0,0,0.52) 100%),
-    linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.44) 100%),
-    url('client-gallery-hero-concept.png?v=20261029b1') center center / cover no-repeat,
+    radial-gradient(circle at 50% 72%, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.24) 38%, transparent 68%),
+    linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.56) 100%),
+    url('faq-questions-background-v3.png?v=20261029c1') center center / cover no-repeat,
     #0b0b0b;
 }
+
+#hero.faq-hero > .container {
+  align-items: center;
+  text-align: center;
+}
+
+.faq-hero .sec-label { justify-content: center; }
+.faq-hero .lead { margin-left: auto; margin-right: auto; }
 
 .hero-media[data-ready="true"] .hero-video {
   opacity: 1;

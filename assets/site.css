@@ -4667,13 +4667,30 @@ body[data-home][data-language="zh-CN"] .hero-title,
 body[data-home][data-language="zh-TW"] .hero-title {
   width: fit-content;
   max-width: none;
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
   font-size: clamp(4.4rem, 7vw, 7rem);
-  line-height: 0.98;
+  line-height: 1.12;
   letter-spacing: 0;
+}
+
+/* Solid Chinese strokes keep dense characters such as 镜 legible. */
+body[data-home][data-language="zh-CN"] .hero-title .outline,
+body[data-home][data-language="zh-TW"] .hero-title .outline {
+  color: var(--white);
+  -webkit-text-stroke: 0;
 }
 
 body[data-home][data-language="zh-CN"] .hero-title-line,
 body[data-home][data-language="zh-TW"] .hero-title-line {
+  white-space: nowrap;
+}
+
+body.catalogue-page[data-language="zh-CN"] .catalogue-hero .hero-title,
+body.catalogue-page[data-language="zh-TW"] .catalogue-hero .hero-title {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+  font-size: clamp(2rem, 9vw, 6rem);
+  line-height: 1.12;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 
@@ -4694,7 +4711,12 @@ body[data-home][data-language="zh-TW"] .hero-title-line {
   body[data-home][data-language="zh-CN"] .hero-title,
   body[data-home][data-language="zh-TW"] .hero-title {
     max-width: 100%;
-    font-size: clamp(3rem, 15vw, 4rem);
+    font-size: clamp(2rem, calc(15vw - .75rem), 4rem);
+  }
+
+  body.catalogue-page[data-language="zh-CN"] .catalogue-hero .hero-title,
+  body.catalogue-page[data-language="zh-TW"] .catalogue-hero .hero-title {
+    font-size: clamp(2rem, 12vw, 3.5rem);
   }
 }
 

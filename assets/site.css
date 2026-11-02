@@ -1737,17 +1737,35 @@ footer {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #20201e var(--footer-platform-icon) center / 18px 18px no-repeat;
-  transition: background-color .2s ease;
+  background-color: var(--footer-platform-color, #20201e);
+  background-image: var(--footer-platform-icon), var(--footer-platform-gradient, linear-gradient(transparent, transparent));
+  background-position: center;
+  background-size: 18px 18px, 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
-.site-footer .footer-col-links a[href*="instagram.com/"] { --footer-platform-icon: url('icon-instagram.svg'); }
-.site-footer .footer-col-links a[href*="facebook.com/"] { --footer-platform-icon: url('icon-facebook.svg'); }
-.site-footer .footer-col-links a[href*="xhslink."] { --footer-platform-icon: url('REDNOTE.PNG'); }
-.site-footer .footer-col-links a[href*="xhslink."]::before { background-size: 43px 43px; }
-.site-footer .footer-col-links a[href*="wa.me/"] { --footer-platform-icon: url('icon-whatsapp.svg'); }
+.site-footer .footer-col-links a[href*="instagram.com/"] {
+  --footer-platform-icon: url('icon-instagram.svg');
+  --footer-platform-color: #d6249f;
+  --footer-platform-gradient: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+.site-footer .footer-col-links a[href*="facebook.com/"] {
+  --footer-platform-icon: url('icon-facebook.svg');
+  --footer-platform-color: #0866ff;
+}
+.site-footer .footer-col-links a[href*="xhslink."] {
+  --footer-platform-icon: url('REDNOTE.PNG');
+  --footer-platform-color: #ff2340;
+}
+.site-footer .footer-col-links a[href*="xhslink."]::before { background-size: 43px 43px, 100% 100%; }
+.site-footer .footer-col-links a[href*="wa.me/"] {
+  --footer-platform-icon: url('icon-whatsapp.svg');
+  --footer-platform-color: #25d366;
+}
 .site-footer .footer-col-links a[href^="mailto:"] { --footer-platform-icon: url('icon-email.svg'); }
 .site-footer .footer-col-links a[href$="#booking"] { --footer-platform-icon: url('icon-enquiry.svg'); }
-.site-footer .footer-col-links a:hover::before { background-color: #ba2424; }
+.site-footer .footer-col-links a:hover::before { transform: translateY(-1px); box-shadow: 0 3px 9px rgba(0,0,0,.16); }
 .site-footer .footer-col-links a:focus-visible { outline: 2px solid #ba2424; outline-offset: 4px; border-radius: 3px; }
 
 .footer-bottom {

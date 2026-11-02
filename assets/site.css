@@ -1720,6 +1720,36 @@ footer {
   transform: translateX(2px);
 }
 
+/* Decorative platform icons retain the existing, translatable link labels. */
+.site-footer .footer-col-links a:is([href*="instagram.com/"], [href*="facebook.com/"], [href*="xhslink."], [href*="wa.me/"], [href^="mailto:"], [href$="#booking"]) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  width: fit-content;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.site-footer .footer-col-links a:is([href*="instagram.com/"], [href*="facebook.com/"], [href*="xhslink."], [href*="wa.me/"], [href^="mailto:"], [href$="#booking"])::before {
+  content: '';
+  display: block;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #20201e var(--footer-platform-icon) center / 18px 18px no-repeat;
+  transition: background-color .2s ease;
+}
+.site-footer .footer-col-links a[href*="instagram.com/"] { --footer-platform-icon: url('icon-instagram.svg'); }
+.site-footer .footer-col-links a[href*="facebook.com/"] { --footer-platform-icon: url('icon-facebook.svg'); }
+.site-footer .footer-col-links a[href*="xhslink."] { --footer-platform-icon: url('REDNOTE.PNG'); }
+.site-footer .footer-col-links a[href*="xhslink."]::before { background-size: 43px 43px; }
+.site-footer .footer-col-links a[href*="wa.me/"] { --footer-platform-icon: url('icon-whatsapp.svg'); }
+.site-footer .footer-col-links a[href^="mailto:"] { --footer-platform-icon: url('icon-email.svg'); }
+.site-footer .footer-col-links a[href$="#booking"] { --footer-platform-icon: url('icon-enquiry.svg'); }
+.site-footer .footer-col-links a:hover::before { background-color: #ba2424; }
+.site-footer .footer-col-links a:focus-visible { outline: 2px solid #ba2424; outline-offset: 4px; border-radius: 3px; }
+
 .footer-bottom {
   border-top: 1px solid rgba(0,0,0,0.10);
   padding-top: 10px;

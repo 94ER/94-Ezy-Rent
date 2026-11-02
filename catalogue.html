@@ -231,6 +231,7 @@ body.catalogue-page { background: #080808; color: #fff; }
   text-shadow: 0 18px 50px rgba(0,0,0,.46);
 }
 .catalogue-page .catalogue-hero .hero-title .outline { color: var(--red); -webkit-text-stroke: 0; }
+body.catalogue-page[data-language^="zh"] .catalogue-hero .hero-title-gap { display: none; }
 .catalogue-page .catalogue-hero .hero-sub {
   max-width: 610px; margin: 22px auto 0; color: rgba(255,255,255,.72); font-size: 1rem; line-height: 1.7;
 }
@@ -433,9 +434,7 @@ body.catalogue-page { background: #080808; color: #fff; }
   <div class="hero-glow"></div>
   <div class="container">
     <p class="hero-eyebrow">Gear Collection</p>
-    <h1 class="hero-title">
-      Our <span class="outline">Gear</span>
-    </h1>
+    <h1 class="hero-title">Our<span class="hero-title-gap"> </span><span class="outline">Gear</span></h1>
     <p class="hero-sub">Browse the full collection and select any item to view details, included kit, and booking options.</p>
     <div class="hero-ctas">
       <a href="index.html#booking" class="btn-primary">Booking Enquiry</a>

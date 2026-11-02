@@ -136,6 +136,58 @@
     'We Are Here To Help':'Kami Sedia Membantu','Contact 94 Ezy Rent':'Hubungi 94 Ezy Rent','Choose the contact route that matches your request. We will help confirm the gear, dates and most suitable collection option.':'Pilih saluran yang sesuai. Kami akan membantu mengesahkan peralatan, tarikh dan pilihan pengambilan.','Choose Your Route':'Pilih Saluran Anda','How Can We Help?':'Bagaimana Kami Boleh Membantu?','For the smoothest confirmation, include the equipment, rental dates and pickup area in your message.':'Untuk pengesahan lancar, sertakan peralatan, tarikh sewaan dan kawasan pengambilan.','Fastest':'Terpantas','Best for quick availability checks, setup recommendations and booking confirmation.':'Terbaik untuk semakan stok, cadangan set dan pengesahan tempahan.','Formal':'Rasmi','Best for corporate requests, written quotations and enquiries that include documents.':'Terbaik untuk permintaan korporat, sebut harga bertulis dan pertanyaan dengan dokumen.','Rental Enquiry Form':'Borang Pertanyaan Sewaan','Detailed':'Terperinci','Best when you already know the gear, dates, location and type of shoot.':'Terbaik apabila anda sudah tahu peralatan, tarikh, lokasi dan jenis rakaman.','Open Enquiry Form':'Buka Borang Pertanyaan','Prepare Your Enquiry':'Sediakan Pertanyaan Anda','Four details help us serve you faster.':'Empat butiran membantu kami berkhidmat lebih pantas.','Rental dates':'Tarikh sewaan','Your preferred collection and return dates.':'Tarikh pengambilan dan pemulangan pilihan anda.','Pickup area':'Kawasan pengambilan','The town or region most convenient for you.':'Bandar atau kawasan yang paling mudah untuk anda.','Shoot type':'Jenis rakaman','Travel, event, commercial, vlog or another use.':'Perjalanan, acara, komersial, vlog atau kegunaan lain.','The model you want, or what you plan to shoot.':'Model pilihan anda atau rancangan rakaman anda.','Pickup & Delivery':'Pengambilan & Penghantaran','Confirm before travelling':'Sahkan sebelum bergerak','We coordinate multiple pickup regions rather than one public storefront. Please confirm the exact handover point with our team before you travel.':'Kami menyelaras beberapa kawasan pengambilan dan bukannya satu kedai awam. Sahkan lokasi serahan tepat sebelum bergerak.','Pickup support includes Penang, Ipoh, Kuala Lumpur, Johor Bahru, Kota Kinabalu, Semporna and Singapore, subject to confirmation.':'Pengambilan termasuk Pulau Pinang, Ipoh, Kuala Lumpur, Johor Bahru, Kota Kinabalu, Semporna dan Singapura, tertakluk pada pengesahan.','Need Help Choosing?':'Perlukan Bantuan Memilih?','Tell us your shoot. We will help with the gear.':'Beritahu rancangan anda. Kami bantu dengan peralatan.','Ask On WhatsApp':'Tanya Melalui WhatsApp'
   });
 
+  Object.assign(zhCN, {
+    'The 94 Ezy Rent Difference':'94 Ezy Rent 的用心',
+    'Why Rent With Us':'为什么选择我们',
+    'For the moments that deserve more.':'让值得珍藏的时刻，更加出彩。',
+    'Keep the':'留下', 'memories.':'美好回忆。',
+    'The gear you want.':'心仪的器材。', 'Only when you need it.':'只在需要时，与你相伴。',
+    'Possibility':'更多可能', 'Dream gear.':'心仪器材。', 'Within reach.':'触手可及。',
+    'Enjoy the gear without the full purchase price.':'轻松体验，无需承担整机购置费用。',
+    'Freedom':'自在选择', 'Spend on':'把预算留给', 'experiences.':'精彩体验。',
+    'More for the trip. The celebration. The next adventure.':'旅行、庆祝、冒险，让生活拥有更多精彩。',
+    'Care':'用心准备', 'Ready for':'准备就绪，', 'your moment.':'你的时刻。',
+    'Clean, checked gear. Guidance before you go.':'细心清洁、检查，出发前耐心指导。',
+    'Connection':'真诚陪伴', 'Real people.':'真实团队。', 'Right here.':'就在身边。',
+    'A local team who cares about your shoot.':'本地团队，用心支持你的每次拍摄。',
+    'Less to own.':'少一份负担。', 'More to remember.':'多一份美好。',
+    'Find Your Next Shot':'开启下一次拍摄'
+  });
+  Object.assign(zhTW, {
+    'The 94 Ezy Rent Difference':'94 Ezy Rent 的用心',
+    'Why Rent With Us':'為什麼選擇我們',
+    'For the moments that deserve more.':'讓值得珍藏的時刻，更加出彩。',
+    'Keep the':'留下', 'memories.':'美好回憶。',
+    'The gear you want.':'心儀的器材。', 'Only when you need it.':'只在需要時，與你相伴。',
+    'Possibility':'更多可能', 'Dream gear.':'心儀器材。', 'Within reach.':'觸手可及。',
+    'Enjoy the gear without the full purchase price.':'輕鬆體驗，無需承擔整機購置費用。',
+    'Freedom':'自在選擇', 'Spend on':'把預算留給', 'experiences.':'精彩體驗。',
+    'More for the trip. The celebration. The next adventure.':'旅行、慶祝、冒險，讓生活擁有更多精彩。',
+    'Care':'用心準備', 'Ready for':'準備就緒，', 'your moment.':'你的時刻。',
+    'Clean, checked gear. Guidance before you go.':'細心清潔、檢查，出發前耐心指導。',
+    'Connection':'真誠陪伴', 'Real people.':'真實團隊。', 'Right here.':'就在身邊。',
+    'A local team who cares about your shoot.':'本地團隊，用心支持你的每次拍攝。',
+    'Less to own.':'少一份負擔。', 'More to remember.':'多一份美好。',
+    'Find Your Next Shot':'開啟下一次拍攝'
+  });
+  Object.assign(ms, {
+    'The 94 Ezy Rent Difference':'Keistimewaan 94 Ezy Rent',
+    'Why Rent With Us':'Mengapa Sewa Dengan Kami',
+    'For the moments that deserve more.':'Untuk detik yang lebih bermakna.',
+    'Keep the':'Abadikan', 'memories.':'kenangan.',
+    'The gear you want.':'Peralatan pilihan anda.', 'Only when you need it.':'Hanya apabila diperlukan.',
+    'Possibility':'Peluang', 'Dream gear.':'Peralatan impian.', 'Within reach.':'Dalam jangkauan.',
+    'Enjoy the gear without the full purchase price.':'Nikmati peralatan tanpa membayar harga belian penuh.',
+    'Freedom':'Kebebasan', 'Spend on':'Utamakan', 'experiences.':'pengalaman.',
+    'More for the trip. The celebration. The next adventure.':'Lebih untuk perjalanan, keraian dan pengembaraan anda.',
+    'Care':'Keprihatinan', 'Ready for':'Sedia untuk', 'your moment.':'detik anda.',
+    'Clean, checked gear. Guidance before you go.':'Peralatan bersih, diperiksa dan panduan sebelum berangkat.',
+    'Connection':'Hubungan', 'Real people.':'Pasukan sebenar.', 'Right here.':'Di sisi anda.',
+    'A local team who cares about your shoot.':'Pasukan tempatan yang mengambil berat tentang rakaman anda.',
+    'Less to own.':'Kurangkan pemilikan.', 'More to remember.':'Tambah kenangan.',
+    'Find Your Next Shot':'Mulakan Rakaman Seterusnya'
+  });
+
   const dictionaries = {'zh-CN': zhCN, 'zh-TW': zhTW, ms};
   const skippedTags = new Set(['SCRIPT','STYLE','NOSCRIPT','CODE','PRE','TEXTAREA']);
   let currentLanguage = DEFAULT_LANGUAGE;

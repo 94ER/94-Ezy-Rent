@@ -413,26 +413,39 @@ function setupHeroVideo() {
   const video = document.getElementById('hero-video');
   if (!(hero instanceof HTMLElement) || !(video instanceof HTMLVideoElement)) return;
 
-  const desktopList = String(hero.dataset.heroVideos || '')
+  const readList = (value) => String(value || '')
     .split('|')
     .map((s) => s.trim())
     .filter(Boolean);
-  const mobileList = String(hero.dataset.heroMobileVideos || '')
-    .split('|')
-    .map((s) => s.trim())
-    .filter(Boolean);
+  const desktopList = readList(hero.dataset.heroVideos);
+  const mobileList = readList(hero.dataset.heroMobileVideos);
+  const desktopStandardList = readList(hero.dataset.heroStandardVideos);
+  const mobileStandardList = readList(hero.dataset.heroMobileStandardVideos);
   const mobileQuery = window.matchMedia('(max-width: 720px)');
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const constrainedConnection = () => Boolean(connection?.saveData ||
+    ['slow-2g', '2g', '3g'].includes(connection?.effectiveType) ||
+    (connection?.downlink > 0 && connection.downlink < 3));
+  let standardQuality = constrainedConnection();
   let list = [];
   let index = 0;
   let retryTimer = 0;
+  let qualityTimer = 0;
   let activeMode = '';
 
-  const pickList = () => (mobileQuery.matches && mobileList.length ? mobileList : desktopList);
+  const standardList = () => (mobileQuery.matches && mobileList.length ? mobileStandardList : desktopStandardList);
+  const pickList = () => {
+    if (standardQuality && standardList().length) return standardList();
+    return mobileQuery.matches && mobileList.length ? mobileList : desktopList;
+  };
+  const playlistMode = () => `${mobileQuery.matches && mobileList.length ? 'mobile' : 'desktop'}-${standardQuality ? 'standard' : 'hd'}`;
   if (!desktopList.length) return;
 
   const revealFrame = () => {
+    if (video.readyState < 2) return;
     hero.dataset.ready = 'true';
     video.style.removeProperty('opacity');
+    window.clearTimeout(qualityTimer);
   };
 
   const attemptPlay = () => {
@@ -451,15 +464,20 @@ function setupHeroVideo() {
     hero.dataset.ready = 'false';
     video.style.opacity = '0';
     window.clearTimeout(retryTimer);
+    window.clearTimeout(qualityTimer);
     while (video.firstChild) video.removeChild(video.firstChild);
     const source = document.createElement('source');
     source.src = src;
+    source.addEventListener('error', useStandardQuality, { once: true });
     const lower = src.toLowerCase();
     if (lower.includes('.mp4')) source.type = 'video/mp4';
     if (lower.includes('.webm')) source.type = 'video/webm';
     video.appendChild(source);
     video.load();
     attemptPlay();
+    qualityTimer = window.setTimeout(() => {
+      if (document.visibilityState === 'visible' && video.readyState < 3) useStandardQuality();
+    }, 6000);
   };
 
   const go = (nextIndex) => {
@@ -469,18 +487,40 @@ function setupHeroVideo() {
 
   const syncPlaylist = (force = false) => {
     const nextList = pickList();
-    const nextMode = mobileQuery.matches && mobileList.length ? 'mobile' : 'desktop';
+    const nextMode = playlistMode();
     if (!nextList.length) return;
     if (!force && activeMode === nextMode) return;
     activeMode = nextMode;
+    hero.dataset.quality = standardQuality ? 'standard' : 'hd';
     list = nextList;
     index = 0;
     go(0);
   };
 
+  const useStandardQuality = () => {
+    if (standardQuality || !standardList().length) return;
+    standardQuality = true;
+    activeMode = playlistMode();
+    hero.dataset.quality = 'standard';
+    list = pickList();
+    go(index);
+  };
+
   video.addEventListener('loadeddata', revealFrame, { passive: true });
   video.addEventListener('canplay', revealFrame, { passive: true });
   video.addEventListener('playing', revealFrame, { passive: true });
+  video.addEventListener('error', useStandardQuality, { passive: true });
+  video.addEventListener('waiting', () => {
+    window.clearTimeout(qualityTimer);
+    qualityTimer = window.setTimeout(() => {
+      if (!video.paused && document.visibilityState === 'visible' && video.readyState < 3) useStandardQuality();
+    }, 4000);
+  }, { passive: true });
+  if (typeof connection?.addEventListener === 'function') {
+    connection.addEventListener('change', () => {
+      if (constrainedConnection()) useStandardQuality();
+    });
+  }
 
   video.addEventListener('ended', () => {
     go(index + 1);

@@ -236,8 +236,8 @@ nav {
   object-fit: cover;
   object-position: center center;
   filter: none;
-  opacity: 0.98;
-  transition: opacity 0.35s ease;
+  opacity: 0;
+  transition: none;
 }
 .hero-media[data-ready="false"] .hero-video { opacity: 0; }
 @media (max-width: 720px) {
@@ -3946,8 +3946,8 @@ body[data-home] .hero-media::after {
     linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.04) 45%, rgba(0,0,0,0.68) 100%);
 }
 
-body[data-home] .hero-video {
-  opacity: 0.88 !important;
+body[data-home] .hero-media[data-ready="true"] {
+  background-image: none;
 }
 
 body[data-home] .hero-eyebrow {

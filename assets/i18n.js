@@ -188,6 +188,10 @@
     'Find Your Next Shot':'Mulakan Rakaman Seterusnya'
   });
 
+  zhCN['Showing saved reviews. View the latest reviews on Google.'] = '暂时展示已保存的评价，最新评价请前往 Google 查看。';
+  zhTW['Showing saved reviews. View the latest reviews on Google.'] = '暫時展示已儲存的評價，最新評價請前往 Google 查看。';
+  ms['Showing saved reviews. View the latest reviews on Google.'] = 'Memaparkan ulasan tersimpan. Lihat ulasan terkini di Google.';
+
   const dictionaries = {'zh-CN': zhCN, 'zh-TW': zhTW, ms};
   const skippedTags = new Set(['SCRIPT','STYLE','NOSCRIPT','CODE','PRE','TEXTAREA']);
   let currentLanguage = DEFAULT_LANGUAGE;

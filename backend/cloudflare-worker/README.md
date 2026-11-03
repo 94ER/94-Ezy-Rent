@@ -26,6 +26,9 @@ Setup (Cloudflare Worker)
 Notes
 
 - Google Place Details API usually returns a limited number of reviews.
+- Only successful Google responses are cached for `CACHE_TTL_SECONDS` (currently seven days). Cached errors from older deployments are discarded; API/billing/network failures return `502` with `Cache-Control: no-store` so the next request can recover immediately.
+- Review URL query strings share the same cache entry to avoid unnecessary Google API requests.
+- Run review-cache regression tests with `node --test test/reviews.test.mjs`.
 - The homepage review slider is already wired to consume the Worker `/reviews` response once `data-live-api` is filled in.
 - Staff sessions expire after 8 hours. Product images accept JPG, PNG, or WebP up to 5 MB.
 - Recommended product photo: 1600 × 1200 px (4:3 landscape), with the device centred.

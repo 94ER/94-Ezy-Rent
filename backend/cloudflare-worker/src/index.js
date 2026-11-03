@@ -370,12 +370,37 @@ const fetchGoogle = async (env) => {
   return { ...normalizeGoogle(payload), status: status || 'OK', placeId: env.GOOGLE_PLACE_ID };
 };
 
+const isCacheableGoogleResult = (google) => Boolean(
+  google && !google.error && !google.disabled &&
+  (!google.status || google.status === 'OK') && Array.isArray(google.reviews)
+);
+
 const handleReviews = async (request, env, ctx, url) => {
   const cache = caches.default;
-  const cacheKey = new Request(url.toString(), request);
+  // Share one cache entry rather than charging for each query-string variation.
+  const cacheUrl = new URL(url);
+  cacheUrl.search = '';
+  const cacheKey = new Request(cacheUrl.toString(), request);
   const cached = await cache.match(cacheKey);
-  if (cached) return cached;
-  const response = json(request, env, { updatedAt: new Date().toISOString(), google: await fetchGoogle(env) }, { headers: { 'cache-control': `public, max-age=${getTtl(env)}` } });
+  if (cached) {
+    const payload = await cached.clone().json().catch(() => null);
+    if (isCacheableGoogleResult(payload?.google)) return cached;
+    // Previous versions cached Google billing/API errors for the full TTL.
+    await cache.delete(cacheKey);
+  }
+
+  let google;
+  try {
+    google = await fetchGoogle(env);
+  } catch (_) {
+    google = { error: 'Google reviews are temporarily unavailable.', status: 'UPSTREAM_ERROR' };
+  }
+  const payload = { updatedAt: new Date().toISOString(), google };
+  if (!isCacheableGoogleResult(google)) {
+    return json(request, env, payload, { status: 502, headers: { 'cache-control': 'no-store' } });
+  }
+
+  const response = json(request, env, payload, { headers: { 'cache-control': `public, max-age=${getTtl(env)}` } });
   ctx.waitUntil(cache.put(cacheKey, response.clone()));
   return response;
 };

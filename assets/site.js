@@ -651,6 +651,12 @@ function setupLiveReviews() {
     return true;
   };
 
+  const showSavedReviews = () => {
+    if (subtitle instanceof HTMLElement) {
+      subtitle.textContent = 'Showing saved reviews. View the latest reviews on Google.';
+    }
+  };
+
   const load = async () => {
     if (subtitle instanceof HTMLElement) {
       subtitle.textContent = 'Loading live Google reviews…';
@@ -660,14 +666,9 @@ function setupLiveReviews() {
       if (!res.ok) throw new Error(String(res.status));
       const data = await res.json();
       const ok = syncGoogleReviews(data?.google);
-      if (!ok && subtitle instanceof HTMLElement) {
-        const err = data?.google?.error ? `Live Google reviews error: ${data.google.error}` : 'No live Google reviews available yet.';
-        subtitle.textContent = err;
-      }
+      if (!ok) showSavedReviews();
     } catch (e) {
-      if (subtitle instanceof HTMLElement) {
-        subtitle.textContent = 'Unable to load live Google reviews right now.';
-      }
+      showSavedReviews();
     }
   };
 
